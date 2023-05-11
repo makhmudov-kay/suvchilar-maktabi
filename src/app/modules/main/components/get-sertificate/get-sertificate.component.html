@@ -1,0 +1,49 @@
+<div class="get-sertificate">
+  <h2 class="title get-sertificate__title">Cертификат юклаб олиш</h2>
+  <form
+    *ngIf="getSertificate; else download"
+    nz-form
+    nzLayout="vertical"
+    [formGroup]="form"
+    (ngSubmit)="searchSertificate()"
+  >
+    <nz-form-item>
+      <nz-form-label nzFor="number"
+        ><span class="form-label">Сертификат рақами</span></nz-form-label
+      >
+      <nz-form-control>
+        <nz-input-group nzSize="large" [nzPrefix]="prefixTemplateUser">
+          <input
+            type="text"
+            id="number"
+            formControlName="sertificate_id"
+            nz-input
+            placeholder="Сертификат рақамини киритинг"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <button type="button" nz-button nzType="primary" nzBlock (click)="searchSertificate()">
+      <span nz-icon nzType="search" nzTheme="outline"></span>Қидириш
+    </button>
+  </form>
+
+  <ng-template #download>
+    <div class="get-sertificate__doc">
+      <div class="get-sertificate__doc__file">
+        <div class="get-sertificate__doc__file__img">
+          <img src="./assets/images/pdf-icon.svg" alt="doc" />
+        </div>
+        <p>Сертификат № <span>202300001</span> (1.2 мб)</p>
+      </div>
+      <button nz-button nzType="primary" nzBlock (click)="searchSertificate()">
+        <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span
+        >Юклаб олиш
+      </button>
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #prefixTemplateUser
+  ><span nz-icon><img src="./assets/images/key.svg" alt="key" /></span
+></ng-template>

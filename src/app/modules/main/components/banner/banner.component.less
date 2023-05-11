@@ -1,0 +1,86 @@
+nz-carousel {
+  border-radius: 32px;
+  overflow: hidden;
+  height: 600px;
+}
+
+[nz-carousel-content] {
+  height: 600px;
+  background: #5078ff;
+  color: #fff;
+  overflow: hidden;
+  border-radius: 32px;
+}
+
+[nz-button] {
+  border-radius: 16px;
+  height: 60px;
+  font-size: 18px;
+  line-height: 23px;
+  font-family: Agrofont-Regular;
+  display: flex;
+  align-items: center;
+  gap: 0 12px;
+}
+
+.banner {
+  margin-top: 48px;
+  margin-bottom: 100px;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &__block {
+      flex: 50%;
+    }
+
+    &__left {
+      padding-left: 50px;
+
+      h2 {
+        font-size: 60px;
+        line-height: 75px;
+        color: #fff;
+        font-family: Agrofont-BExpanded;
+        margin-bottom: 24px;
+      }
+
+      p {
+        font-size: 24px;
+        line-height: 30px;
+        font-family: Agrofont-Regular;
+        color: #fff;
+        margin-bottom: 40px;
+      }
+    }
+
+    &__right {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      align-items: end;
+      justify-content: end;
+    }
+  }
+}
+
+.active {
+  color: red;
+}
+
+.carousel-dots {
+  width: 6px;
+  height: 6px;
+  border-radius: 12px;
+  background: #fff;
+  transition: 0.5s;
+  cursor: pointer;
+
+  &.active {
+    width: 16px;
+    background: #00cd69;
+    border-radius: 12px;
+  }
+}

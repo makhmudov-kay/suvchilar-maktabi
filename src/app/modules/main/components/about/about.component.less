@@ -1,0 +1,81 @@
+.about {
+  display: flex;
+  gap: 0 30px;
+
+  &-img {
+    width: 450px;
+    height: 550px;
+    border-radius: 24px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &-content {
+    max-width: 930px;
+    width: 100%;
+
+    &__title {
+      margin-bottom: 48px;
+    }
+  }
+
+  &-tabs__content {
+    h3 {
+      font-size: 24px;
+      line-height: 30px;
+      font-family: Agrofont-BExpanded;
+      color: #000;
+      margin-bottom: 24px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 25px;
+      font-family: Agrofont-Regular;
+      color: #000;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .ant-tabs-top > .ant-tabs-nav::before {
+    border-bottom: none !important;
+  }
+
+  .ant-tabs-tab + .ant-tabs-tab {
+    margin-left: 16px;
+  }
+
+  .ant-tabs-ink-bar {
+    display: none;
+  }
+
+  .ant-tabs-tab {
+    font-size: 18px;
+    font-family: Agrofont-Medium;
+    color: #b0b4c1;
+    line-height: 23px;
+    padding: 13px 24px;
+
+    &.ant-tabs-tab-active {
+      background: #5078ff;
+      border-radius: 100px;
+
+      .ant-tabs-tab-btn {
+        color: #fff;
+      }
+    }
+  }
+
+  .ant-tabs-tab-btn:focus,
+  .ant-tabs-tab-remove:focus,
+  .ant-tabs-tab-btn:active,
+  .ant-tabs-tab-remove:active {
+    color: inherit;
+  }
+}

@@ -1,0 +1,53 @@
+nz-divider {
+  background: #fff;
+  height: 60px;
+}
+
+.footer {
+  padding: 60px 0;
+  background: #0c38cc;
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__info {
+      display: flex;
+      align-items: center;
+      gap: 0 24px;
+    }
+
+    &__contacts {
+      display: flex;
+      gap: 0 40px;
+      align-items: center;
+
+      a {
+        img {
+            margin-right: 8px;
+        }
+      }
+
+      &__phone {
+        font-size: 22px;
+        line-height: 24px;
+        font-family: Agrofont-Medium;
+        color: #fff;
+      }
+
+      &__email {
+        font-size: 16px;
+        line-height: 16px;
+        font-family: Agrofont-Regular;
+        color: #fff;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 0 24px;
+  }
+}
