@@ -22,7 +22,7 @@ import { GetSertificateComponent } from './components/get-sertificate/get-sertif
 import { PartnersComponent } from './components/partners/partners.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { FooterComponent } from './components/footer/footer.component';
-
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -30,6 +30,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MainRoutes,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
 
     /* NG-ZORRO */
     NzDividerModule,

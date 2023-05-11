@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     AuthRoutes,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
 
     /* NG-ZORR */
     NzFormModule,
