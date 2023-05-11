@@ -1,6 +1,6 @@
 <div class="application">
   <h3 class="title application__title">
-    Сувчилик ўқув курси рўйхатга олиш сўровномаси
+    {{ "waterSchoolRegistrationTitle" | translate }}
   </h3>
 
   <div class="application__steps">
@@ -14,9 +14,9 @@
       <form [formGroup]="formStepFirst" (ngSubmit)="submitFirstStep()">
         <div class="application__form">
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label"
-              >Телефон рақамингиз</label
-            >
+            <label for="first" class="application__form__item__label">{{
+              "phoneNumber" | translate
+            }}</label>
             <nz-input-group [nzPrefix]="prefixTemplatePhone" nzSize="large">
               <input
                 formControlName="phone"
@@ -27,62 +27,59 @@
             </nz-input-group>
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label"
-              >Шарифингиз</label
-            >
+            <label for="first" class="application__form__item__label">{{
+              "yourPatronymic" | translate
+            }}</label>
             <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
               <input
                 formControlName="lastName"
                 id="first"
                 nz-input
-                placeholder="Шарифингиз"
+                [placeholder]="'yourPatronymic' | translate"
               />
             </nz-input-group>
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label"
-              >Исмингиз</label
-            >
+            <label for="first" class="application__form__item__label">{{
+              "yourName" | translate
+            }}</label>
             <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
               <input
                 formControlName="firstName"
                 id="first"
                 nz-input
-                placeholder="Исмингиз"
+                [placeholder]="'yourName' | translate"
               />
             </nz-input-group>
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label"
-              >Туғилган санангиз</label
-            >
-            <!-- <nz-input-group [nzPrefix]="prefixTemplateDate" nzSize="large"> -->
-            <!-- <input id="first" nz-input placeholder="Basic usage" /> -->
+            <label for="first" class="application__form__item__label">{{
+              "yourDateOfBirth" | translate
+            }}</label>
             <nz-date-picker
               formControlName="date"
               nzSize="large"
               nzSuffixIcon=""
-              nzPlaceHolder="Туғилган санангиз"
+              [nzPlaceHolder]="'yourDateOfBirth' | translate"
             ></nz-date-picker>
-            <!-- </nz-input-group> -->
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label"
-              >Фамилиянгиз</label
-            >
+            <label for="first" class="application__form__item__label">{{
+              "yourSurname" | translate
+            }}</label>
             <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
               <input
                 id="first"
                 formControlName="surname"
                 nz-input
-                placeholder="Фамилиянгиз"
+                [placeholder]="'yourSurname' | translate"
               />
             </nz-input-group>
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label"
-              >Жинсингиз</label
-            >
+            <label for="first" class="application__form__item__label">{{
+              "yourSex" | translate
+            }}</label>
             <div class="radio-block">
               <label class="radio">
                 <input
@@ -93,7 +90,7 @@
                   [ngModelOptions]="{ standalone: true }"
                 />
                 <span class="radio__checker"><span></span></span>
-                <span class="radio__text">Эркак</span>
+                <span class="radio__text">{{ "man" | translate }}</span>
               </label>
               <label class="radio">
                 <input
@@ -104,7 +101,7 @@
                   [ngModelOptions]="{ standalone: true }"
                 />
                 <span class="radio__checker"><span></span></span>
-                <span class="radio__text">Аёл</span>
+                <span class="radio__text">{{ "woman" | translate }}</span>
               </label>
             </div>
           </div>
@@ -115,9 +112,9 @@
       <form [formGroup]="formStepSecond" (ngSubmit)="submitSecondStep()">
         <div class="application__form">
           <div class="application__form__item">
-            <label for="company" class="application__form__item__label"
-              >Фермер ёки деҳқон хўжалиги номи</label
-            >
+            <label for="company" class="application__form__item__label">{{
+              "companyName" | translate
+            }}</label>
             <input
               formControlName="company"
               id="company"
@@ -126,15 +123,15 @@
             />
           </div>
           <div class="application__form__item">
-            <label for="company" class="application__form__item__label"
-              >Фермер ёки деҳқон хўжалиги номи</label
-            >
+            <label for="company" class="application__form__item__label">{{
+              "companyLocation" | translate
+            }}</label>
             <div class="application__form__item-double-select">
               <div class="application__form__item-double-select__left select">
                 <nz-select
                   formControlName="region"
                   nzSize="large"
-                  nzPlaceHolder="Вилоят"
+                  [nzPlaceHolder]="'region' | translate"
                 >
                   <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
                   <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
@@ -149,7 +146,7 @@
                 <nz-select
                   formControlName="district"
                   nzSize="large"
-                  nzPlaceHolder="Туман"
+                  [nzPlaceHolder]="'district' | translate"
                 >
                   <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
                   <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
@@ -163,9 +160,9 @@
             </div>
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label"
-              >Сизнинг лавозимингиз</label
-            >
+            <label for="first" class="application__form__item__label">{{
+              "yourPosition" | translate
+            }}</label>
             <div class="radio-block">
               <label class="radio">
                 <input
@@ -176,7 +173,7 @@
                   [ngModelOptions]="{ standalone: true }"
                 />
                 <span class="radio__checker"><span></span></span>
-                <span class="radio__text">Хўжалик рахбари</span>
+                <span class="radio__text">{{ "manager" | translate }}</span>
               </label>
               <label class="radio">
                 <input
@@ -187,7 +184,7 @@
                   [ngModelOptions]="{ standalone: true }"
                 />
                 <span class="radio__checker"><span></span></span>
-                <span class="radio__text">Бухгалтери</span>
+                <span class="radio__text">{{ "counter" | translate }}</span>
               </label>
               <label class="radio">
                 <input
@@ -198,17 +195,21 @@
                   [ngModelOptions]="{ standalone: true }"
                 />
                 <span class="radio__checker"><span></span></span>
-                <span class="radio__text">Ишчиси</span>
+                <span class="radio__text">{{ "worker" | translate }}</span>
               </label>
             </div>
           </div>
           <div class="application__form__item">
-            <label for="company" class="application__form__item__label"
-              >Фермер ва деҳқон хўжалиги фаолият тури</label
-            >
+            <label for="company" class="application__form__item__label">{{
+              "companyCategory" | translate
+            }}</label>
             <div class="application__form__item-double-select">
               <div class="application__form__item-double-select__left select">
-                <nz-select nzSize="large" formControlName="category" nzPlaceHolder="Пахтачилик/ғаллачилик">
+                <nz-select
+                  nzSize="large"
+                  formControlName="category"
+                  nzPlaceHolder="Пахтачилик/ғаллачилик"
+                >
                   <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
                   <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
                   <nz-option
@@ -231,7 +232,7 @@
             <img src="./assets/images/user-id.svg" alt="user-id" />
           </div>
           <h3 class="application__finish__block__title">
-            Сизнинг ID рақамингиз
+            {{ "yourID" | translate }}
           </h3>
           <span class="application__finish__block__num">202300001</span>
         </div>
@@ -240,8 +241,7 @@
             <img src="./assets/images/sertificate.svg" alt="sertificate icon" />
           </div>
           <h3 class="application__finish__block__title">
-            Курс якунлангандан сўнг, шу ерда сертификатингизни юклаб олишингиз
-            мумкин
+            {{ "completeTheCourse" | translate }}
           </h3>
         </div>
       </div>
@@ -256,12 +256,12 @@
         (click)="next()"
         *ngIf="current < 2"
       >
-        <span>Кейинги</span
+        <span>{{ "next" | translate }}</span
         ><span nz-icon nzType="arrow-right" nzTheme="outline"></span>
       </button>
       <button nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
         <span><img src="./assets/images/check.svg" alt="phone" /></span>
-        <span>Тушунарли</span>
+        <span>{{ "understand" | translate }}</span>
       </button>
     </div>
   </div>

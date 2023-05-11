@@ -8,17 +8,15 @@
     <div nz-carousel-content *ngFor="let index of array">
       <div class="banner-content">
         <div class="banner-content__block banner-content__left">
-          <h2>Сувчилар мактаби ташкил етилмоқда</h2>
+          <h2>{{ "waterSchoolStart" | translate }}</h2>
           <p>
-            Туркия тажрибаси асосида Aгробанк ташаббуси билан замонавий сув
-            тежовчи технологиялар ва усулларни тадбиқ етишга қаратилган янги
-            лойиҳа
+            {{ "waterSchoolText" | translate }}
           </p>
           <button nz-button nzType="primary" nzSize="large">
             <span nz-icon>
               <img src="./assets/images/edit.svg" alt="edit icon" />
             </span>
-            Рўйхатдан ўтиш
+            {{ "registration" | translate }}
           </button>
         </div>
         <div class="banner-content__block banner-content__right">

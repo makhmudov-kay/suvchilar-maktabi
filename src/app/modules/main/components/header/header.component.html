@@ -8,22 +8,22 @@
       <!-- MENU LINK -->
       <ul class="header__block__menu">
         <li>
-          <a href="#about">Биз ҳақимизда</a>
+          <a href="#about">{{ "aboutUs" | translate }}</a>
         </li>
         <li>
-          <a href="#about">Мақсадимиз</a>
+          <a href="#about">{{ "ourTarget" | translate }}</a>
         </li>
         <li>
-          <a>Бизнинг жамоа</a>
+          <a>{{ "ourTeam" | translate }}</a>
         </li>
         <li>
-          <a href="#about">Ўқув дастури</a>
+          <a href="#about">{{ "studyPlan" | translate }}</a>
         </li>
         <li>
-          <a>Янгиликлар</a>
+          <a>{{ "news" | translate }}</a>
         </li>
         <li>
-          <a>Фотогалерея</a>
+          <a>{{ "gallery" | translate }}</a>
         </li>
       </ul>
       <!-- INFO -->
@@ -35,11 +35,17 @@
         <div class="header__block__info__language">
           <span><img src="./assets/images/world.svg" alt="world" /></span>
           <ul>
-            <li>O’zb</li>
-            <nz-divider nzType="vertical"></nz-divider>
-            <li class="active">Ўзб</li>
-            <nz-divider nzType="vertical"></nz-divider>
-            <li>Рус</li>
+            <ng-container
+              *ngFor="let language of languageCodes; let isLast = last"
+            >
+              <li
+                (click)="onChangeLanguage(language.code)"
+                [ngClass]="{ active: currentLanguage === language.code }"
+              >
+                {{ language.short_name }}
+              </li>
+              <nz-divider *ngIf="!isLast" nzType="vertical"></nz-divider>
+            </ng-container>
           </ul>
         </div>
       </div>

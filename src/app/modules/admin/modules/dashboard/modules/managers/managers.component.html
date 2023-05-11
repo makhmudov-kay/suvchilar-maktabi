@@ -1,5 +1,5 @@
 <div class="content-header">
-  <h4>Менеджеры ({{ listOfData.length }})</h4>
+  <h4>{{ "managers" | translate }} ({{ listOfData.length }})</h4>
   <div class="content-header__right">
     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
       <input type="text" nz-input placeholder="Найти менеджера" />
@@ -9,7 +9,7 @@
         <span nz-icon nzType="search"></span>
       </button>
     </ng-template>
-    <button nz-button nzType="primary">Добавить</button>
+    <button nz-button nzType="primary">{{ "add" | translate }}</button>
   </div>
 </div>
 

@@ -6,15 +6,16 @@
       class="login-form"
       (ngSubmit)="submitForm()"
     >
-      <h2>ADMIN</h2>
+      <h2>{{ "admin" | translate }}</h2>
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
           <nz-input-group nzPrefixIcon="user">
             <input
               type="text"
               nz-input
+              nzSize="large"
               formControlName="userName"
-              placeholder="Username"
+              [placeholder]="'login' | translate"
             />
           </nz-input-group>
         </nz-form-control>
@@ -25,8 +26,9 @@
             <input
               type="password"
               nz-input
+              nzSize="large"
               formControlName="password"
-              placeholder="Password"
+              [placeholder]="'password' | translate"
             />
           </nz-input-group>
         </nz-form-control>
@@ -36,7 +38,7 @@
         class="login-form-button login-form-margin"
         [nzType]="'primary'"
       >
-        Войти
+        {{ "signIn" | translate }}
       </button>
     </form>
   </div>

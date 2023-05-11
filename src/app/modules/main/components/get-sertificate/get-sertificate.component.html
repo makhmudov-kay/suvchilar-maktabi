@@ -1,5 +1,7 @@
 <div class="get-sertificate">
-  <h2 class="title get-sertificate__title">Cертификат юклаб олиш</h2>
+  <h2 class="title get-sertificate__title">
+    {{ "downloadTheSertificate" | translate }}
+  </h2>
   <form
     *ngIf="getSertificate; else download"
     nz-form
@@ -9,7 +11,9 @@
   >
     <nz-form-item>
       <nz-form-label nzFor="number"
-        ><span class="form-label">Сертификат рақами</span></nz-form-label
+        ><span class="form-label">{{
+          "sertificateID" | translate
+        }}</span></nz-form-label
       >
       <nz-form-control>
         <nz-input-group nzSize="large" [nzPrefix]="prefixTemplateUser">
@@ -18,13 +22,20 @@
             id="number"
             formControlName="sertificate_id"
             nz-input
-            placeholder="Сертификат рақамини киритинг"
+            [placeholder]="'putSertificateID' | translate"
           />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
-    <button type="button" nz-button nzType="primary" nzBlock (click)="searchSertificate()">
-      <span nz-icon nzType="search" nzTheme="outline"></span>Қидириш
+    <button
+      type="button"
+      nz-button
+      nzType="primary"
+      nzBlock
+      (click)="searchSertificate()"
+    >
+      <span nz-icon nzType="search" nzTheme="outline"></span
+      >{{ "Қидириш" | translate }}
     </button>
   </form>
 
@@ -34,11 +45,11 @@
         <div class="get-sertificate__doc__file__img">
           <img src="./assets/images/pdf-icon.svg" alt="doc" />
         </div>
-        <p>Сертификат № <span>202300001</span> (1.2 мб)</p>
+        <p>{{ "sertificate" | translate }} № <span>202300001</span> (1.2 мб)</p>
       </div>
       <button nz-button nzType="primary" nzBlock (click)="searchSertificate()">
         <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span
-        >Юклаб олиш
+        >{{ "downlaod" | translate }}
       </button>
     </div>
   </ng-template>
