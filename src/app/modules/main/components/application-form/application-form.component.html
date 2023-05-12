@@ -110,9 +110,9 @@
     </div>
     <div class="application__steps__content" *ngIf="current === 1">
       <form [formGroup]="formStepSecond" (ngSubmit)="submitSecondStep()">
-        <div class="application__form">
+        <div class="application__form second-form">
           <div class="application__form__item">
-            <label for="company" class="application__form__item__label">{{
+            <label for="company" class="application__form__item__label company-label">{{
               "companyName" | translate
             }}</label>
             <input
@@ -164,10 +164,10 @@
               "yourPosition" | translate
             }}</label>
             <div class="radio-block">
-              <label class="radio">
+              <label class="radio radio_p">
                 <input
                   type="radio"
-                  name="sex"
+                  name="position"
                   [(ngModel)]="position"
                   [value]="1"
                   [ngModelOptions]="{ standalone: true }"
@@ -175,10 +175,10 @@
                 <span class="radio__checker"><span></span></span>
                 <span class="radio__text">{{ "manager" | translate }}</span>
               </label>
-              <label class="radio">
+              <label class="radio radio_p">
                 <input
                   type="radio"
-                  name="sex"
+                  name="position"
                   [(ngModel)]="position"
                   [value]="2"
                   [ngModelOptions]="{ standalone: true }"
@@ -186,10 +186,10 @@
                 <span class="radio__checker"><span></span></span>
                 <span class="radio__text">{{ "counter" | translate }}</span>
               </label>
-              <label class="radio">
+              <label class="radio radio_p">
                 <input
                   type="radio"
-                  name="sex"
+                  name="position"
                   [(ngModel)]="position"
                   [value]="3"
                   [ngModelOptions]="{ standalone: true }"

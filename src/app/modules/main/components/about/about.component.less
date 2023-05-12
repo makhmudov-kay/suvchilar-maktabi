@@ -3,11 +3,44 @@
   padding-top: 100px;
   gap: 0 30px;
 
+  @media (max-width: 1080px) {
+    padding-top: 80px;
+    gap: 0 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 48px;
+  }
+
+  @media (max-width: 575px) {
+    padding-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 480px) {
+    padding-top: 32px;
+  }
+
   &-img {
     width: 450px;
     height: 550px;
     border-radius: 24px;
     overflow: hidden;
+
+    @media (max-width: 1080px) {
+      height: 485px;
+      width: 307px;
+    }
+
+    @media (max-width: 575px) {
+      order: 2;
+      width: 100%;
+    }
+
+    @media (max-width: 425px) {
+      order: 2;
+      height: 392px;
+    }
 
     img {
       width: 100%;
@@ -17,11 +50,40 @@
   }
 
   &-content {
-    max-width: 930px;
+    max-width: 850px;
     width: 100%;
+
+    @media (max-width: 1080px) {
+      max-width: 600px;
+    }
+
+    @media (max-width: 992px) {
+      max-width: 530px;
+    }
+
+    @media (max-width: 870px) {
+      max-width: 50vw;
+    }
+
+    @media (max-width: 630px) {
+      max-width: 50vw;
+    }
+
+    @media (max-width: 575px) {
+      max-width: 600px;
+      order: 1;
+    }
 
     &__title {
       margin-bottom: 48px;
+
+      @media (max-width: 1080px) {
+        margin-bottom: 32px;
+      }
+
+      @media (max-width: 575px) {
+        margin-bottom: 24px;
+      }
     }
   }
 
@@ -32,6 +94,23 @@
       font-family: Agrofont-BExpanded;
       color: #000;
       margin-bottom: 24px;
+
+      @media (max-width: 1080px) {
+        font-size: 20px;
+        line-height: 25px;
+      }
+
+      @media (max-width: 992px) {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: 20px;
+      }
     }
 
     p {
@@ -39,6 +118,23 @@
       line-height: 25px;
       font-family: Agrofont-Regular;
       color: #000;
+
+      @media (max-width: 1080px) {
+        font-size: 18px;
+        line-height: 23px;
+      }
+
+      @media (max-width: 992px) {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 575px) {
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: 20px;
+      }
     }
   }
 }
@@ -79,4 +175,8 @@
   .ant-tabs-tab-remove:active {
     color: inherit;
   }
+}
+
+nz-tabset {
+  width: 100%;
 }

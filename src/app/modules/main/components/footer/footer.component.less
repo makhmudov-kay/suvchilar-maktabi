@@ -1,21 +1,39 @@
 nz-divider {
   background: #fff;
   height: 60px;
+
+  @media (max-width: 575px) {
+    display: none;
+  }
 }
 
 .footer {
   padding: 60px 0;
   background: #0c38cc;
 
+  @media (max-width: 1080px) {
+    padding: 20px 0;
+  }
+
   &__block {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    @media (max-width: 992px) {
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
     &__info {
       display: flex;
       align-items: center;
       gap: 0 24px;
+
+      @media (max-width: 575px) {
+        flex-wrap: wrap;
+        gap: 24px;
+      }
     }
 
     &__contacts {
@@ -23,9 +41,14 @@ nz-divider {
       gap: 0 40px;
       align-items: center;
 
+      @media (max-width: 575px) {
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+
       a {
         img {
-            margin-right: 8px;
+          margin-right: 8px;
         }
       }
 

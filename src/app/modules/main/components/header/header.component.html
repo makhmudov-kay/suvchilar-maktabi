@@ -48,7 +48,29 @@
             </ng-container>
           </ul>
         </div>
+        <div class="header__burger">
+          <button (click)="openDrawer()">
+            <span nz-icon
+              ><img src="./assets/images/burger.svg" alt="burger"
+            /></span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- DRAWER MENU -->
+<nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="Basic Drawer"
+  (nzOnClose)="closeDrawer()"
+>
+  <ng-container *nzDrawerContent>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+    <p>Some contents...</p>
+  </ng-container>
+</nz-drawer>

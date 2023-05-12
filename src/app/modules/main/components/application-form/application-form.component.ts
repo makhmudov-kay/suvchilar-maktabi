@@ -11,7 +11,7 @@ export class ApplicationFormComponent implements OnInit {
   formStepFirst!: UntypedFormGroup;
   formStepSecond!: UntypedFormGroup;
 
-  current = 1;
+  current = 0;
 
   position = 1;
 

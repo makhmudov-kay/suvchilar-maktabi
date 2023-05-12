@@ -1,9 +1,29 @@
 .application {
   padding: 100px 0;
 
+  @media (max-width: 1080px) {
+    padding: 80px 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 0;
+  }
+
+  @media (max-width: 575px) {
+    padding: 32px 0;
+  }
+
   &__title {
     text-align: center;
     margin-bottom: 60px;
+
+    @media (max-width: 767px) {
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 575px) {
+      margin-bottom: 24px;
+    }
   }
 
   nz-steps {
@@ -15,6 +35,14 @@
       margin-top: 60px;
       text-align: center;
 
+      @media (max-width: 768px) {
+        margin-top: 40px;
+      }
+
+      @media (max-width: 575px) {
+        margin-top: 24px;
+      }
+
       button {
         margin: auto;
       }
@@ -25,6 +53,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 24px 30px;
+
+    @media (max-width: 1080px) {
+      gap: 20px 24px;
+    }
+
+    @media (max-width: 1080px) {
+      gap: 20px;
+    }
 
     &__item {
       flex: 48%;
@@ -57,6 +93,11 @@
   &__finish {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: 575px) {
+      flex-wrap: wrap;
+      gap: 25px;
+    }
 
     &__block {
       display: flex;
@@ -110,6 +151,10 @@ nz-date-picker {
   display: flex;
   align-items: center;
   gap: 0 12px;
+
+  @media (max-width: 575px) {
+    height: 48px;
+  }
 }
 
 [nzPlaceHolder] {
@@ -136,6 +181,11 @@ nz-date-picker {
 .radio-block {
   display: flex;
   gap: 0 16px;
+
+  @media (max-width: 575px) {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
 }
 
 .radio {
@@ -145,6 +195,18 @@ nz-date-picker {
   border: 1px solid #d0d2da;
   border-radius: 10px;
   cursor: pointer;
+
+  @media (max-width: 980px) {
+    &_p {
+      padding: 5px 20px;
+    }
+  }
+
+  @media (max-width: 853px) {
+    &_p {
+      padding: 16px 20px;
+    }
+  }
 
   input {
     appearance: none;
@@ -181,12 +243,32 @@ nz-date-picker {
 }
 
 .dots {
-    width: 40px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  background: #f3f4f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.company-label {
+  @media (max-width: 1034px) {
     height: 40px;
-    display: inline-block;
-    background: #F3F4F7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+  }
+
+  @media (max-width: 690px) {
+    height: initial;
+  }
+}
+
+.second-form {
+  @media (max-width: 690px) {
+    flex-wrap: wrap;
+
+    .application__form__item {
+      flex: 100%;
+    }
+  }
 }

@@ -23,6 +23,7 @@ import { PartnersComponent } from './components/partners/partners.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {TranslateModule} from '@ngx-translate/core';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import {TranslateModule} from '@ngx-translate/core';
     NzRadioModule,
     NzDatePickerModule,
     NzSelectModule,
+    NzDrawerModule
   ],
   declarations: [
     MainComponent,
