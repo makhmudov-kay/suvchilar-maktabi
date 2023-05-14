@@ -4,7 +4,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { CertificateService } from './services/certificate.service';
 
 @Component({
   selector: 'app-get-sertificate',
@@ -12,23 +12,37 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
   styleUrls: ['./get-sertificate.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GetSertificateComponent implements OnInit {
-  getSertificate = true;
+export class GetSertificateComponent {
+  /**
+   */
+  getCertificate = true;
 
-  form!: UntypedFormGroup;
+  /**
+   */
+  certificate_id!: string;
 
-  constructor(private fb: UntypedFormBuilder, private cd: ChangeDetectorRef) {}
+  /**
+   * 
+   * @param $certificate 
+   * @param cd 
+   */
+  constructor(
+    private $certificate: CertificateService,
+    private cd: ChangeDetectorRef
+  ) {}
 
-  ngOnInit() {
-    this.form = this.fb.group({
-      sertificate_id: [null],
-    });
-  }
-
+  /**
+   * 
+   */
   searchSertificate() {
-    console.log(1);
-    
-    this.getSertificate = !this.getSertificate;
-    this.cd.markForCheck();
+    if (this.certificate_id) {
+      const request = {
+        certificate_id: this.certificate_id,
+      };
+      this.$certificate.getCertificate(request).subscribe(() => {  
+          this.getCertificate = false;          
+          this.cd.markForCheck();
+      });
+    }
   }
 }

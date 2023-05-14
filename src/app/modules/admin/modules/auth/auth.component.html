@@ -7,6 +7,9 @@
       (ngSubmit)="submitForm()"
     >
       <h2>{{ "admin" | translate }}</h2>
+      <div class="alert alert-danger" *ngIf="$auth.error$ | async as error">
+        {{ error }}
+      </div>
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
           <nz-input-group nzPrefixIcon="user">
@@ -14,7 +17,7 @@
               type="text"
               nz-input
               nzSize="large"
-              formControlName="userName"
+              formControlName="login"
               [placeholder]="'login' | translate"
             />
           </nz-input-group>
@@ -35,6 +38,7 @@
       </nz-form-item>
       <button
         nz-button
+        [nzLoading]="isLoading"
         class="login-form-button login-form-margin"
         [nzType]="'primary'"
       >

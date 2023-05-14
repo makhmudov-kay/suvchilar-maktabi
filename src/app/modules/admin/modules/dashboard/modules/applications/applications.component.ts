@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
+import { ApplicationsService } from './services/applications.service';
+import { Application } from './models/application.response';
 
 interface Person {
   key: string;
@@ -11,50 +18,20 @@ interface Person {
   selector: 'app-applications',
   templateUrl: './applications.component.html',
   styleUrls: ['./applications.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ApplicationsComponent {
-  listOfData: Person[] = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-  ];
+export class ApplicationsComponent implements OnInit {
+  data!: Application[];
+
+  constructor(
+    private $applications: ApplicationsService,
+    private cd: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.$applications.getApplicationsList().subscribe((result) => {
+      this.data = result.data;
+      this.cd.markForCheck();
+    });
+  }
 }

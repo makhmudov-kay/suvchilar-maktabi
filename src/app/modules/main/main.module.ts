@@ -24,6 +24,7 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {TranslateModule} from '@ngx-translate/core';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
+    NgxMaskModule.forRoot(),
 
     /* NG-ZORRO */
     NzDividerModule,
@@ -45,7 +47,7 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
     NzRadioModule,
     NzDatePickerModule,
     NzSelectModule,
-    NzDrawerModule
+    NzDrawerModule,
   ],
   declarations: [
     MainComponent,

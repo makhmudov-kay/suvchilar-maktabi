@@ -1,5 +1,5 @@
 <div class="content-header">
-  <h4>{{ "managers" | translate }} ({{ listOfData.length }})</h4>
+  <h4>{{ "managers" | translate }} ({{ data.length }})</h4>
   <div class="content-header__right">
     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
       <input type="text" nz-input placeholder="Найти менеджера" />
@@ -13,24 +13,24 @@
   </div>
 </div>
 
-<nz-table #basicTable [nzData]="listOfData">
+<nz-table #basicTable [nzData]="data">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Address</th>
-      <th>Action</th>
+      <th>{{ "user" | translate }}</th>
+      <th>{{ "phone" | translate }}</th>
+      <th>{{ "login" | translate }}</th>
+      <th>{{ "actions" | translate }}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.name }}</td>
-      <td>{{ data.age }}</td>
-      <td>{{ data.address }}</td>
+      <td>{{ data.f_name + " " + data.l_name }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data.login }}</td>
       <td>
-        <a>Action 一 {{ data.name }}</a>
-        <nz-divider nzType="vertical"></nz-divider>
-        <a>Delete</a>
+        <button nz-button nzType="default">
+          <span nz-icon nzType="delete" nzTheme="twotone" [nzTwotoneColor]="'#52c41a'"></span>
+        </button>
       </td>
     </tr>
   </tbody>

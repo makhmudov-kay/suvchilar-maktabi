@@ -3,11 +3,9 @@
     {{ "downloadTheSertificate" | translate }}
   </h2>
   <form
-    *ngIf="getSertificate; else download"
+    *ngIf="getCertificate; else download"
     nz-form
     nzLayout="vertical"
-    [formGroup]="form"
-    (ngSubmit)="searchSertificate()"
   >
     <nz-form-item>
       <nz-form-label nzFor="number"
@@ -20,9 +18,10 @@
           <input
             type="text"
             id="number"
-            formControlName="sertificate_id"
+            [(ngModel)]="certificate_id"
             nz-input
             [placeholder]="'putSertificateID' | translate"
+            [ngModelOptions]="{standalone: true}"
           />
         </nz-input-group>
       </nz-form-control>
@@ -45,7 +44,7 @@
         <div class="get-sertificate__doc__file__img">
           <img src="./assets/images/pdf-icon.svg" alt="doc" />
         </div>
-        <p>{{ "sertificate" | translate }} № <span>202300001</span> (1.2 мб)</p>
+        <p>{{ "sertificate" | translate }} № <span>{{certificate_id}}</span> (1.2 мб)</p>
       </div>
       <button nz-button nzType="primary" nzBlock (click)="searchSertificate()">
         <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span

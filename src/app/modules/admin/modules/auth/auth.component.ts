@@ -5,6 +5,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -20,10 +21,20 @@ export class AuthComponent implements OnInit {
 
   /**
    *
-   * @param fb
-   * @param router
    */
-  constructor(private fb: UntypedFormBuilder, private router: Router) {}
+  isLoading = false;
+
+  /**
+   * 
+   * @param fb 
+   * @param router 
+   * @param $auth 
+   */
+  constructor(
+    private fb: UntypedFormBuilder,
+    private router: Router,
+    public $auth: AuthService
+  ) {}
 
   /**
    *
@@ -37,22 +48,26 @@ export class AuthComponent implements OnInit {
    */
   private initForm() {
     this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
+      login: [null, [Validators.required]],
       password: [null, [Validators.required]],
     });
   }
 
+  /**
+   * 
+   */
   submitForm(): void {
-    // if (this.validateForm.valid) {
-    //   console.log('submit', this.validateForm.value);
-    // } else {
-    //   Object.values(this.validateForm.controls).forEach((control) => {
-    //     if (control.invalid) {
-    //       control.markAsDirty();
-    //       control.updateValueAndValidity({ onlySelf: true });
-    //     }
-    //   });
-    // }
-    this.router.navigate(['admin']);
+    const request = this.validateForm.getRawValue();
+    this.isLoading = true;
+    this.$auth.login(request).subscribe({
+      next: () => {
+        this.validateForm.reset();
+        this.router.navigate(['admin']);
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.isLoading = false;
+      },
+    });
   }
 }

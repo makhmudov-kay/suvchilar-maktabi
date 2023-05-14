@@ -4,7 +4,7 @@
   </h3>
 
   <div class="application__steps">
-    <nz-steps [nzCurrent]="current" (nzIndexChange)="onIndexChange($event)">
+    <nz-steps [nzCurrent]="current">
       <nz-step></nz-step>
       <nz-step></nz-step>
       <nz-step></nz-step>
@@ -19,12 +19,23 @@
             }}</label>
             <nz-input-group [nzPrefix]="prefixTemplatePhone" nzSize="large">
               <input
-                formControlName="phone"
+                [ngModel]="phone"
+                prefix="+998"
+                mask="(00) 000 00 00"
                 id="first"
                 nz-input
                 placeholder="Basic usage"
+                [ngModelOptions]="{ standalone: true }"
+                (ngModelChange)="inputPhone($event)"
               />
             </nz-input-group>
+            <div
+              class="validation"
+            >
+              <small>
+                Введите номер телефона
+              </small>
+            </div>
           </div>
           <div class="application__form__item">
             <label for="first" class="application__form__item__label">{{
@@ -32,7 +43,7 @@
             }}</label>
             <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
               <input
-                formControlName="lastName"
+                formControlName="l_name"
                 id="first"
                 nz-input
                 [placeholder]="'yourPatronymic' | translate"
@@ -45,7 +56,7 @@
             }}</label>
             <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
               <input
-                formControlName="firstName"
+                formControlName="f_name"
                 id="first"
                 nz-input
                 [placeholder]="'yourName' | translate"
@@ -57,7 +68,7 @@
               "yourDateOfBirth" | translate
             }}</label>
             <nz-date-picker
-              formControlName="date"
+              formControlName="birthday"
               nzSize="large"
               nzSuffixIcon=""
               [nzPlaceHolder]="'yourDateOfBirth' | translate"
@@ -70,7 +81,7 @@
             <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
               <input
                 id="first"
-                formControlName="surname"
+                formControlName="s_name"
                 nz-input
                 [placeholder]="'yourSurname' | translate"
               />
@@ -84,9 +95,9 @@
               <label class="radio">
                 <input
                   type="radio"
-                  name="sex"
-                  [(ngModel)]="sex"
-                  value="man"
+                  name="gender"
+                  [(ngModel)]="gender"
+                  [value]="1"
                   [ngModelOptions]="{ standalone: true }"
                 />
                 <span class="radio__checker"><span></span></span>
@@ -95,9 +106,9 @@
               <label class="radio">
                 <input
                   type="radio"
-                  name="sex"
-                  [(ngModel)]="sex"
-                  value="woman"
+                  name="gender"
+                  [(ngModel)]="gender"
+                  [value]="2"
                   [ngModelOptions]="{ standalone: true }"
                 />
                 <span class="radio__checker"><span></span></span>
@@ -112,11 +123,13 @@
       <form [formGroup]="formStepSecond" (ngSubmit)="submitSecondStep()">
         <div class="application__form second-form">
           <div class="application__form__item">
-            <label for="company" class="application__form__item__label company-label">{{
-              "companyName" | translate
-            }}</label>
+            <label
+              for="company"
+              class="application__form__item__label company-label"
+              >{{ "companyName" | translate }}</label
+            >
             <input
-              formControlName="company"
+              formControlName="farm_name"
               id="company"
               nzSize="large"
               nz-input
@@ -129,31 +142,30 @@
             <div class="application__form__item-double-select">
               <div class="application__form__item-double-select__left select">
                 <nz-select
-                  formControlName="region"
                   nzSize="large"
                   [nzPlaceHolder]="'region' | translate"
+                  (ngModelChange)="regionChange($event)"
+                  [(ngModel)]="selectedRegion"
+                  [ngModelOptions]="{ standalone: true }"
                 >
-                  <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-                  <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
                   <nz-option
-                    nzValue="disabled"
-                    nzLabel="Disabled"
-                    nzDisabled
+                    *ngFor="let reg of region"
+                    [nzValue]="reg"
+                    [nzLabel]="reg.name"
                   ></nz-option>
                 </nz-select>
               </div>
               <div class="application__form__item-double-select__right select">
                 <nz-select
-                  formControlName="district"
+                  formControlName="district_id"
                   nzSize="large"
                   [nzPlaceHolder]="'district' | translate"
+                  [nzDisabled]="!districts"
                 >
-                  <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-                  <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
                   <nz-option
-                    nzValue="disabled"
-                    nzLabel="Disabled"
-                    nzDisabled
+                    *ngFor="let district of districts"
+                    [nzValue]="district.id"
+                    [nzLabel]="district.name"
                   ></nz-option>
                 </nz-select>
               </div>
@@ -207,16 +219,26 @@
               <div class="application__form__item-double-select__left select">
                 <nz-select
                   nzSize="large"
-                  formControlName="category"
+                  formControlName="farm_type"
                   nzPlaceHolder="Пахтачилик/ғаллачилик"
                 >
-                  <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-                  <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
                   <nz-option
-                    nzValue="disabled"
-                    nzLabel="Disabled"
-                    nzDisabled
+                    nzValue="1"
+                    nzLabel="TYPE_COTTON_AND_WHEAT"
                   ></nz-option>
+                  <nz-option
+                    nzValue="2"
+                    nzLabel="TYPE_GARDEN_AND_VITICULTURE"
+                  ></nz-option>
+                  <nz-option
+                    nzValue="3"
+                    nzLabel="TYPE_VEGETABLE_AND_POLYZ"
+                  ></nz-option>
+                  <nz-option
+                    nzValue="4"
+                    nzLabel="TYPE_VEGETABLE_AND_WHEAT"
+                  ></nz-option>
+                  <nz-option nzValue="5" nzLabel="TYPE_ANOTHER"></nz-option>
                 </nz-select>
               </div>
             </div>
@@ -234,7 +256,7 @@
           <h3 class="application__finish__block__title">
             {{ "yourID" | translate }}
           </h3>
-          <span class="application__finish__block__num">202300001</span>
+          <span class="application__finish__block__num">{{ certificate }}</span>
         </div>
         <div class="application__finish__block">
           <div class="application__finish__block__img">
@@ -253,8 +275,20 @@
         nz-button
         nzSize="large"
         nzType="primary"
-        (click)="next()"
-        *ngIf="current < 2"
+        [nzLoading]="isLoading"
+        (click)="submitFirstStep()"
+        *ngIf="current == 0"
+      >
+        <span>{{ "next" | translate }}</span
+        ><span nz-icon nzType="arrow-right" nzTheme="outline"></span>
+      </button>
+      <button
+        nz-button
+        nzSize="large"
+        nzType="primary"
+        [nzLoading]="isLoading"
+        (click)="submitSecondStep()"
+        *ngIf="current == 1"
       >
         <span>{{ "next" | translate }}</span
         ><span nz-icon nzType="arrow-right" nzTheme="outline"></span>

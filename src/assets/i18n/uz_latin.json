@@ -49,5 +49,7 @@
     "applications": "Arizalar",
     "add": "Koshish",
     "login": "Login",
-    "password": "Parol"
+    "password": "Parol",
+    "user": "Foydalanuvchi",
+    "actions": "Harakatlar"
 }

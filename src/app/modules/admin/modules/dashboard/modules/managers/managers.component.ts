@@ -1,36 +1,48 @@
-import { Component } from '@angular/core';
-
-interface Person {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-}
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
+import { ManagersService } from './services/managers.service';
+import { Manager } from './models/mangers.response';
 
 @Component({
   selector: 'app-managers',
   templateUrl: './managers.component.html',
   styleUrls: ['./managers.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ManagersComponent {
-  listOfData: Person[] = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-  ];
+export class ManagersComponent implements OnInit {
+  /**
+   * Не получилось принять дату через map
+   */
+  data!: Manager[];
+
+  /**
+   *
+   * @param $managers
+   * @param cd
+   */
+  constructor(
+    private $managers: ManagersService,
+    private cd: ChangeDetectorRef
+  ) {}
+
+  /**
+   *
+   */
+  private getManagersList() {
+    this.$managers.getManagersList().subscribe((result) => {
+      this.data = result.data;
+      this.cd.markForCheck();
+    });
+  }
+
+  /**
+   *
+   */
+  ngOnInit() {
+    this.getManagersList();
+  }
 }
