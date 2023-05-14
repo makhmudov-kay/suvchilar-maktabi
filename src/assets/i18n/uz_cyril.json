@@ -51,5 +51,13 @@
     "login": "Логин",
     "password": "Парол",
     "user": "Фойдаланувчи",
-    "actions": "Харакатлар"
+    "actions": "Харакатлар",
+    "companySphere": "Фаолият тури",
+    "company": "Ташкилот",
+    "TYPE_COTTON_AND_WHEAT": "Пахтачилик/ғаллачилик",
+    "TYPE_GARDEN_AND_VITICULTURE": "Боғдорчилик/Узумчилик",
+    "TYPE_VEGETABLE_AND_POLYZ": "Сабзавотлар/Илдиз сабзавотлари",
+    "TYPE_VEGETABLE_AND_WHEAT": "Сабзавотлар/ғаллачилик",
+    "TYPE_ANOTHER": "Бошқа",
+    "status": "Статус"
 }

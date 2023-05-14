@@ -51,5 +51,13 @@
   "login": "Логин",
   "password": "Пароль",
   "user": "Пользователь",
-  "actions": "Действия"
+  "actions": "Действия",
+  "company": "Организация",
+  "companySphere": "Вид деятельности",
+  "TYPE_COTTON_AND_WHEAT": "Хлопководство/Пшеничное дело",
+  "TYPE_GARDEN_AND_VITICULTURE": "Садоводство/Виноградарство",
+  "TYPE_VEGETABLE_AND_POLYZ": "Овощи/Корнеплоды",
+  "TYPE_VEGETABLE_AND_WHEAT": "Овощи/Пшеница",
+  "TYPE_ANOTHER": "Другое",
+  "status": "Статус"
 }

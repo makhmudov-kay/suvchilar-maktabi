@@ -51,5 +51,13 @@
     "login": "Login",
     "password": "Parol",
     "user": "Foydalanuvchi",
-    "actions": "Harakatlar"
+    "companySphere": "Faoliyat turi",
+    "company": "Tashkilot",
+    "actions": "Harakatlar",
+    "TYPE_COTTON_AND_WHEAT": "Paxtachilik/g'allachilik",
+    "TYPE_GARDEN_AND_VITICULTURE": "Bog'dorchilik/Uzumchilik",
+    "TYPE_VEGETABLE_AND_POLYZ": "Sabzavotlar/Ildiz sabzavotlari",
+    "TYPE_VEGETABLE_AND_WHEAT": "Sabzavotlar/g'allachilik",
+    "TYPE_ANOTHER": "Boshqa",
+    "status": "Status"
 }

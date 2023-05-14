@@ -1,5 +1,5 @@
 <div class="content-header">
-  <h4>{{ "applications" | translate }} ({{ data.length }})</h4>
+  <h4>{{ "applications" | translate }} ({{ data && data.length }})</h4>
   <div class="content-header__right">
     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
       <input type="text" nz-input placeholder="Найти заявку" />
@@ -13,33 +13,185 @@
   </div>
 </div>
 
-<nz-table #basicTable [nzData]="data">
+<nz-table #basicTable [nzScroll]="{ y: '400px' }" [nzData]="data">
   <thead>
     <tr>
       <th>ID</th>
-      <th>Name</th>
-      <th>Company</th>
-      <th>Phone</th>
-      <th>Category</th>
-      <th>Location</th>
-      <th>Status</th>
-      <th>Action</th>
+      <th>{{ "user" | translate }}</th>
+      <th>{{ "company" | translate }}</th>
+      <th>{{ "phone" | translate }}</th>
+      <th>{{ "companySphere" | translate }}</th>
+      <th>{{ "district" | translate }}</th>
+      <th>{{ "sertificate" | translate }}</th>
+      <!-- <th>{{ "status" | translate }}</th> -->
+      <th>{{ "actions" | translate }}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
       <td>{{ data.id }}</td>
-      <td>{{ data.f_name + ' ' + data.l_name }}</td>
+      <td>{{ data.f_name + " " + data.l_name }}</td>
       <td>{{ data.farm_name }}</td>
-      <td>{{ data.phone }}</td>
-      <!-- switch -->
-      <td>{{ data.farm_type }}</td>
-      <td>{{ data.district_id }}</td>
-      <!-- swiitch -->
-      <td>{{ data.status }}</td>
+      <td>+{{ data.phone }}</td>
       <td>
-        <a>Edit</a>
+        <div [ngSwitch]="data.farm_type">
+          <div *ngSwitchCase="1">{{ "TYPE_COTTON_AND_WHEAT" | translate }}</div>
+          <div *ngSwitchCase="2">
+            {{ "TYPE_GARDEN_AND_VITICULTURE" | translate }}
+          </div>
+          <div *ngSwitchCase="3">
+            {{ "TYPE_VEGETABLE_AND_POLYZ" | translate }}
+          </div>
+          <div *ngSwitchCase="4">
+            {{ "TYPE_VEGETABLE_AND_WHEAT" | translate }}
+          </div>
+          <div *ngSwitchCase="5">{{ "TYPE_ANOTHER" | translate }}</div>
+          <div *ngSwitchDefault></div>
+        </div>
+      </td>
+      <td>{{ filteredDistrict(data.district_id) }}</td>
+      <td>{{ data.certificate_id }}</td>
+      <!-- <td>{{ data.status }}</td> -->
+      <td>
+        <button nz-button nzType="default" (click)="edit(data)">
+          <span
+            nz-icon
+            nzType="edit"
+            nzTheme="twotone"
+            [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
       </td>
     </tr>
   </tbody>
 </nz-table>
+
+<!-- EDIT MODAL -->
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="The first Modal"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="handleOk()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group>
+            <input
+              type="text"
+              nz-input
+              nzSize="large"
+              formControlName="phone"
+              placeholder="phone"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group>
+            <input
+              type="text"
+              nzSize="large"
+              nz-input
+              formControlName="f_name"
+              placeholder="f_name"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group>
+            <input
+              type="text"
+              nzSize="large"
+              nz-input
+              formControlName="l_name"
+              placeholder="l_name"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group>
+            <input
+              type="text"
+              nzSize="large"
+              nz-input
+              formControlName="farm_name"
+              placeholder="farm_name"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group>
+            <nz-select
+              nzSize="large"
+              formControlName="farm_type"
+              nzPlaceHolder="Пахтачилик/ғаллачилик"
+            >
+              <nz-option
+                nzValue="1"
+                [nzLabel]="'TYPE_COTTON_AND_WHEAT' | translate"
+              ></nz-option>
+              <nz-option
+                nzValue="2"
+                [nzLabel]="'TYPE_GARDEN_AND_VITICULTURE' | translate"
+              ></nz-option>
+              <nz-option
+                nzValue="3"
+                [nzLabel]="'TYPE_VEGETABLE_AND_POLYZ' | translate"
+              ></nz-option>
+              <nz-option
+                nzValue="4"
+                [nzLabel]="'TYPE_VEGETABLE_AND_WHEAT' | translate"
+              ></nz-option>
+              <nz-option
+                nzValue="5"
+                [nzLabel]="'TYPE_ANOTHER' | translate"
+              ></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group>
+            <nz-select
+              nzSize="large"
+              [nzPlaceHolder]="'region' | translate"
+              (ngModelChange)="regionChange($event)"
+              [(ngModel)]="selectedRegion"
+              [ngModelOptions]="{ standalone: true }"
+            >
+              <nz-option
+                *ngFor="let reg of region"
+                [nzValue]="reg"
+                [nzLabel]="reg.name"
+              ></nz-option>
+            </nz-select>
+
+            <nz-select
+              formControlName="district_id"
+              nzSize="large"
+              [nzPlaceHolder]="'district' | translate"
+              [nzDisabled]="!districtFromRegion"
+            >
+              <nz-option
+                *ngFor="let district of districtFromRegion"
+                [nzValue]="district.id"
+                [nzLabel]="district.name"
+              ></nz-option>
+            </nz-select>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+</nz-modal>

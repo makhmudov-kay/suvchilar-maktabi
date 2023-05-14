@@ -29,12 +29,8 @@
                 (ngModelChange)="inputPhone($event)"
               />
             </nz-input-group>
-            <div
-              class="validation"
-            >
-              <small>
-                Введите номер телефона
-              </small>
+            <div class="validation">
+              <small> Введите номер телефона </small>
             </div>
           </div>
           <div class="application__form__item">
@@ -224,21 +220,24 @@
                 >
                   <nz-option
                     nzValue="1"
-                    nzLabel="TYPE_COTTON_AND_WHEAT"
+                    [nzLabel]="'TYPE_COTTON_AND_WHEAT' | translate"
                   ></nz-option>
                   <nz-option
                     nzValue="2"
-                    nzLabel="TYPE_GARDEN_AND_VITICULTURE"
+                    [nzLabel]="'TYPE_GARDEN_AND_VITICULTURE' | translate"
                   ></nz-option>
                   <nz-option
                     nzValue="3"
-                    nzLabel="TYPE_VEGETABLE_AND_POLYZ"
+                    [nzLabel]="'TYPE_VEGETABLE_AND_POLYZ' | translate"
                   ></nz-option>
                   <nz-option
                     nzValue="4"
-                    nzLabel="TYPE_VEGETABLE_AND_WHEAT"
+                    [nzLabel]="'TYPE_VEGETABLE_AND_WHEAT' | translate"
                   ></nz-option>
-                  <nz-option nzValue="5" nzLabel="TYPE_ANOTHER"></nz-option>
+                  <nz-option
+                    nzValue="5"
+                    [nzLabel]="'TYPE_ANOTHER' | translate"
+                  ></nz-option>
                 </nz-select>
               </div>
             </div>
