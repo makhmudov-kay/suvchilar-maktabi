@@ -1,28 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RegionAndDistrictsResponse } from '../models/region-and-districts.response';
+import { Region } from '../models/region-and-districts.response';
+import { BaseService } from 'src/app/shared/base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RegionsAndDistrictsService {
+export class RegionsAndDistrictsService extends BaseService {
   /**
    *
    */
-  url = 'http://91.213.99.234:8000/api/region/with-district';
-
-  /**
-   *
-   * @param http
-   */
-  constructor(private http: HttpClient) {}
+  url = 'region/with-district';
 
   /**
    *
    * @returns
    */
-  getRegionAndDistricts(): Observable<RegionAndDistrictsResponse> {
-    return this.http.get<RegionAndDistrictsResponse>(`${this.url}`);
+  getRegionAndDistricts() {
+    return this.get<Region[]>(`${this.url}`);
   }
 }

@@ -1,21 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CertificateRequest } from '../models/certificate.request';
+import { BaseService } from 'src/app/shared/base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CertificateService {
+export class CertificateService extends BaseService {
   /**
    *
    */
-  url = 'http://91.213.99.234:8000/api/request/certificate';
-
-  /**
-   *
-   * @param http
-   */
-  constructor(private http: HttpClient) {}
+  url = 'request/certificate';
 
   /**
    *
@@ -23,6 +18,14 @@ export class CertificateService {
    * @returns
    */
   getCertificate(certificateId: CertificateRequest) {
-    return this.http.post(this.url, certificateId);
+    const httpOptions = {
+      responseType: 'blob' as 'json',
+    };
+
+    return this.http.post<Blob>(
+      `${this.endpoint}${this.url}`,
+      certificateId,
+      httpOptions
+    );
   }
 }

@@ -1,8 +1,3 @@
-export interface ApplicationResponse {
-  success: boolean;
-  data: Application[];
-}
-
 export interface Application {
   certificate_id: number;
   district_id: number;

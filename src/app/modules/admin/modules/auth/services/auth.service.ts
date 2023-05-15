@@ -2,11 +2,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponse, UserLogin } from '../models/user-login';
 import { Observable, Subject, catchError, tap, throwError } from 'rxjs';
+import { BaseService } from 'src/app/shared/base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService extends BaseService {
   /**
    */
   error$: Subject<string> = new Subject<string>();
@@ -14,7 +15,7 @@ export class AuthService {
   /**
    *
    */
-  url = 'http://91.213.99.234:8000/api/auth';
+  url = 'auth';
 
   /**
    */
@@ -26,12 +27,6 @@ export class AuthService {
     }
     return localStorage.getItem('accessToken') ?? '';
   }
-
-  /**
-   *
-   * @param http
-   */
-  constructor(private http: HttpClient) {}
 
   /**
    *
@@ -55,7 +50,7 @@ export class AuthService {
    */
   login(user: UserLogin): Observable<any> {
     return this.http
-      .post<any>(`${this.url}/login`, user)
+      .post<LoginResponse>(`${this.endpoint}${this.url}/login`, user)
       .pipe(tap(this.setToken), catchError(this.handleError.bind(this)));
   }
 
@@ -65,8 +60,8 @@ export class AuthService {
    * @returns
    */
   private handleError(error: HttpErrorResponse): Observable<never> {
-    const message = error.error.error;   
-    
+    const message = error.error.error;
+
     switch (message) {
       case 'Unauthorized':
         this.error$.next('Неверный логин или пароль');

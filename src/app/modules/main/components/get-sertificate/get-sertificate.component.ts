@@ -14,17 +14,18 @@ import { CertificateService } from './services/certificate.service';
 })
 export class GetSertificateComponent {
   /**
+   *
    */
-  getCertificate = true;
+  sertificateForDownload?: Blob;
 
   /**
    */
   certificate_id!: string;
 
   /**
-   * 
-   * @param $certificate 
-   * @param cd 
+   *
+   * @param $certificate
+   * @param cd
    */
   constructor(
     private $certificate: CertificateService,
@@ -32,17 +33,33 @@ export class GetSertificateComponent {
   ) {}
 
   /**
-   * 
+   *
    */
   searchSertificate() {
     if (this.certificate_id) {
       const request = {
         certificate_id: this.certificate_id,
       };
-      this.$certificate.getCertificate(request).subscribe(() => {  
-          this.getCertificate = false;          
-          this.cd.markForCheck();
+      this.$certificate.getCertificate(request).subscribe((data: Blob) => {
+        this.sertificateForDownload = data;
+        this.cd.markForCheck();
       });
     }
+  }
+
+  /**
+   *
+   * @param data
+   */
+  downloadSertificate(data: Blob) {
+    // TODO: REMOVE IF WE DO NOT NEED REALLY
+    // this.blob = new Blob([data], { type: 'application/pdf' });
+
+    var downloadURL = window.URL.createObjectURL(data);
+    var link = document.createElement('a');
+    link.href = downloadURL;
+    link.download = `Sertificate_${this.certificate_id}.pdf`;
+    link.click();
+    this.cd.markForCheck();
   }
 }

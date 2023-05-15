@@ -1,28 +1,21 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ApplicationResponse } from '../models/application.response';
+import { Application } from '../models/application.response';
+import { BaseService } from 'src/app/shared/base.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ApplicationsService {
+export class ApplicationsService extends BaseService {
   /**
    *
    */
-  url = 'http://91.213.99.234:8000/api/admin/request';
-
-  /**
-   *
-   * @param http
-   */
-  constructor(private http: HttpClient) {}
+  url = 'admin/request';
 
   /**
    *
    * @returns
    */
-  getApplicationsList(): Observable<ApplicationResponse> {
-    return this.http.get<ApplicationResponse>(this.url);
+  getApplicationsList() {
+    return this.get<Application[]>(this.url);
   }
 }

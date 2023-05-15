@@ -2,56 +2,62 @@
   <h2 class="title get-sertificate__title">
     {{ "downloadTheSertificate" | translate }}
   </h2>
-  <form
-    *ngIf="getCertificate; else download"
-    nz-form
-    nzLayout="vertical"
-  >
-    <nz-form-item>
-      <nz-form-label nzFor="number"
-        ><span class="form-label">{{
-          "sertificateID" | translate
-        }}</span></nz-form-label
+  <ng-template #search>
+    <form nz-form nzLayout="vertical">
+      <nz-form-item>
+        <nz-form-label nzFor="number"
+          ><span class="form-label">{{
+            "sertificateID" | translate
+          }}</span></nz-form-label
+        >
+        <nz-form-control>
+          <nz-input-group nzSize="large" [nzPrefix]="prefixTemplateUser">
+            <input
+              type="text"
+              id="number"
+              [(ngModel)]="certificate_id"
+              nz-input
+              [placeholder]="'putSertificateID' | translate"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button
+        type="button"
+        nz-button
+        nzType="primary"
+        nzBlock
+        (click)="searchSertificate()"
       >
-      <nz-form-control>
-        <nz-input-group nzSize="large" [nzPrefix]="prefixTemplateUser">
-          <input
-            type="text"
-            id="number"
-            [(ngModel)]="certificate_id"
-            nz-input
-            [placeholder]="'putSertificateID' | translate"
-            [ngModelOptions]="{standalone: true}"
-          />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-    <button
-      type="button"
-      nz-button
-      nzType="primary"
-      nzBlock
-      (click)="searchSertificate()"
-    >
-      <span nz-icon nzType="search" nzTheme="outline"></span
-      >{{ "Қидириш" | translate }}
-    </button>
-  </form>
+        <span nz-icon nzType="search" nzTheme="outline"></span
+        >{{ "Қидириш" | translate }}
+      </button>
+    </form>
+  </ng-template>
 
-  <ng-template #download>
+  <ng-container *ngIf="sertificateForDownload; else search">
     <div class="get-sertificate__doc">
       <div class="get-sertificate__doc__file">
         <div class="get-sertificate__doc__file__img">
           <img src="./assets/images/pdf-icon.svg" alt="doc" />
         </div>
-        <p>{{ "sertificate" | translate }} № <span>{{certificate_id}}</span> (1.2 мб)</p>
+        <p>
+          {{ "sertificate" | translate }} №
+          <span>{{ certificate_id }}</span> (1.2 мб)
+        </p>
       </div>
-      <button nz-button nzType="primary" nzBlock (click)="searchSertificate()">
+      <button
+        nz-button
+        nzType="primary"
+        nzBlock
+        (click)="downloadSertificate(sertificateForDownload)"
+      >
         <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span
         >{{ "downlaod" | translate }}
       </button>
     </div>
-  </ng-template>
+  </ng-container>
 </div>
 
 <ng-template #prefixTemplateUser
