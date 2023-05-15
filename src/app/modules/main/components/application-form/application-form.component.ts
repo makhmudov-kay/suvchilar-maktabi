@@ -179,7 +179,7 @@ export class ApplicationFormComponent implements OnInit {
     }
 
     const request = this.formStepFirst.getRawValue();
-    request.phone = '+998' + request.phone;
+    request.phone = '998' + request.phone;
     this.phone = request.phone;
     request.gender = this.gender;
 
