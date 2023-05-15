@@ -17,7 +17,7 @@ export class ManagersComponent implements OnInit {
   /**
    * Не получилось принять дату через map
    */
-  data!: Manager[];
+  data?: Manager[];
 
   /**
    *
