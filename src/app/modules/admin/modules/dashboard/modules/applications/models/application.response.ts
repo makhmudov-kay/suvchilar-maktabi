@@ -1,5 +1,5 @@
 export interface Application {
-  certificate_id: number;
+  certificate_id: string;
   district_id: number;
   f_name: string;
   farm_name: string;

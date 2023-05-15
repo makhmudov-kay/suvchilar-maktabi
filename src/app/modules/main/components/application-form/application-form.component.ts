@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import {
+  FormGroup,
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
@@ -73,11 +74,6 @@ export class ApplicationFormComponent implements OnInit {
 
   /**
    *
-   */
-  selectedRegion!: number;
-
-  /**
-   *
    * @param fb
    * @param $application
    * @param cd
@@ -94,6 +90,7 @@ export class ApplicationFormComponent implements OnInit {
    */
   private initFirstForm() {
     this.formStepFirst = this.fb.group({
+      phone: [null, [Validators.required]],
       l_name: [null, [Validators.required]],
       f_name: [null, [Validators.required]],
       s_name: [null, [Validators.required]],
@@ -107,6 +104,7 @@ export class ApplicationFormComponent implements OnInit {
   private initSecondForm() {
     this.formStepSecond = this.fb.group({
       farm_name: [null, [Validators.required]],
+      region_id: [null, [Validators.required]],
       district_id: [null, [Validators.required]],
       farm_type: [null, [Validators.required]],
     });
@@ -131,9 +129,6 @@ export class ApplicationFormComponent implements OnInit {
     this.initSecondForm();
   }
 
-  inputPhone(value: string) {
-    this.phone = value;
-  }
 
   /**
    *
@@ -165,16 +160,27 @@ export class ApplicationFormComponent implements OnInit {
     this.formStepSecond.reset();
   }
 
+  private markAllAsDirty(form: UntypedFormGroup) {
+    Object.values(form.controls).forEach((control) => {
+      if (control.invalid) {
+        control.markAsDirty();
+        control.updateValueAndValidity({ onlySelf: true });
+      }
+    });
+  }
+
   /**
    *
    */
   submitFirstStep() {
-    if (this.formStepFirst.invalid && !this.phone) {
+    if (this.formStepFirst.invalid) {
+      this.markAllAsDirty(this.formStepFirst);
       return;
     }
 
     const request = this.formStepFirst.getRawValue();
-    request.phone = '+998' + this.phone;
+    request.phone = '+998' + request.phone;
+    this.phone = request.phone;
     request.gender = this.gender;
 
     this.isLoading = true;
@@ -193,9 +199,14 @@ export class ApplicationFormComponent implements OnInit {
    *
    */
   submitSecondStep() {
+    if (this.formStepSecond.invalid) {
+      this.markAllAsDirty(this.formStepSecond);
+      return;
+    }
+
     const request = this.formStepSecond.getRawValue();
     request.position = this.position;
-    request.phone = '+998' + this.phone;
+    request.phone = this.phone;
 
     this.isLoading = true;
     this.$application.sendSecondStep(request).subscribe((result) => {

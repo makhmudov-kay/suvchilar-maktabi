@@ -5,6 +5,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { CertificateService } from './services/certificate.service';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { map, of } from 'rxjs';
 
 @Component({
   selector: 'app-get-sertificate',
@@ -35,16 +37,23 @@ export class GetSertificateComponent {
   /**
    *
    */
-  searchSertificate() {
+  searchSertificate(button: NzButtonComponent) {
     if (this.certificate_id) {
+      button.nzLoading = true;
       const request = {
         certificate_id: this.certificate_id,
       };
-      this.$certificate.getCertificate(request).subscribe((data: Blob) => {
-        this.sertificateForDownload = data;
-        this.cd.markForCheck();
-      });
+      return this.$certificate.getCertificate(request).pipe(
+        map((data: Blob) => {
+          this.sertificateForDownload = data;
+          button.nzLoading = false;
+          this.cd.markForCheck();
+          return data;
+        })
+      );
     }
+
+    return of(null);
   }
 
   /**
@@ -52,14 +61,18 @@ export class GetSertificateComponent {
    * @param data
    */
   downloadSertificate(data: Blob) {
-    // TODO: REMOVE IF WE DO NOT NEED REALLY
-    // this.blob = new Blob([data], { type: 'application/pdf' });
-
-    var downloadURL = window.URL.createObjectURL(data);
-    var link = document.createElement('a');
-    link.href = downloadURL;
-    link.download = `Sertificate_${this.certificate_id}.pdf`;
-    link.click();
+    downloadFile(data, this.certificate_id);
     this.cd.markForCheck();
   }
+}
+
+export function downloadFile(data: Blob, certificateId: string) {
+  // TODO: REMOVE IF WE DO NOT NEED REALLY
+  // this.blob = new Blob([data], { type: 'application/pdf' });
+
+  var downloadURL = window.URL.createObjectURL(data);
+  var link = document.createElement('a');
+  link.href = downloadURL;
+  link.download = `Sertificate_${certificateId}.pdf`;
+  link.click();
 }

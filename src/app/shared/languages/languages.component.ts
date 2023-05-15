@@ -25,9 +25,8 @@ export class LanguagesComponent {
   /**
    *
    */
-  get currentLanguage() {
-    return localStorage.getItem('language');
-  }
+  currentLanguage = localStorage.getItem('language');
+  
 
   /**
    *
@@ -49,6 +48,7 @@ export class LanguagesComponent {
    * @param selectedLanguage
    */
   onChangeLanguage(selectedLanguage: string) {
+    this.currentLanguage = selectedLanguage;
     localStorage.setItem('language', selectedLanguage);
     this.translate.use(selectedLanguage);
   }

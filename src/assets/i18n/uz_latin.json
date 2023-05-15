@@ -63,5 +63,11 @@
   "copy": "Nusxalash",
   "exit": "Chiqish",
   "setLogin": "Loginni kiriting",
-  "setPassword": "Parolni kiriting"
+  "setPassword": "Parolni kiriting",
+  "fillTheInput": "Maydonni to'ldiring",
+    "mask.(00) 000 00 00": "Telefon raqami noto‘g‘ri ko‘rsatilgan",
+    "STATUS_NEW": "Ro'yxatdan o'tmoqda",
+    "STATUS_DONE": "So'rovnoma to'ldirildi",
+    "STATUS_CERTIFICATE_GIVEN": "Sertifikat tayyor",
+    "STATUS_SPAM": "Bloklangan"
 }

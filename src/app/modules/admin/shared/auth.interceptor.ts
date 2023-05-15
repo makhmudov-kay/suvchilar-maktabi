@@ -24,8 +24,8 @@ export class TokenInterceptor implements HttpInterceptor {
       },
     });
     return next.handle(cloneRequest).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
+      catchError((error: HttpErrorResponse | undefined) => {
+        if (error?.status === 401) {
           this.$auth.logout();
           this.router.navigate(['/admin', 'auth']);
         }

@@ -38,7 +38,7 @@
       <th>{{ "companySphere" | translate }}</th>
       <th>{{ "district" | translate }}</th>
       <th>{{ "sertificate" | translate }}</th>
-      <!-- <th>{{ "status" | translate }}</th> -->
+      <th>{{ "status" | translate }}</th>
       <th>{{ "actions" | translate }}</th>
     </tr>
   </thead>
@@ -66,14 +66,44 @@
       </td>
       <td>{{ filteredDistrict(data.district_id) }}</td>
       <td>{{ data.certificate_id }}</td>
-      <!-- <td>{{ data.status }}</td> -->
+      <td>{{ STATUS[data.status] | translate }}</td>
       <td>
-        <button nz-button nzType="default" (click)="edit(data)">
+        <button class="action" nz-button nzType="default" (click)="edit(data)">
           <span
             nz-icon
             nzType="edit"
             nzTheme="twotone"
             [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
+
+        <button
+          class="action"
+          *ngIf="STATUS.STATUS_DONE === data.status"
+          nz-button
+          nzType="default"
+          (click)="approve(data)"
+        >
+          <span
+            nz-icon
+            nzType="check-circle"
+            nzTheme="twotone"
+            [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
+
+        <button
+          class="action"
+          *ngIf="STATUS.STATUS_CERTIFICATE_GIVEN === data.status"
+          nz-button
+          nzType="default"
+          [ngxAsyncClick]="download.bind(this, data)"
+        >
+          <span
+            nz-icon
+            nzType="download"
+            nzTheme="outline"
+            style="color: #52c41a"
           ></span>
         </button>
       </td>
