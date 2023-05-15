@@ -61,14 +61,18 @@ export class GetSertificateComponent {
    * @param data
    */
   downloadSertificate(data: Blob) {
-    // TODO: REMOVE IF WE DO NOT NEED REALLY
-    // this.blob = new Blob([data], { type: 'application/pdf' });
-
-    var downloadURL = window.URL.createObjectURL(data);
-    var link = document.createElement('a');
-    link.href = downloadURL;
-    link.download = `Sertificate_${this.certificate_id}.pdf`;
-    link.click();
+    downloadFile(data, this.certificate_id);
     this.cd.markForCheck();
   }
+}
+
+export function downloadFile(data: Blob, certificateId: string) {
+  // TODO: REMOVE IF WE DO NOT NEED REALLY
+  // this.blob = new Blob([data], { type: 'application/pdf' });
+
+  var downloadURL = window.URL.createObjectURL(data);
+  var link = document.createElement('a');
+  link.href = downloadURL;
+  link.download = `Sertificate_${certificateId}.pdf`;
+  link.click();
 }

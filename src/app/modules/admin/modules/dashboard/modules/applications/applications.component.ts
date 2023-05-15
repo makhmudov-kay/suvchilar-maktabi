@@ -13,6 +13,9 @@ import { Application } from './models/application.response';
 import { RegionsAndDistrictsService } from 'src/app/modules/main/components/application-form/services/regions-and-districts.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STATUS } from 'src/app/shared/constants';
+import { CertificateService } from 'src/app/modules/main/components/get-sertificate/services/certificate.service';
+import { map } from 'rxjs';
+import { downloadFile } from 'src/app/modules/main/components/get-sertificate/get-sertificate.component';
 
 @Component({
   selector: 'app-applications',
@@ -67,7 +70,8 @@ export class ApplicationsComponent implements OnInit {
     private $applications: ApplicationsService,
     private $regionAndDistrict: RegionsAndDistrictsService,
     private fb: FormBuilder,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private $certificate: CertificateService
   ) {}
 
   /**
@@ -142,6 +146,19 @@ export class ApplicationsComponent implements OnInit {
   approve(data: Application) {
     data.status = STATUS.STATUS_CERTIFICATE_GIVEN;
     this.$applications.edit(data).subscribe();
+  }
+
+  download(data: Application) {
+    const request = {
+      certificate_id: data.certificate_id,
+    };
+    return this.$certificate.getCertificate(request).pipe(
+      map((blob: Blob) => {
+        downloadFile(blob, data.certificate_id);
+        this.cd.markForCheck();
+        return data;
+      })
+    );
   }
 
   handleOk() {

@@ -53,7 +53,7 @@
       <td>{{ data.certificate_id }}</td>
       <td>{{ STATUS[data.status] | translate }}</td>
       <td>
-        <button nz-button nzType="default" (click)="edit(data)">
+        <button class="action" nz-button nzType="default" (click)="edit(data)">
           <span
             nz-icon
             nzType="edit"
@@ -63,6 +63,7 @@
         </button>
 
         <button
+          class="action"
           *ngIf="STATUS.STATUS_DONE === data.status"
           nz-button
           nzType="default"
@@ -73,6 +74,21 @@
             nzType="check-circle"
             nzTheme="twotone"
             [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
+
+        <button
+          class="action"
+          *ngIf="STATUS.STATUS_CERTIFICATE_GIVEN === data.status"
+          nz-button
+          nzType="default"
+          [ngxAsyncClick]="download.bind(this, data)"
+        >
+          <span
+            nz-icon
+            nzType="download"
+            nzTheme="outline"
+            style="color: #52c41a"
           ></span>
         </button>
       </td>
