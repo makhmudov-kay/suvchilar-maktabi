@@ -18,6 +18,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TokenInterceptor } from './modules/admin/shared/auth.interceptor';
+import { HandleErrorInterceptor } from './shared/handle.error.interceptor';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,6 +36,8 @@ registerLocaleData(ru);
     HttpClientModule,
     BrowserAnimationsModule,
 
+    NzMessageModule,
+
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -49,7 +53,12 @@ registerLocaleData(ru);
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HandleErrorInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

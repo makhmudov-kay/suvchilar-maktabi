@@ -59,5 +59,11 @@
     "TYPE_VEGETABLE_AND_POLYZ": "Сабзавотлар/Илдиз сабзавотлари",
     "TYPE_VEGETABLE_AND_WHEAT": "Сабзавотлар/ғаллачилик",
     "TYPE_ANOTHER": "Бошқа",
-    "status": "Статус"
+    "status": "Статус",
+    "fillTheInput": "Майдонни тўлдиринг",
+    "mask.(00) 000 00 00": "Телефон рақами нотўғри кўрсатилган",
+    "STATUS_NEW": "Рўйхатдан ўтмоқда",
+    "STATUS_DONE": "Сўровнома тўлдирилди",
+    "STATUS_CERTIFICATE_GIVEN": "Сертификат тайёр",
+    "STATUS_SPAM": "Блокланган"
 }

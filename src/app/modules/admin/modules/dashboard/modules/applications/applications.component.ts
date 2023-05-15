@@ -12,6 +12,7 @@ import { ApplicationsService } from './services/applications.service';
 import { Application } from './models/application.response';
 import { RegionsAndDistrictsService } from 'src/app/modules/main/components/application-form/services/regions-and-districts.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { STATUS } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-applications',
@@ -50,6 +51,11 @@ export class ApplicationsComponent implements OnInit {
    *
    */
   selectedRegion!: number;
+
+  /**
+   *
+   */
+  STATUS = STATUS;
 
   /**
    *
@@ -131,6 +137,11 @@ export class ApplicationsComponent implements OnInit {
     this.isVisible = true;
     this.editingData(data);
     this.cd.markForCheck();
+  }
+
+  approve(data: Application) {
+    data.status = STATUS.STATUS_CERTIFICATE_GIVEN;
+    this.$applications.edit(data).subscribe();
   }
 
   handleOk() {

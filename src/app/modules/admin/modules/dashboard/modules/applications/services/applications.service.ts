@@ -18,4 +18,8 @@ export class ApplicationsService extends BaseService {
   getApplicationsList() {
     return this.get<Application[]>(this.url);
   }
+
+  edit(model: Application) {
+    return this.put(`${this.url}/${model.id}`, model);
+  }
 }

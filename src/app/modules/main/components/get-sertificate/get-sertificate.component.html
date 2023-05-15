@@ -24,11 +24,12 @@
         </nz-form-control>
       </nz-form-item>
       <button
+        #searchBtn
         type="button"
         nz-button
         nzType="primary"
         nzBlock
-        (click)="searchSertificate()"
+        [ngxAsyncClick]="searchSertificate.bind(this, searchBtn)"
       >
         <span nz-icon nzType="search" nzTheme="outline"></span
         >{{ "Қидириш" | translate }}
@@ -44,7 +45,10 @@
         </div>
         <p>
           {{ "sertificate" | translate }} №
-          <span>{{ certificate_id }}</span> (1.2 мб)
+          <span>{{ certificate_id }}</span> ({{
+            (sertificateForDownload.size / 1024 / 1024).toFixed(2)
+          }}
+          мб)
         </p>
       </div>
       <button

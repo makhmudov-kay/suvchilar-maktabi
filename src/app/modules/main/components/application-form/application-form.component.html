@@ -10,78 +10,108 @@
       <nz-step></nz-step>
     </nz-steps>
 
+    <!-- FIRST STEP -->
     <div class="application__steps__content" *ngIf="current === 0">
-      <form [formGroup]="formStepFirst" (ngSubmit)="submitFirstStep()">
+      <form nz-form nzLayout="vertical" [formGroup]="formStepFirst">
         <div class="application__form">
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label">{{
-              "phoneNumber" | translate
-            }}</label>
-            <nz-input-group [nzPrefix]="prefixTemplatePhone" nzSize="large">
-              <input
-                [ngModel]="phone"
-                prefix="+998"
-                mask="(00) 000 00 00"
-                id="first"
-                nz-input
-                placeholder="Basic usage"
-                [ngModelOptions]="{ standalone: true }"
-                (ngModelChange)="inputPhone($event)"
-              />
-            </nz-input-group>
-            <div class="validation">
-              <small> Введите номер телефона </small>
-            </div>
+            <nz-form-item>
+              <label for="first" class="application__form__item__label">{{
+                "phoneNumber" | translate
+              }}</label>
+              <nz-form-control [nzErrorTip]="errorPhone">
+                <nz-input-group [nzPrefix]="prefixTemplatePhone" nzSize="large">
+                  <input
+                    formControlName="phone"
+                    prefix="+998"
+                    mask="(00) 000 00 00"
+                    id="first"
+                    nz-input
+                  />
+                </nz-input-group>
+              </nz-form-control>
+              <ng-template #errorPhone let-control>
+                <error [control]="control"></error>
+              </ng-template>
+            </nz-form-item>
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label">{{
-              "yourPatronymic" | translate
-            }}</label>
-            <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
-              <input
-                formControlName="l_name"
-                id="first"
-                nz-input
-                [placeholder]="'yourPatronymic' | translate"
-              />
-            </nz-input-group>
+            <nz-form-item>
+              <label for="first" class="application__form__item__label">{{
+                "yourPatronymic" | translate
+              }}</label>
+              <nz-form-control [nzErrorTip]="errorLastName">
+                <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
+                  <input
+                    formControlName="l_name"
+                    id="first"
+                    nz-input
+                    [placeholder]="'yourPatronymic' | translate"
+                  />
+                </nz-input-group>
+              </nz-form-control>
+              <ng-template #errorLastName let-control>
+                <error [control]="control"></error>
+              </ng-template>
+            </nz-form-item>
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label">{{
-              "yourName" | translate
-            }}</label>
-            <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
-              <input
-                formControlName="f_name"
-                id="first"
-                nz-input
-                [placeholder]="'yourName' | translate"
-              />
-            </nz-input-group>
+            <nz-form-item>
+              <label for="first" class="application__form__item__label">{{
+                "yourName" | translate
+              }}</label>
+              <nz-form-control [nzErrorTip]="errorFirstName">
+                <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
+                  <input
+                    formControlName="f_name"
+                    id="first"
+                    nz-input
+                    [placeholder]="'yourName' | translate"
+                  />
+                </nz-input-group>
+              </nz-form-control>
+              <ng-template #errorFirstName let-control>
+                <error [control]="control"></error>
+              </ng-template>
+            </nz-form-item>
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label">{{
-              "yourDateOfBirth" | translate
-            }}</label>
-            <nz-date-picker
-              formControlName="birthday"
-              nzSize="large"
-              nzSuffixIcon=""
-              [nzPlaceHolder]="'yourDateOfBirth' | translate"
-            ></nz-date-picker>
+            <nz-form-item>
+              <label for="first" class="application__form__item__label">{{
+                "yourDateOfBirth" | translate
+              }}</label>
+              <nz-form-control [nzErrorTip]="errorBirthdate">
+                <nz-date-picker
+                  formControlName="birthday"
+                  nzSize="large"
+                  nzSuffixIcon=""
+                  [nzPlaceHolder]="'yourDateOfBirth' | translate"
+                ></nz-date-picker>
+              </nz-form-control>
+              <ng-template #errorBirthdate let-control>
+                <error [control]="control"></error>
+              </ng-template>
+            </nz-form-item>
           </div>
           <div class="application__form__item">
-            <label for="first" class="application__form__item__label">{{
-              "yourSurname" | translate
-            }}</label>
-            <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
-              <input
-                id="first"
-                formControlName="s_name"
-                nz-input
-                [placeholder]="'yourSurname' | translate"
-              />
-            </nz-input-group>
+            <nz-form-item>
+              <label for="first" class="application__form__item__label">{{
+                "yourSurname" | translate
+              }}</label>
+              <nz-form-control [nzErrorTip]="errorMiddleName">
+                <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
+                  <input
+                    id="first"
+                    formControlName="s_name"
+                    nz-input
+                    [placeholder]="'yourSurname' | translate"
+                  />
+                </nz-input-group>
+              </nz-form-control>
+              <ng-template #errorMiddleName let-control>
+                <error [control]="control"></error>
+              </ng-template>
+            </nz-form-item>
           </div>
           <div class="application__form__item">
             <label for="first" class="application__form__item__label">{{
@@ -115,21 +145,30 @@
         </div>
       </form>
     </div>
+
+    <!-- SECOND STEP -->
     <div class="application__steps__content" *ngIf="current === 1">
-      <form [formGroup]="formStepSecond" (ngSubmit)="submitSecondStep()">
+      <form nz-form [nzLayout]="'vertical'" [formGroup]="formStepSecond">
         <div class="application__form second-form">
           <div class="application__form__item">
-            <label
-              for="company"
-              class="application__form__item__label company-label"
-              >{{ "companyName" | translate }}</label
-            >
-            <input
-              formControlName="farm_name"
-              id="company"
-              nzSize="large"
-              nz-input
-            />
+            <nz-form-item>
+              <label
+                for="company"
+                class="application__form__item__label company-label"
+                >{{ "companyName" | translate }}</label
+              >
+              <nz-form-control [nzErrorTip]="errorCompanyName">
+                <input
+                  formControlName="farm_name"
+                  id="company"
+                  nzSize="large"
+                  nz-input
+                />
+              </nz-form-control>
+              <ng-template #errorCompanyName let-control>
+                <error [control]="control"></error>
+              </ng-template>
+            </nz-form-item>
           </div>
           <div class="application__form__item">
             <label for="company" class="application__form__item__label">{{
@@ -137,33 +176,46 @@
             }}</label>
             <div class="application__form__item-double-select">
               <div class="application__form__item-double-select__left select">
-                <nz-select
-                  nzSize="large"
-                  [nzPlaceHolder]="'region' | translate"
-                  (ngModelChange)="regionChange($event)"
-                  [(ngModel)]="selectedRegion"
-                  [ngModelOptions]="{ standalone: true }"
-                >
-                  <nz-option
-                    *ngFor="let reg of region"
-                    [nzValue]="reg"
-                    [nzLabel]="reg.name"
-                  ></nz-option>
-                </nz-select>
+                <nz-form-item>
+                  <nz-form-control [nzErrorTip]="errorRegion">
+                    <nz-select
+                      nzSize="large"
+                      formControlName="region_id"
+                      [nzPlaceHolder]="'region' | translate"
+                      (ngModelChange)="regionChange($event)"
+                    >
+                      <nz-option
+                        *ngFor="let reg of region"
+                        [nzValue]="reg"
+                        [nzLabel]="reg.name"
+                      ></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                  <ng-template #errorRegion let-control>
+                    <error [control]="control"></error>
+                  </ng-template>
+                </nz-form-item>
               </div>
               <div class="application__form__item-double-select__right select">
-                <nz-select
-                  formControlName="district_id"
-                  nzSize="large"
-                  [nzPlaceHolder]="'district' | translate"
-                  [nzDisabled]="!districts"
-                >
-                  <nz-option
-                    *ngFor="let district of districts"
-                    [nzValue]="district.id"
-                    [nzLabel]="district.name"
-                  ></nz-option>
-                </nz-select>
+                <nz-form-item>
+                  <nz-form-control [nzErrorTip]="errorDistrict">
+                    <nz-select
+                      formControlName="district_id"
+                      nzSize="large"
+                      [nzPlaceHolder]="'district' | translate"
+                      [nzDisabled]="!districts"
+                    >
+                      <nz-option
+                        *ngFor="let district of districts"
+                        [nzValue]="district.id"
+                        [nzLabel]="district.name"
+                      ></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                  <ng-template #errorDistrict let-control>
+                    <error [control]="control"></error>
+                  </ng-template>
+                </nz-form-item>
               </div>
             </div>
           </div>
@@ -213,32 +265,39 @@
             }}</label>
             <div class="application__form__item-double-select">
               <div class="application__form__item-double-select__left select">
-                <nz-select
-                  nzSize="large"
-                  formControlName="farm_type"
-                  nzPlaceHolder="Пахтачилик/ғаллачилик"
-                >
-                  <nz-option
-                    nzValue="1"
-                    [nzLabel]="'TYPE_COTTON_AND_WHEAT' | translate"
-                  ></nz-option>
-                  <nz-option
-                    nzValue="2"
-                    [nzLabel]="'TYPE_GARDEN_AND_VITICULTURE' | translate"
-                  ></nz-option>
-                  <nz-option
-                    nzValue="3"
-                    [nzLabel]="'TYPE_VEGETABLE_AND_POLYZ' | translate"
-                  ></nz-option>
-                  <nz-option
-                    nzValue="4"
-                    [nzLabel]="'TYPE_VEGETABLE_AND_WHEAT' | translate"
-                  ></nz-option>
-                  <nz-option
-                    nzValue="5"
-                    [nzLabel]="'TYPE_ANOTHER' | translate"
-                  ></nz-option>
-                </nz-select>
+                <nz-form-item>
+                  <nz-form-control [nzErrorTip]="errorFarmerType">
+                    <nz-select
+                      nzSize="large"
+                      formControlName="farm_type"
+                      nzPlaceHolder="Пахтачилик/ғаллачилик"
+                    >
+                      <nz-option
+                        nzValue="1"
+                        [nzLabel]="'TYPE_COTTON_AND_WHEAT' | translate"
+                      ></nz-option>
+                      <nz-option
+                        nzValue="2"
+                        [nzLabel]="'TYPE_GARDEN_AND_VITICULTURE' | translate"
+                      ></nz-option>
+                      <nz-option
+                        nzValue="3"
+                        [nzLabel]="'TYPE_VEGETABLE_AND_POLYZ' | translate"
+                      ></nz-option>
+                      <nz-option
+                        nzValue="4"
+                        [nzLabel]="'TYPE_VEGETABLE_AND_WHEAT' | translate"
+                      ></nz-option>
+                      <nz-option
+                        nzValue="5"
+                        [nzLabel]="'TYPE_ANOTHER' | translate"
+                      ></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                  <ng-template #errorFarmerType let-control>
+                    <error [control]="control"></error>
+                  </ng-template>
+                </nz-form-item>
               </div>
             </div>
           </div>
@@ -246,6 +305,7 @@
       </form>
     </div>
 
+    <!-- THIRD STEP -->
     <div class="application__steps__content" *ngIf="current === 2">
       <div class="application__finish">
         <div class="application__finish__block">
@@ -270,6 +330,7 @@
 
     <!-- STEP ACTIONS -->
     <div class="application__steps__action">
+      <!-- FRIST STEP -->
       <button
         nz-button
         nzSize="large"
@@ -281,6 +342,8 @@
         <span>{{ "next" | translate }}</span
         ><span nz-icon nzType="arrow-right" nzTheme="outline"></span>
       </button>
+
+      <!-- SECOND STEP -->
       <button
         nz-button
         nzSize="large"
@@ -292,6 +355,8 @@
         <span>{{ "next" | translate }}</span
         ><span nz-icon nzType="arrow-right" nzTheme="outline"></span>
       </button>
+
+      <!-- THIRD STEP -->
       <button nz-button nzType="primary" (click)="done()" *ngIf="current === 2">
         <span><img src="./assets/images/check.svg" alt="phone" /></span>
         <span>{{ "understand" | translate }}</span>

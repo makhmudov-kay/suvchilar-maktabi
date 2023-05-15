@@ -22,9 +22,11 @@ import { GetSertificateComponent } from './components/get-sertificate/get-sertif
 import { PartnersComponent } from './components/partners/partners.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { FooterComponent } from './components/footer/footer.component';
-import {TranslateModule} from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NgxMaskModule } from 'ngx-mask';
+import { AsyncClickDirective } from 'ngx-async-click';
+import { ErrorComponent } from 'src/app/shared/error/error.component';
 
 @NgModule({
   imports: [
@@ -34,6 +36,8 @@ import { NgxMaskModule } from 'ngx-mask';
     ReactiveFormsModule,
     TranslateModule,
     NgxMaskModule.forRoot(),
+    AsyncClickDirective,
+    ErrorComponent,
 
     /* NG-ZORRO */
     NzDividerModule,

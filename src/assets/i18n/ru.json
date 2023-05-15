@@ -59,5 +59,11 @@
   "TYPE_VEGETABLE_AND_POLYZ": "Овощи/Корнеплоды",
   "TYPE_VEGETABLE_AND_WHEAT": "Овощи/Пшеница",
   "TYPE_ANOTHER": "Другое",
-  "status": "Статус"
+  "status": "Статус",
+  "fillTheInput": "Заполните поле",
+  "mask.(00) 000 00 00": "Номер телефона указан неверно",
+  "STATUS_NEW": "Регистрация",
+  "STATUS_DONE": "Анкета заполнена",
+  "STATUS_CERTIFICATE_GIVEN": "Сертификат готов",
+  "STATUS_SPAM": "Заблокировано"
 }
