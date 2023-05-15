@@ -1,0 +1,14 @@
+<div class="language" [ngClass]="{ drawer: drawerClass }">
+  <span><img src="./assets/images/world.svg" alt="world" /></span>
+  <ul>
+    <ng-container *ngFor="let language of languageCodes; let isLast = last">
+      <li
+        (click)="onChangeLanguage(language.code)"
+        [ngClass]="{ active: currentLanguage === language.code }"
+      >
+        {{ language.short_name }}
+      </li>
+      <nz-divider *ngIf="!isLast" nzType="vertical"></nz-divider>
+    </ng-container>
+  </ul>
+</div>

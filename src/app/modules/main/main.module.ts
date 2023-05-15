@@ -25,6 +25,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import {TranslateModule} from '@ngx-translate/core';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NgxMaskModule } from 'ngx-mask';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { LanguagesComponent } from 'src/app/shared/languages/languages.component';
 
 @NgModule({
   imports: [
@@ -34,6 +37,7 @@ import { NgxMaskModule } from 'ngx-mask';
     ReactiveFormsModule,
     TranslateModule,
     NgxMaskModule.forRoot(),
+    LanguagesComponent,
 
     /* NG-ZORRO */
     NzDividerModule,
@@ -48,6 +52,8 @@ import { NgxMaskModule } from 'ngx-mask';
     NzDatePickerModule,
     NzSelectModule,
     NzDrawerModule,
+    NzTypographyModule,
+    NzToolTipModule
   ],
   declarations: [
     MainComponent,

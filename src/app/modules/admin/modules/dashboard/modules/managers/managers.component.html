@@ -1,8 +1,13 @@
 <div class="content-header">
-  <h4>{{ "managers" | translate }} ({{ data?.length }})</h4>
+  <h4>{{ "managers" | translate }} ({{ (data$ | async)?.length }})</h4>
   <div class="content-header__right">
     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-      <input type="text" nz-input placeholder="Найти менеджера" />
+      <input
+        type="text"
+        [(ngModel)]="searchText"
+        nz-input
+        placeholder="Найти менеджера"
+      />
     </nz-input-group>
     <ng-template #suffixIconButton>
       <button nz-button nzType="primary" nzSearch>
@@ -13,7 +18,12 @@
   </div>
 </div>
 
-<nz-table *ngIf="data" #basicTable [nzData]="data" [nzScroll]="{ y: '400px' }">
+<nz-table
+  *ngIf="data$ | async as listOfData"
+  #basicTable
+  [nzData]="listOfData | search : searchText"
+  [nzScroll]="{ y: '400px' }"
+>
   <thead>
     <tr>
       <th>{{ "user" | translate }}</th>

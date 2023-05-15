@@ -1,27 +1,40 @@
 <nz-layout>
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-    <div class="logo">
-      <img src="./assets/images/logo-sm-white.svg" alt="logo" />
+    <div [ngClass]="isCollapsed ? 'logoMini' : 'logo'">
+      <img
+        *ngIf="!isCollapsed; else logoMini"
+        src="./assets/images/logo-sm-white.svg"
+        alt="logo"
+      />
+      <ng-template #logoMini>
+        <img src="./assets/images/logo-without-text.svg" alt="logo" />
+      </ng-template>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item routerLink="applications" nzMatchRouter>
         <span nz-icon nzType="profile" nzTheme="outline"></span>
-        <span>Заявки</span>
+        <span>{{ "applications" | translate }}</span>
       </li>
       <li nz-menu-item routerLink="managers" nzMatchRouter>
         <span nz-icon nzType="user" nzTheme="outline"></span>
-        <span>Менеджеры</span>
+        <span>{{ "managers" | translate }}</span>
       </li>
     </ul>
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <span
-        class="trigger"
-        nz-icon
-        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-        (click)="isCollapsed = !isCollapsed"
-      ></span>
+      <div class="header">
+        <span
+          class="trigger"
+          nz-icon
+          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          (click)="isCollapsed = !isCollapsed"
+        ></span>
+        <div class="header__info">
+          <app-languages></app-languages>
+          <button (click)="logout()" nz-button nzType="primary"><span nz-icon nzType="poweroff" nzTheme="outline"></span>{{ "exit" | translate }}</button>
+        </div>
+      </div>
     </nz-header>
     <nz-content>
       <div class="inner-content"><router-outlet></router-outlet></div>

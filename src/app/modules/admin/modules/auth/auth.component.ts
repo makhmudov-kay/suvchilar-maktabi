@@ -25,10 +25,10 @@ export class AuthComponent implements OnInit {
   isLoading = false;
 
   /**
-   * 
-   * @param fb 
-   * @param router 
-   * @param $auth 
+   *
+   * @param fb
+   * @param router
+   * @param $auth
    */
   constructor(
     private fb: UntypedFormBuilder,
@@ -54,9 +54,19 @@ export class AuthComponent implements OnInit {
   }
 
   /**
-   * 
+   *
    */
   submitForm(): void {
+    if (this.validateForm.invalid) {
+      Object.values(this.validateForm.controls).forEach((control) => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+      return;
+    }
+    
     const request = this.validateForm.getRawValue();
     this.isLoading = true;
     this.$auth.login(request).subscribe({

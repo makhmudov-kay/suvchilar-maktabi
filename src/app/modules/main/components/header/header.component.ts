@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+} from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-
-interface Languages {
-  code: string;
-  short_name: string;
-}
 
 @Component({
   selector: 'app-header',
@@ -21,15 +21,6 @@ export class HeaderComponent {
   /**
    *
    */
-  languageCodes: Languages[] = [
-    { code: 'uz_latin', short_name: 'O’zb' },
-    { code: 'uz_cyril', short_name: 'Ўзб' },
-    { code: 'ru', short_name: 'Рус' },
-  ];
-
-  /**
-   *
-   */
   get currentLanguage() {
     return localStorage.getItem('language');
   }
@@ -38,16 +29,11 @@ export class HeaderComponent {
    *
    * @param translate
    */
-  constructor(private translate: TranslateService) {}
+  constructor(
+    private router: Router,
+    private viewPort: ViewportScroller
+  ) {}
 
-  /**
-   *
-   * @param selectedLanguage
-   */
-  onChangeLanguage(selectedLanguage: string) {
-    localStorage.setItem('language', selectedLanguage);
-    this.translate.use(selectedLanguage);
-  }
 
   /**
    *
@@ -61,5 +47,17 @@ export class HeaderComponent {
    */
   closeDrawer(): void {
     this.visible = false;
+  }
+
+  /**
+   * 
+   * @param fragment 
+   */
+  closeDrawerAndNavigate(fragment: string) {
+    this.closeDrawer();
+    setTimeout(() => {
+      this.router.navigate([], { fragment });
+      this.viewPort.scrollToAnchor(fragment);
+    }, 500);
   }
 }

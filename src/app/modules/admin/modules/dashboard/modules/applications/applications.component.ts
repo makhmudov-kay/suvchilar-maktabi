@@ -33,6 +33,11 @@ export class ApplicationsComponent implements OnInit {
   districts: District[] = [];
 
   /**
+   *
+   */
+  searchText = '';
+
+  /**
    */
   form!: FormGroup;
 

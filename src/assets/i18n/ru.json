@@ -59,5 +59,9 @@
   "TYPE_VEGETABLE_AND_POLYZ": "Овощи/Корнеплоды",
   "TYPE_VEGETABLE_AND_WHEAT": "Овощи/Пшеница",
   "TYPE_ANOTHER": "Другое",
-  "status": "Статус"
+  "status": "Статус",
+  "copy": "Копировать",
+  "exit": "Выход",
+  "setLogin": "Введите логин",
+  "setPassword": "Введите пароль"
 }

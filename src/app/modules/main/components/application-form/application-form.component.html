@@ -255,7 +255,13 @@
           <h3 class="application__finish__block__title">
             {{ "yourID" | translate }}
           </h3>
-          <span class="application__finish__block__num">{{ certificate }}</span>
+          <span
+            nz-tooltip
+            [nzTooltipTitle]="'copy' | translate"
+            (click)="copyId(certificate)"
+            class="application__finish__block__num"
+            >{{ certificate }}</span
+          >
         </div>
         <div class="application__finish__block">
           <div class="application__finish__block__img">

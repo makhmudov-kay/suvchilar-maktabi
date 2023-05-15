@@ -1,19 +1,34 @@
 <div class="content-header">
-  <h4>{{ "applications" | translate }} ({{ data && data.length }})</h4>
+  <h4>{{ "applications" | translate }} ({{ data ? data.length : 0 }})</h4>
   <div class="content-header__right">
-    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
-      <input type="text" nz-input placeholder="Найти заявку" />
+    <nz-input-group nzSearch [nzSuffix]="inputClearTpl">
+      <input
+        type="text"
+        nz-input
+        placeholder="Найти заявку"
+        [(ngModel)]="searchText"
+      />
     </nz-input-group>
-    <ng-template #suffixIconButton>
-      <button nz-button nzType="primary" nzSearch>
-        <span nz-icon nzType="search"></span>
-      </button>
+
+    <ng-template #inputClearTpl>
+      <span
+        nz-icon
+        class="ant-input-clear-icon"
+        nzTheme="fill"
+        nzType="close-circle"
+        *ngIf="searchText"
+        (click)="searchText = ''"
+      ></span>
     </ng-template>
     <button nz-button nzType="primary">{{ "add" | translate }}</button>
   </div>
 </div>
 
-<nz-table #basicTable [nzScroll]="{ y: '400px' }" [nzData]="data">
+<nz-table
+  #basicTable
+  [nzScroll]="{ y: '400px' }"
+  [nzData]="data | search : searchText"
+>
   <thead>
     <tr>
       <th>ID</th>

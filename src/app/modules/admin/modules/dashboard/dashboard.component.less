@@ -2,6 +2,10 @@ nz-layout {
   height: 100%;
 }
 
+// nz-sider {
+//   overflow: hidden;
+// }
+
 .trigger {
   font-size: 18px;
   line-height: 64px;
@@ -12,6 +16,14 @@ nz-layout {
 
 .trigger:hover {
   color: #1890ff;
+}
+
+.logoMini {
+  height: 32px;
+  margin: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
@@ -28,6 +40,19 @@ nz-layout {
 nz-header {
   background: #fff;
   padding: 0;
+}
+
+.header {
+  padding-right: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 }
 
 nz-content {

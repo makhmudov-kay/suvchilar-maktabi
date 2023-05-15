@@ -12,6 +12,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { SearchPipe } from 'src/app/modules/admin/shared/pipe/search.pipe';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
+    SearchPipe,
 
     /* Ng-ZORRO */
     NzTableModule,

@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { ManagersService } from './services/managers.service';
 import { Manager } from './models/mangers.response';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-managers',
@@ -14,10 +15,14 @@ import { Manager } from './models/mangers.response';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManagersComponent implements OnInit {
+  searchText = '';
+
   /**
    * Не получилось принять дату через map
    */
-  data?: Manager[];
+  // data?: Manager[];
+
+  data$!: Observable<Manager[]>;
 
   /**
    *
@@ -33,10 +38,13 @@ export class ManagersComponent implements OnInit {
    *
    */
   private getManagersList() {
-    this.$managers.getManagersList().subscribe((result) => {
-      this.data = result.data;
-      this.cd.markForCheck();
-    });
+    // this.$managers.getManagersList().subscribe((result) => {
+    //   this.data = result.data;
+    //   this.cd.markForCheck();
+    // });
+    this.data$ = this.$managers
+      .getManagersList()
+      .pipe(map((result) => result.data));
   }
 
   /**

@@ -58,7 +58,8 @@ export class ApplicationFormComponent implements OnInit {
   /**
    *
    */
-  certificate!: string;
+  // certificate!: string;
+  certificate = '5656465456';
 
   /**
    *
@@ -93,8 +94,6 @@ export class ApplicationFormComponent implements OnInit {
    */
   private initFirstForm() {
     this.formStepFirst = this.fb.group({
-      phone: [null],
-      gender: [null],
       l_name: [null, [Validators.required]],
       f_name: [null, [Validators.required]],
       s_name: [null, [Validators.required]],
@@ -107,10 +106,8 @@ export class ApplicationFormComponent implements OnInit {
    */
   private initSecondForm() {
     this.formStepSecond = this.fb.group({
-      phone: [null],
       farm_name: [null, [Validators.required]],
       district_id: [null, [Validators.required]],
-      position: [null],
       farm_type: [null, [Validators.required]],
     });
   }
@@ -135,8 +132,7 @@ export class ApplicationFormComponent implements OnInit {
   }
 
   inputPhone(value: string) {
-    console.log(value);
-    
+    this.phone = value;
   }
 
   /**
@@ -144,6 +140,7 @@ export class ApplicationFormComponent implements OnInit {
    * @param region
    */
   regionChange(region: Region) {
+    this.formStepSecond.controls['district_id'].reset();
     this.districts = region.districts;
     this.cd.markForCheck();
   }
@@ -212,5 +209,13 @@ export class ApplicationFormComponent implements OnInit {
 
       this.cd.markForCheck();
     });
+  }
+
+  /**
+   * 
+   * @param text 
+   */
+  copyId(text: string) {
+    navigator.clipboard.writeText(text);
   }
 }
