@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Constants } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +23,7 @@ export class HeaderComponent {
    *
    */
   get currentLanguage() {
-    return localStorage.getItem('language');
+    return localStorage.getItem(Constants.LANGUAGE);
   }
 
   /**

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { Constants } from '../constants';
 
 interface Languages {
   code: string;
@@ -17,23 +18,22 @@ interface Languages {
 })
 export class LanguagesComponent {
   /**
-   * 
+   *
    */
   @Input()
   drawerClass!: boolean;
-  
+
   /**
    *
    */
-  currentLanguage = localStorage.getItem('language');
-  
+  currentLanguage = localStorage.getItem(Constants.LANGUAGE);
 
   /**
    *
    */
   languageCodes: Languages[] = [
-    { code: 'uz_latin', short_name: 'O’zb' },
-    { code: 'uz_cyril', short_name: 'Ўзб' },
+    { code: 'uz_latn', short_name: 'O’zb' },
+    { code: 'uz_cyrl', short_name: 'Ўзб' },
     { code: 'ru', short_name: 'Рус' },
   ];
 
@@ -49,7 +49,7 @@ export class LanguagesComponent {
    */
   onChangeLanguage(selectedLanguage: string) {
     this.currentLanguage = selectedLanguage;
-    localStorage.setItem('language', selectedLanguage);
+    localStorage.setItem(Constants.LANGUAGE, selectedLanguage);
     this.translate.use(selectedLanguage);
   }
 }

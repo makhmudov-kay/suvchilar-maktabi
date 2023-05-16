@@ -18,4 +18,6 @@ export class Constants {
 
   public static readonly GENDER_MALE = 1;
   public static readonly GENDER_FEMALE = 2;
+
+  public static readonly LANGUAGE = 'Language'
 }

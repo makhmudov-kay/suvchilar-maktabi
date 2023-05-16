@@ -5,7 +5,7 @@
   "ourTeam": "Bizning jamoa",
   "news": "Yangiliklar",
   "gallery": "Fotogalereya",
-  "waterSchoolStart": "Suvchilar maktabi tashkil etilmoqda",
+  "waterSchoolStart": "Suvchilar maktabi",
   "waterSchoolText": "Turkiya tajribasi asosida Agrobank tashabbusi bilan zamonaviy suv tejovchi texnologiyalar va usullarni tadbiq etishga qaratilgan yangi loyiha",
   "registration": "Ro'yxatdan o'tish",
   "aboutUsText": "Suvchilar maktabi – bu qishloq xo'jaligi maxsulotlari etishtirish, qayta ishlash va hosildorlikni oshirishda suvdan foydalanishning zamonaviy usullari, innovatsion va energiya tejamkor texnalogiyalardan foydalanish va ilg'or xorijiy mamlakatlar tajribasini amaliyot asosida fermer va dehqonlarimizga o'rgatishda Agrobank tomonidan tashkil qilingan yangi loyiha",
@@ -65,9 +65,14 @@
   "setLogin": "Loginni kiriting",
   "setPassword": "Parolni kiriting",
   "fillTheInput": "Maydonni to'ldiring",
-    "mask.(00) 000 00 00": "Telefon raqami noto‘g‘ri ko‘rsatilgan",
-    "STATUS_NEW": "Ro'yxatdan o'tmoqda",
-    "STATUS_DONE": "So'rovnoma to'ldirildi",
-    "STATUS_CERTIFICATE_GIVEN": "Sertifikat tayyor",
-    "STATUS_SPAM": "Bloklangan"
+  "mask.(00) 000 00 00": "Telefon raqami noto‘g‘ri ko‘rsatilgan",
+  "STATUS_NEW": "Ro'yxatdan o'tmoqda",
+  "STATUS_DONE": "So'rovnoma to'ldirildi",
+  "STATUS_CERTIFICATE_GIVEN": "Sertifikat tayyor",
+  "STATUS_SPAM": "Bloklangan",
+  "name": "Ismi",
+  "lastName": "Familiyasi",
+  "edit": "Tahrirlash",
+  "save": "Saqlash",
+  "cancel": "Bekor qilish"
 }

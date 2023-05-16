@@ -11,12 +11,26 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BannerComponent {
-  array = [1, 2, 3, 4];
+  /**
+   *
+   */
+  array = [1];
 
+  /**
+   *
+   */
   current = 0;
 
+  /**
+   *
+   * @param cd
+   */
   constructor(private cd: ChangeDetectorRef) {}
 
+  /**
+   *
+   * @param el
+   */
   changeSlide(el: any) {
     this.current = el.to;
     this.cd.markForCheck();

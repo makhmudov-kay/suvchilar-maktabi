@@ -20,7 +20,7 @@
         (click)="searchText = ''"
       ></span>
     </ng-template>
-    <button nz-button nzType="primary">{{ "add" | translate }}</button>
+    <!-- <button nz-button nzType="primary" (click)="addEditData()">{{ "add" | translate }}</button> -->
   </div>
 </div>
 
@@ -28,6 +28,7 @@
   #basicTable
   [nzScroll]="{ y: '400px' }"
   [nzData]="data | search : searchText"
+  [nzLoading]="tableLoading"
 >
   <thead>
     <tr>
@@ -64,11 +65,16 @@
           <div *ngSwitchDefault></div>
         </div>
       </td>
-      <td>{{ filteredDistrict(data.district_id) }}</td>
+      <td>{{ data.district_name }}</td>
       <td>{{ data.certificate_id }}</td>
       <td>{{ STATUS[data.status] | translate }}</td>
       <td>
-        <button class="action" nz-button nzType="default" (click)="edit(data)">
+        <button
+          class="action"
+          nz-button
+          nzType="default"
+          (click)="addEditData(data)"
+        >
           <span
             nz-icon
             nzType="edit"
@@ -114,90 +120,102 @@
 <!-- EDIT MODAL -->
 <nz-modal
   [(nzVisible)]="isVisible"
-  nzTitle="The first Modal"
+  [nzTitle]="'edit' | translate"
   (nzOnCancel)="handleCancel()"
   (nzOnOk)="handleOk()"
 >
   <ng-container *nzModalContent>
-    <form nz-form [formGroup]="form" class="login-form" (ngSubmit)="handleOk()">
+    <form
+      nz-form
+      nzLayout="vertical"
+      [formGroup]="form"
+      class="login-form"
+      (ngSubmit)="handleOk()"
+    >
       <nz-form-item>
+        <nz-form-label nzFor="phone">{{ "phone" | translate }}</nz-form-label>
         <nz-form-control nzErrorTip="Please input your username!">
           <nz-input-group>
             <input
+              id="phone"
               type="text"
               nz-input
               nzSize="large"
               formControlName="phone"
-              placeholder="phone"
             />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
+          <nz-form-label nzFor="name">{{ "name" | translate }}</nz-form-label>
           <nz-input-group>
             <input
+              id="name"
               type="text"
               nzSize="large"
               nz-input
               formControlName="f_name"
-              placeholder="f_name"
             />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
+          <nz-form-label nzFor="name">{{
+            "lastName" | translate
+          }}</nz-form-label>
           <nz-input-group>
             <input
               type="text"
               nzSize="large"
               nz-input
               formControlName="l_name"
-              placeholder="l_name"
             />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
+          <nz-form-label nzFor="company">{{
+            "company" | translate
+          }}</nz-form-label>
           <nz-input-group>
             <input
+              id="company"
               type="text"
               nzSize="large"
               nz-input
               formControlName="farm_name"
-              placeholder="farm_name"
             />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
+          <nz-form-label nzFor="company">{{
+            "companySphere" | translate
+          }}</nz-form-label>
           <nz-input-group>
-            <nz-select
-              nzSize="large"
-              formControlName="farm_type"
-              nzPlaceHolder="Пахтачилик/ғаллачилик"
-            >
+            <nz-select formControlName="farm_type">
               <nz-option
-                nzValue="1"
+                [nzValue]="1"
                 [nzLabel]="'TYPE_COTTON_AND_WHEAT' | translate"
               ></nz-option>
               <nz-option
-                nzValue="2"
+                [nzValue]="2"
                 [nzLabel]="'TYPE_GARDEN_AND_VITICULTURE' | translate"
               ></nz-option>
               <nz-option
-                nzValue="3"
+                [nzValue]="3"
                 [nzLabel]="'TYPE_VEGETABLE_AND_POLYZ' | translate"
               ></nz-option>
               <nz-option
-                nzValue="4"
+                [nzValue]="4"
                 [nzLabel]="'TYPE_VEGETABLE_AND_WHEAT' | translate"
               ></nz-option>
               <nz-option
-                nzValue="5"
+                [nzValue]="5"
                 [nzLabel]="'TYPE_ANOTHER' | translate"
               ></nz-option>
             </nz-select>
@@ -207,25 +225,32 @@
 
       <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
+          <nz-form-label nzFor="company">{{
+            "region" | translate
+          }}</nz-form-label>
           <nz-input-group>
             <nz-select
-              nzSize="large"
-              [nzPlaceHolder]="'region' | translate"
               (ngModelChange)="regionChange($event)"
-              [(ngModel)]="selectedRegion"
+              [ngModel]="selectedRegion"
               [ngModelOptions]="{ standalone: true }"
             >
               <nz-option
-                *ngFor="let reg of region"
-                [nzValue]="reg"
+                *ngFor="let reg of regions"
+                [nzValue]="reg.id"
                 [nzLabel]="reg.name"
               ></nz-option>
             </nz-select>
-
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-form-label nzFor="company">{{
+            "district" | translate
+          }}</nz-form-label>
+          <nz-input-group>
             <nz-select
               formControlName="district_id"
-              nzSize="large"
-              [nzPlaceHolder]="'district' | translate"
               [nzDisabled]="!districtFromRegion"
             >
               <nz-option
@@ -239,4 +264,12 @@
       </nz-form-item>
     </form>
   </ng-container>
+  <div *nzModalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">
+      {{ "cancel" | translate }}
+    </button>
+    <button nz-button nzType="primary" (click)="handleOk()">
+      {{ "save" | translate }}
+    </button>
+  </div>
 </nz-modal>

@@ -23,7 +23,6 @@ import { AsyncClickDirective } from 'ngx-async-click';
     FormsModule,
     ReactiveFormsModule,
     SearchPipe,
-
     AsyncClickDirective,
 
     /* Ng-ZORRO */

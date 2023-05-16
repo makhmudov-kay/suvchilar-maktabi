@@ -20,6 +20,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TokenInterceptor } from './modules/admin/shared/auth.interceptor';
 import { HandleErrorInterceptor } from './shared/handle.error.interceptor';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { LanguageInterceptor } from './shared/interceptors/language.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -44,7 +45,7 @@ registerLocaleData(ru);
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      defaultLanguage: 'uz_cyril',
+      defaultLanguage: 'uz_cyrl',
     }),
   ],
   providers: [
@@ -52,6 +53,11 @@ registerLocaleData(ru);
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LanguageInterceptor,
       multi: true,
     },
     {

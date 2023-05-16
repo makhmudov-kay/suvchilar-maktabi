@@ -8,4 +8,6 @@ export interface Application {
   l_name: string;
   phone: string;
   status: number;
+  region_id: number;
+  region_name: string;
 }

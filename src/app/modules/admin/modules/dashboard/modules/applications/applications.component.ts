@@ -48,12 +48,17 @@ export class ApplicationsComponent implements OnInit {
   /**
    *
    */
-  region!: Region[];
+  regions!: Region[];
 
   /**
    *
    */
   districtFromRegion!: District[];
+
+  /**
+   *
+   */
+  id!: number;
 
   /**
    *
@@ -64,6 +69,11 @@ export class ApplicationsComponent implements OnInit {
    *
    */
   STATUS = STATUS;
+
+  /**
+   *
+   */
+  tableLoading = false;
 
   /**
    *
@@ -83,8 +93,10 @@ export class ApplicationsComponent implements OnInit {
    *
    */
   private getApplications() {
+    this.tableLoading = true;
     this.$applications.getApplicationsList().subscribe((result) => {
       this.data = result.data;
+      this.tableLoading = false;
       this.cd.markForCheck();
     });
   }
@@ -94,12 +106,13 @@ export class ApplicationsComponent implements OnInit {
    */
   private getDistricts() {
     this.$regionAndDistrict.getRegionAndDistricts().subscribe((result) => {
-      const regions = result.data;
-      regions.forEach((region) => {
+      this.regions = result.data;
+      this.regions.forEach((region) => {
         region.districts.forEach((el) => {
           this.districts.push(el);
         });
       });
+
       this.cd.markForCheck();
     });
   }
@@ -109,50 +122,62 @@ export class ApplicationsComponent implements OnInit {
    */
   private editingData(editingData?: Application) {
     this.form = this.fb.group({
-      phone: [editingData?.phone],
-      l_name: [editingData?.l_name],
-      f_name: [editingData?.f_name],
-      farm_name: [editingData?.farm_name],
-      district_id: [editingData?.district_id],
-      farm_type: [editingData?.farm_type],
+      phone: [editingData?.phone, [Validators.required]],
+      l_name: [editingData?.l_name, [Validators.required]],
+      f_name: [editingData?.f_name, [Validators.required]],
+      farm_name: [editingData?.farm_name, [Validators.required]],
+      district_id: [editingData?.district_id, [Validators.required]],
+      farm_type: [editingData?.farm_type, [Validators.required]],
     });
+  }
+
+  /**
+   *
+   * @param regionId
+   */
+  private filterDistrictsByRegion(regionId: number) {
+    const reg = this.regions.filter((el) => el.id === regionId);
+    this.districtFromRegion = reg[0].districts;
   }
 
   /**
    *
    */
   ngOnInit(): void {
-    this.getDistricts();
     this.getApplications();
     this.editingData();
+    this.getDistricts();
   }
 
   /**
    *
-   * @param districtId
-   * @returns
+   * @param data
    */
-  filteredDistrict(districtId: number) {
-    const district = this.districts.find((el) => el.id === districtId);
-
-    this.cd.markForCheck();
-    if (district) {
-      return district.name;
+  addEditData(data?: Application) {
+    if (data) {
+      this.editingData(data);
+      this.id = data.id;
+      this.selectedRegion = data.region_id;
+      this.filterDistrictsByRegion(this.selectedRegion);
     }
-    return;
-  }
-
-  edit(data: Application) {
     this.isVisible = true;
-    this.editingData(data);
     this.cd.markForCheck();
   }
 
+  /**
+   *
+   * @param data
+   */
   approve(data: Application) {
     data.status = STATUS.STATUS_CERTIFICATE_GIVEN;
     this.$applications.edit(data).subscribe();
   }
 
+  /**
+   *
+   * @param data
+   * @returns
+   */
   download(data: Application) {
     const request = {
       certificate_id: data.certificate_id,
@@ -166,20 +191,40 @@ export class ApplicationsComponent implements OnInit {
     );
   }
 
+  /**
+   *
+   */
   handleOk() {
-    this.isVisible = false;
+    if (this.id) {
+      const request = this.form.getRawValue();
+      request.id = this.id;
+
+      console.log(request);
+      this.$applications.edit(request).subscribe((result) => {
+        if (result.success) {
+          this.isVisible = false;
+          this.getApplications();
+          this.cd.markForCheck();
+        }
+      });
+    }
   }
 
+  /**
+   *
+   */
   handleCancel() {
     this.isVisible = false;
+    this.form.reset();
   }
 
   /**
    *
    * @param region
    */
-  regionChange(region: Region) {
-    this.districtFromRegion = region.districts;
+  regionChange(regionId: number) {
+    this.form.controls['district_id'].reset();
+    this.filterDistrictsByRegion(regionId);
     this.cd.markForCheck();
   }
 }
