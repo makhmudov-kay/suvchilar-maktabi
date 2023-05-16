@@ -19,7 +19,7 @@
               <label for="first" class="application__form__item__label">{{
                 "phoneNumber" | translate
               }}</label>
-              <nz-form-control [nzErrorTip]="errorPhone">
+              <nz-form-control nzValidatingTip="Validating..." [nzErrorTip]="errorPhone">
                 <nz-input-group [nzPrefix]="prefixTemplatePhone" nzSize="large">
                   <input
                     formControlName="phone"

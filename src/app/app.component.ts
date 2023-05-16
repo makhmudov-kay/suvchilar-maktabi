@@ -20,7 +20,6 @@ export class AppComponent {
       return;
     }
     localStorage.setItem(Constants.LANGUAGE, 'uz_cyrl');
-
     this.translate.use('uz_cyrl');
   }
 }

@@ -13,6 +13,12 @@ import {
 import { ApplicationsService } from './services/applications.service';
 import { District, Region } from './models/region-and-districts.response';
 import { RegionsAndDistrictsService } from './services/regions-and-districts.service';
+import { CheckPhoneService } from './services/check-phone.service';
+import { Observable, Observer } from 'rxjs';
+import { UntypedFormControl } from '@angular/forms';
+import { NzSafeAny } from 'ng-zorro-antd/core/types';
+
+export type MyValidationErrors = Record<string, NzSafeAny>;
 
 @Component({
   selector: 'app-application-form',
@@ -74,6 +80,11 @@ export class ApplicationFormComponent implements OnInit {
 
   /**
    *
+   */
+  invalidPhone = false;
+
+  /**
+   *
    * @param fb
    * @param $application
    * @param cd
@@ -82,6 +93,7 @@ export class ApplicationFormComponent implements OnInit {
     private fb: UntypedFormBuilder,
     private $application: ApplicationsService,
     private $regionsAndDistricts: RegionsAndDistrictsService,
+    private $checkPhone: CheckPhoneService,
     private cd: ChangeDetectorRef
   ) {}
 
@@ -129,6 +141,34 @@ export class ApplicationFormComponent implements OnInit {
     this.initSecondForm();
   }
 
+  /**
+   *
+   */
+  validationPhone() {
+    const phone = '998' + this.formStepFirst.controls['phone'].value;
+
+    if (this.formStepFirst.controls['phone'].value.length > 8) {
+      this.$checkPhone.checkPhone(phone).subscribe((result) => {
+        if (result.success) {
+          console.log(result);
+        } else {
+          console.log('ERROR', result);
+        }
+      });
+    }
+  }
+
+  phoneNumberAsyncValidator = (control: UntypedFormControl) => {
+    new Observable((observer: Observer<string | null>) => {
+      this.$checkPhone.checkPhone(control.value).subscribe((result) => {
+        if (result.success) {
+          observer.next(null);
+        } else {
+          observer.next('Такой номер уже существует');
+        }
+      });
+    });
+  };
 
   /**
    *
@@ -144,10 +184,7 @@ export class ApplicationFormComponent implements OnInit {
    *
    */
   next(): void {
-    console.log(this.current);
-
     this.current += 1;
-    console.log(this.current);
     this.cd.markForCheck();
   }
 
@@ -160,6 +197,10 @@ export class ApplicationFormComponent implements OnInit {
     this.formStepSecond.reset();
   }
 
+  /**
+   *
+   * @param form
+   */
   private markAllAsDirty(form: UntypedFormGroup) {
     Object.values(form.controls).forEach((control) => {
       if (control.invalid) {
@@ -223,8 +264,8 @@ export class ApplicationFormComponent implements OnInit {
   }
 
   /**
-   * 
-   * @param text 
+   *
+   * @param text
    */
   copyId(text: string) {
     navigator.clipboard.writeText(text);
