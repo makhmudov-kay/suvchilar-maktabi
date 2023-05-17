@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { LoginResponse, UserLogin } from '../models/user-login';
 import { Observable, Subject, catchError, tap, throwError } from 'rxjs';
 import { BaseService } from 'src/app/shared/base.service';
+import { Constants } from 'src/app/shared/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +21,14 @@ export class AuthService extends BaseService {
   /**
    */
   get token(): string {
-    const expDate = new Date(localStorage.getItem('refreshToken') as any);
+    const expDate = new Date(
+      localStorage.getItem(Constants.REFRESH_TOKEN) as any
+    );
     if (new Date() > expDate) {
       this.logout();
       return null ?? '';
     }
-    return localStorage.getItem('accessToken') ?? '';
+    return localStorage.getItem(Constants.ACCESS_TOKEN) ?? '';
   }
 
   /**
@@ -80,10 +83,11 @@ export class AuthService extends BaseService {
       const expDate = new Date(
         new Date().getTime() + +response!.expires_in * 1000
       );
-      localStorage.setItem('accessToken', response!.access_token);
-      localStorage.setItem('refreshToken', expDate.toString());
-    } else {
-      localStorage.clear();
+      localStorage.setItem(Constants.ACCESS_TOKEN, response!.access_token);
+      localStorage.setItem(Constants.REFRESH_TOKEN, expDate.toString());
+      return;
     }
+    localStorage.removeItem(Constants.ACCESS_TOKEN);
+    localStorage.removeItem(Constants.REFRESH_TOKEN);
   }
 }

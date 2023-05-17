@@ -38,7 +38,7 @@ import { ErrorComponent } from 'src/app/shared/error/error.component';
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
-    NgxMaskModule.forRoot(),
+    NgxMaskModule,
     LanguagesComponent,
     AsyncClickDirective,
     ErrorComponent,
@@ -57,7 +57,7 @@ import { ErrorComponent } from 'src/app/shared/error/error.component';
     NzSelectModule,
     NzDrawerModule,
     NzTypographyModule,
-    NzToolTipModule
+    NzToolTipModule,
   ],
   declarations: [
     MainComponent,

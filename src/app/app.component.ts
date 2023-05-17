@@ -10,16 +10,23 @@ import { Constants } from './shared/constants';
 export class AppComponent {
   /**
    *
+   */
+  currentLanguage() {
+    let currentLanguageCode = localStorage.getItem(Constants.LANGUAGE);
+    if (!currentLanguageCode) {
+      currentLanguageCode = Constants.DEFAULT_LANGUAGE.code;
+      localStorage.setItem(Constants.LANGUAGE, currentLanguageCode);
+    }
+    return currentLanguageCode;
+  }
+
+  /**
+   *
    * @param translate
    * @returns
    */
   constructor(private translate: TranslateService) {
-    const lang = localStorage.getItem(Constants.LANGUAGE);
-    if (lang) {
-      this.translate.use(lang);
-      return;
-    }
-    localStorage.setItem(Constants.LANGUAGE, 'uz_cyrl');
-    this.translate.use('uz_cyrl');
+    this.translate.setDefaultLang(Constants.DEFAULT_LANGUAGE.code);
+    this.translate.use(this.currentLanguage());
   }
 }

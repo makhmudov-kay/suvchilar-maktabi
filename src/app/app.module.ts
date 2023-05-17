@@ -21,6 +21,7 @@ import { TokenInterceptor } from './modules/admin/shared/auth.interceptor';
 import { HandleErrorInterceptor } from './shared/handle.error.interceptor';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { LanguageInterceptor } from './shared/interceptors/language.interceptor';
+import { NgxMaskModule } from 'ngx-mask';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -39,13 +40,14 @@ registerLocaleData(ru);
 
     NzMessageModule,
 
+    NgxMaskModule.forRoot(),
+
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      defaultLanguage: 'uz_cyrl',
     }),
   ],
   providers: [
