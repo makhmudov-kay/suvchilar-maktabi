@@ -74,5 +74,9 @@
   "lastName": "Фамилия",
   "edit": "Редактирование",
   "save": "Сохранить",
-  "cancel": "Отмена"
+  "cancel": "Отмена",
+  "phoneValidation": "Этот номер телефона уже зарегистрирован",
+  "statistic": "Статистика",
+  "confirmPassword": "Подтвердите пароль",
+  "confirmPasswordError": "Пароль не совпадает"
 }

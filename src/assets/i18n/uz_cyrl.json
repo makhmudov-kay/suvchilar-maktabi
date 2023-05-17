@@ -74,5 +74,9 @@
   "lastName": "Фамилияси",
   "edit": "Таҳрирлаш",
   "save": "Сақлаш",
-  "cancel": "Бекор қилиш"
+  "cancel": "Бекор қилиш",
+  "phoneValidation": "Ушбу телефон рақами аллақачон рўйхатдан ўтган",
+  "statistic": "Статистика",
+  "confirmPassword": "Паролни тасдиқланг",
+  "confirmPasswordError": "Парол мос келмайди"
 }

@@ -69,22 +69,19 @@
       <ng-template #notChanged>
         <ng-template
           [ngIf]="control.hasError('notChanged')"
-          [ngIfElse]="minimumP2PAmount"
+          [ngIfElse]="phoneValidation"
         >
           {{ "notChanged" | translate }}
         </ng-template>
       </ng-template>
 
-      <!-- MINIMUM P2P AMOUNT -->
-      <ng-template #minimumP2PAmount>
+      <!-- PHONE VALIDATION -->
+      <ng-template #phoneValidation>
         <ng-template
-          [ngIf]="control.hasError('minimumP2PAmount')"
+          [ngIf]="control.hasError('phoneValidation')"
           [ngIfElse]="otherErrors"
         >
-          {{
-            "minimumP2PAmount"
-              | translate : { value: control.getError("minimumP2PAmount") }
-          }}
+          {{ "phoneValidation" | translate }}
         </ng-template>
       </ng-template>
 

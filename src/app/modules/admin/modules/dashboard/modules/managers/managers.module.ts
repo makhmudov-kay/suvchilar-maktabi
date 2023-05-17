@@ -9,7 +9,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { SearchPipe } from 'src/app/modules/admin/shared/pipe/search.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { ErrorComponent } from 'src/app/shared/error/error.component';
 
 @NgModule({
   imports: [
@@ -17,7 +20,9 @@ import { FormsModule } from '@angular/forms';
     ManagersRoutes,
     TranslateModule,
     FormsModule,
+    ReactiveFormsModule,
     SearchPipe,
+    ErrorComponent,
 
     /* Ng-ZORRO */
     NzTableModule,
@@ -25,6 +30,8 @@ import { FormsModule } from '@angular/forms';
     NzInputModule,
     NzButtonModule,
     NzIconModule,
+    NzModalModule,
+    NzFormModule,
   ],
   declarations: [ManagersComponent],
 })

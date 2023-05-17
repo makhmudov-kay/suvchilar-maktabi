@@ -11,6 +11,10 @@
       </ng-template>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item routerLink="dashboard" nzMatchRouter>
+        <span nz-icon nzType="bar-chart" nzTheme="outline"></span>
+        <span>{{ "statistic" | translate }}</span>
+      </li>
       <li nz-menu-item routerLink="applications" nzMatchRouter>
         <span nz-icon nzType="profile" nzTheme="outline"></span>
         <span>{{ "applications" | translate }}</span>
@@ -32,7 +36,10 @@
         ></span>
         <div class="header__info">
           <app-languages></app-languages>
-          <button (click)="logout()" nz-button nzType="primary"><span nz-icon nzType="poweroff" nzTheme="outline"></span>{{ "exit" | translate }}</button>
+          <button (click)="logout()" nz-button nzType="primary">
+            <span nz-icon nzType="poweroff" nzTheme="outline"></span
+            >{{ "exit" | translate }}
+          </button>
         </div>
       </div>
     </nz-header>

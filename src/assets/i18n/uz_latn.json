@@ -74,5 +74,9 @@
   "lastName": "Familiyasi",
   "edit": "Tahrirlash",
   "save": "Saqlash",
-  "cancel": "Bekor qilish"
+  "cancel": "Bekor qilish",
+  "phoneValidation": "Ushbu telefon raqami allaqachon ro'yxatdan o'tgan",
+  "statistic": "Statistika",
+  "confirmPassword": "Parolni tasdiqlang",
+  "confirmPasswordError": "Parol mos kelmaydi"
 }

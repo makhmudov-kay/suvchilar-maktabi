@@ -5,7 +5,6 @@ import {
   OnInit,
 } from '@angular/core';
 import {
-  FormGroup,
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
@@ -14,8 +13,6 @@ import { ApplicationsService } from './services/applications.service';
 import { District, Region } from './models/region-and-districts.response';
 import { RegionsAndDistrictsService } from './services/regions-and-districts.service';
 import { CheckPhoneService } from './services/check-phone.service';
-import { Observable, Observer } from 'rxjs';
-import { UntypedFormControl } from '@angular/forms';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 
 export type MyValidationErrors = Record<string, NzSafeAny>;
@@ -65,8 +62,7 @@ export class ApplicationFormComponent implements OnInit {
   /**
    *
    */
-  // certificate!: string;
-  certificate = '5656465456';
+  certificate!: string;
 
   /**
    *
@@ -87,6 +83,8 @@ export class ApplicationFormComponent implements OnInit {
    *
    * @param fb
    * @param $application
+   * @param $regionsAndDistricts
+   * @param $checkPhone
    * @param cd
    */
   constructor(
@@ -102,7 +100,11 @@ export class ApplicationFormComponent implements OnInit {
    */
   private initFirstForm() {
     this.formStepFirst = this.fb.group({
-      phone: [null, [Validators.required]],
+      phone: [
+        null,
+        [Validators.required],
+        [this.$checkPhone.phoneAsyncValidator()],
+      ],
       l_name: [null, [Validators.required]],
       f_name: [null, [Validators.required]],
       s_name: [null, [Validators.required]],
@@ -140,35 +142,6 @@ export class ApplicationFormComponent implements OnInit {
     this.initFirstForm();
     this.initSecondForm();
   }
-
-  /**
-   *
-   */
-  validationPhone() {
-    const phone = '998' + this.formStepFirst.controls['phone'].value;
-
-    if (this.formStepFirst.controls['phone'].value.length > 8) {
-      this.$checkPhone.checkPhone(phone).subscribe((result) => {
-        if (result.success) {
-          console.log(result);
-        } else {
-          console.log('ERROR', result);
-        }
-      });
-    }
-  }
-
-  phoneNumberAsyncValidator = (control: UntypedFormControl) => {
-    new Observable((observer: Observer<string | null>) => {
-      this.$checkPhone.checkPhone(control.value).subscribe((result) => {
-        if (result.success) {
-          observer.next(null);
-        } else {
-          observer.next('Такой номер уже существует');
-        }
-      });
-    });
-  };
 
   /**
    *

@@ -20,4 +20,6 @@ export class Constants {
   public static readonly GENDER_FEMALE = 2;
 
   public static readonly LANGUAGE = 'Language'
+
+  public static readonly PREFIX_PHONENUMBER = '998'
 }

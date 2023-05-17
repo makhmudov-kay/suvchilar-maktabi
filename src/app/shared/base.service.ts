@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { Observable, shareReplay } from 'rxjs';
+import { Observable, catchError, of, shareReplay } from 'rxjs';
 import { BaseResponse } from './base-response.interface';
 
 export class BaseService {
@@ -40,10 +40,10 @@ export class BaseService {
   post<T>(url: string, model?: any): Observable<BaseResponse<T>> {
     return this.http.post<BaseResponse<T>>(this.endpoint + url, model).pipe(
       // TODO: IMPLEMENT OR REMOVE
-      //   catchError((errors: ErrorItem[]) => {
-      //     this.makeError(errors);
-      //     return of({ error: errors, success: false } as BaseResponse<T>);
-      //   }),
+        catchError((errors: any) => {
+          // this.makeError(errors);
+          return of({ error: errors, success: false } as BaseResponse<T>);
+        }),
       shareReplay(1)
     );
   }

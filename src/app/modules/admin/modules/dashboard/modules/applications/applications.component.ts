@@ -16,6 +16,8 @@ import { STATUS } from 'src/app/shared/constants';
 import { CertificateService } from 'src/app/modules/main/components/get-sertificate/services/certificate.service';
 import { map } from 'rxjs';
 import { downloadFile } from 'src/app/modules/main/components/get-sertificate/get-sertificate.component';
+import * as FileSaver from 'file-saver';
+import { read, utils, writeFile } from 'xlsx';
 
 @Component({
   selector: 'app-applications',
@@ -199,7 +201,6 @@ export class ApplicationsComponent implements OnInit {
       const request = this.form.getRawValue();
       request.id = this.id;
 
-      console.log(request);
       this.$applications.edit(request).subscribe((result) => {
         if (result.success) {
           this.isVisible = false;
@@ -226,5 +227,58 @@ export class ApplicationsComponent implements OnInit {
     this.form.controls['district_id'].reset();
     this.filterDistrictsByRegion(regionId);
     this.cd.markForCheck();
+  }
+
+  // exportExcel() {
+  //   import('xlsx').then((xlsx) => {
+  //     const worksheet = xlsx.utils.json_to_sheet(this.data); // Sale Data
+  //     const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+  //     const excelBuffer: any = xlsx.write(workbook, {
+  //       bookType: 'xlsx',
+  //       type: 'array',
+  //     });
+  //     this.saveAsExcelFile(excelBuffer, 'sales');
+  //   });
+  // }
+  // saveAsExcelFile(buffer: any, fileName: string): void {
+  //   let EXCEL_TYPE =
+  //     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+  //   let EXCEL_EXTENSION = '.xlsx';
+  //   const data: Blob = new Blob([buffer], {
+  //     type: EXCEL_TYPE,
+  //   });
+  //   FileSaver.saveAs(
+  //     data,
+  //     fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
+  //   );
+  // }
+
+  exportExcel() {
+    const headers = [
+      [
+        'ID пользователя',
+        'Имя',
+        'Фамилия',
+        'Организация',
+        'Сфера деятельности',
+        'Номер сертификата',
+        'Статус заявки',
+        'Номер телефона',
+        'Район ID',
+        'Район',
+        'Регион ID',
+        'Регион',
+      ],
+    ];
+
+    const wb = utils.book_new();
+    const ws = utils.json_to_sheet([]);
+    utils.sheet_add_aoa(ws, headers);
+    utils.sheet_add_json(ws, this.data, {
+      origin: 'A2',
+      skipHeader: true,
+    });
+    utils.book_append_sheet(wb, ws, 'Arizalar');
+    writeFile(wb, 'suvchilar-maktabi.xlsx')
   }
 }

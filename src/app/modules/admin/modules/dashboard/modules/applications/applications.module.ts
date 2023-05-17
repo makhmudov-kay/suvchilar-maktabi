@@ -14,6 +14,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { SearchPipe } from 'src/app/modules/admin/shared/pipe/search.pipe';
 import { AsyncClickDirective } from 'ngx-async-click';
+import { ErrorComponent } from 'src/app/shared/error/error.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { AsyncClickDirective } from 'ngx-async-click';
     ReactiveFormsModule,
     SearchPipe,
     AsyncClickDirective,
+    ErrorComponent,
 
     /* Ng-ZORRO */
     NzTableModule,

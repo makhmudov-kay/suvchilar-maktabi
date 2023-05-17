@@ -11,6 +11,11 @@ import { catchError, Observable, throwError, retry } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
+export interface ErrorModel {
+  errors: {[key: string]: string[]};
+  message: string;
+}
+
 @Injectable()
 export class HandleErrorInterceptor implements HttpInterceptor {
   /**
@@ -35,7 +40,16 @@ export class HandleErrorInterceptor implements HttpInterceptor {
       // retry(1),
       catchError((error: HttpErrorResponse) => {
         const errorCustom = this.getServerErrors(error);
+        if (typeof errorCustom === 'string')
         this.message.error(errorCustom);
+        else {
+          // const errorMessage = (errorCustom as ErrorModel).message;
+          // if (errorMessage)
+          // this.message.error(errorMessage)
+          // else {
+          //   this.message.error((errorCustom as {unknownError: string}).unknownError)
+          // }
+        }
         return throwError(() => errorCustom);
       })
     );
@@ -70,18 +84,20 @@ export class HandleErrorInterceptor implements HttpInterceptor {
    * @returns
    */
   private getErrorFromServer(error: HttpErrorResponse) {
-    const errors = error.error.error;
+    const errors = (error.error as ErrorModel).errors;
     if (errors) {
-      const firstError = errors?.[0];
+      const firstError = errors[Object.keys(errors)[0]];
       if (firstError) {
-        if (firstError.field != undefined) {
-          return error.error.error;
+        if (firstError[0] != undefined) {
+          return error.error as ErrorModel;
         }
       }
 
       // return ErrorHelper.createUnknownError(error.error.error);
+      return {unknownError: JSON.stringify(errors)}
     }
 
     // return ErrorHelper.createUnknownError(error);
+    return {unknownError: JSON.stringify(error)}
   }
 }

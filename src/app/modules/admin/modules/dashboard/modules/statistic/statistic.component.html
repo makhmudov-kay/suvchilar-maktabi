@@ -1,0 +1,10 @@
+<h2>Statistic</h2>
+<div class="statistic">
+  <div class="statistic__card" *ngFor="let statistic of [].constructor(8)">
+    <nz-statistic
+      [nzValue]="(11.28 | number : '1.0-2')!"
+      [nzTitle]="'Active'"
+      [nzValueStyle]="{ color: '#3F8600' }"
+    ></nz-statistic>
+  </div>
+</div>

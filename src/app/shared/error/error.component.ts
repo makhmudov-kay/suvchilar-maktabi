@@ -1,4 +1,4 @@
-import { NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
+import { JsonPipe, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -9,7 +9,7 @@ type alertType = 'basic' | 'alert';
 @Component({
   selector: 'error',
   standalone: true,
-  imports: [TranslateModule, NgSwitch, NgSwitchCase, NgIf, NzAlertModule],
+  imports: [TranslateModule, NgSwitch, NgSwitchCase, NgIf, JsonPipe, NzAlertModule],
   templateUrl: './error.component.html',
 })
 export class ErrorComponent {
