@@ -4,11 +4,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { Constants } from '../constants';
 
-interface Languages {
-  code: string;
-  short_name: string;
-}
-
 @Component({
   selector: 'app-languages',
   templateUrl: './languages.component.html',
@@ -31,11 +26,7 @@ export class LanguagesComponent {
   /**
    *
    */
-  languageCodes: Languages[] = [
-    { code: 'uz_latn', short_name: 'O’zb' },
-    { code: 'uz_cyrl', short_name: 'Ўзб' },
-    { code: 'ru', short_name: 'Рус' },
-  ];
+  readonly LANGUAGES = Constants.LANGUAGES;
 
   /**
    *
