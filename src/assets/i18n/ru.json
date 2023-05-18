@@ -78,5 +78,7 @@
   "phoneValidation": "Этот номер телефона уже зарегистрирован",
   "statistic": "Статистика",
   "confirmPassword": "Подтвердите пароль",
-  "confirmPasswordError": "Пароль не совпадает"
+  "confirmPasswordError": "Пароль не совпадает",
+  "minlength": "Минимальная длина пароля не должна быть меньше {{value}} символов",
+  "exportToExcel": "Экспорт в Excell"
 }

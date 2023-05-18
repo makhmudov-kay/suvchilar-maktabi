@@ -1,10 +1,31 @@
 <h2>Statistic</h2>
-<div class="statistic">
-  <div class="statistic__card" *ngFor="let statistic of [].constructor(8)">
+<div class="statistic" *ngIf="statisticList$ | async as statisticList">
+  <div class="statistic__card">
     <nz-statistic
-      [nzValue]="(11.28 | number : '1.0-2')!"
-      [nzTitle]="'Active'"
-      [nzValueStyle]="{ color: '#3F8600' }"
+      [nzValue]="statisticList.process"
+      [nzTitle]="'STATUS_NEW' | translate"
+      [nzValueStyle]="{ color: '#3F8600', textAlign: 'center' }"
+    ></nz-statistic>
+  </div>
+  <div class="statistic__card">
+    <nz-statistic
+      [nzValue]="statisticList.done"
+      [nzTitle]="'STATUS_DONE' | translate"
+      [nzValueStyle]="{ color: '#3F8600', textAlign: 'center' }"
+    ></nz-statistic>
+  </div>
+  <div class="statistic__card">
+    <nz-statistic
+      [nzValue]="statisticList.given_certificate"
+      [nzTitle]="'STATUS_CERTIFICATE_GIVEN' | translate"
+      [nzValueStyle]="{ color: '#3F8600', textAlign: 'center' }"
+    ></nz-statistic>
+  </div>
+  <div class="statistic__card">
+    <nz-statistic
+      [nzValue]="statisticList.spam"
+      [nzTitle]="'STATUS_SPAM' | translate"
+      [nzValueStyle]="{ color: 'tomato', textAlign: 'center' }"
     ></nz-statistic>
   </div>
 </div>

@@ -1,3 +1,4 @@
+import { Constants } from './../../../../../../shared/constants';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -13,6 +14,7 @@ import {
   UntypedFormControl,
   Validators,
 } from '@angular/forms';
+import { BaseResponse } from 'src/app/shared/base-response.interface';
 
 @Component({
   selector: 'app-managers',
@@ -54,7 +56,17 @@ export class ManagersComponent implements OnInit {
   /**
    *
    */
+  loadingBtn = false;
+
+  /**
+   *
+   */
   modalTitle = 'add';
+
+  /**
+   *
+   */
+  errorMessage!: string;
 
   /**
    *
@@ -104,9 +116,26 @@ export class ManagersComponent implements OnInit {
       l_name: [editingData?.l_name, [Validators.required]],
       login: [editingData?.login, [Validators.required]],
       phone: [editingData?.phone, [Validators.required]],
-      password: [null, [Validators.required]],
+      password: [null, [Validators.required, Validators.minLength(6)]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
     });
+  }
+
+  /**
+   *
+   * @param result
+   */
+  private actionAfterResponseAddEditManager(result: BaseResponse<unknown>) {
+    if (result.success) {
+      this.loadingBtn = false;
+      this.isVisible = false;
+      this.getManagersList();
+      this.cd.markForCheck();
+    } else {
+      this.errorMessage = result.error.message;
+      this.loadingBtn = false;
+      this.cd.markForCheck();
+    }
   }
 
   /**
@@ -142,9 +171,10 @@ export class ManagersComponent implements OnInit {
     );
   }
 
-  /**
-   *
-   */
+ /**
+  * 
+  * @param editingData 
+  */
   showModal(editingData?: Manager) {
     if (editingData) {
       this.modalTitle = 'edit';
@@ -166,17 +196,33 @@ export class ManagersComponent implements OnInit {
     }
 
     const request = this.form.getRawValue();
+    request.phone = Constants.PREFIX_PHONENUMBER + request.phone;
+    delete request.checkPassword;
+    this.loadingBtn = true;
 
     if (this.id) {
-      // EDIT
+      this.$managers.editManager(this.id, request).subscribe((result) => {
+        this.actionAfterResponseAddEditManager(result);
+      });
       return;
     }
 
-    this.isVisible = false;
+    this.$managers.addManager(request).subscribe((result) => {
+      this.actionAfterResponseAddEditManager(result);
+    });
   }
 
+  /**
+   *
+   * @param id
+   */
   deleteManager(id: number) {
-    console.log(id);
+    this.$managers.deleteManager(id).subscribe((result) => {
+      if (result.success) {
+        this.getManagersList();
+        this.cd.markForCheck();
+      }
+    });
   }
 
   /**
