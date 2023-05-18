@@ -78,5 +78,7 @@
   "phoneValidation": "Ushbu telefon raqami allaqachon ro'yxatdan o'tgan",
   "statistic": "Statistika",
   "confirmPassword": "Parolni tasdiqlang",
-  "confirmPasswordError": "Parol mos kelmaydi"
+  "confirmPasswordError": "Parol mos kelmaydi",
+  "minlength": "Maydonni uzunligi {{value}}-ta belgidan kam bo'lmasligi kerak",
+  "exportToExcel": "Экспорт в Excell"
 }

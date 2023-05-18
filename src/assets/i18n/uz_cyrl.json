@@ -78,5 +78,7 @@
   "phoneValidation": "Ушбу телефон рақами аллақачон рўйхатдан ўтган",
   "statistic": "Статистика",
   "confirmPassword": "Паролни тасдиқланг",
-  "confirmPasswordError": "Парол мос келмайди"
+  "confirmPasswordError": "Парол мос келмайди",
+  "minlength": "Майдонни узунлиги {{валуе}}-та белгидан кам бўлмаслиги керак",
+  "exportToExcel": "Экспорт в Excell"
 }

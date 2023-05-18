@@ -14,6 +14,7 @@ import { District, Region } from './models/region-and-districts.response';
 import { RegionsAndDistrictsService } from './services/regions-and-districts.service';
 import { CheckPhoneService } from './services/check-phone.service';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
+import { Constants } from 'src/app/shared/constants';
 
 export type MyValidationErrors = Record<string, NzSafeAny>;
 
@@ -193,7 +194,7 @@ export class ApplicationFormComponent implements OnInit {
     }
 
     const request = this.formStepFirst.getRawValue();
-    request.phone = '998' + request.phone;
+    request.phone = Constants.PREFIX_PHONENUMBER + request.phone;
     this.phone = request.phone;
     request.gender = this.gender;
 

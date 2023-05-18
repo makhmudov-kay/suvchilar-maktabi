@@ -2,11 +2,11 @@
   <nz-carousel
     (nzBeforeChange)="changeSlide($event)"
     nzEffect="fade"
-    [nzDotRender]="carouselDots"
+    [nzDots]="false"
     nzAutoPlay
   >
     <div nz-carousel-content *ngFor="let index of array">
-      <div class="banner-content">
+      <!-- <div class="banner-content">
         <div class="banner-content__block banner-content__left">
           <h2>{{ "waterSchoolStart" | translate }}</h2>
           <p>
@@ -26,6 +26,27 @@
             <img src="./assets/images/banner-img.png" alt="banner img" />
           </div>
         </div>
+      </div> -->
+      <div class="banner-content background">
+        <div class="banner-content__block banner-content__left">
+          <h2>{{ "waterSchoolStart" | translate }}</h2>
+          <p>
+            {{ "waterSchoolText" | translate }}
+          </p>
+          <button nz-button nzType="primary" nzSize="large">
+            <a href="#form" class="banner__btn">
+              <span nz-icon>
+                <img src="./assets/images/edit.svg" alt="edit icon" />
+              </span>
+              {{ "registration" | translate }}
+            </a>
+          </button>
+        </div>
+        <!-- <div class="banner-content__block banner-content__right">
+          <div class="banner-content__right__img">
+            <img src="./assets/images/banner-img.png" alt="banner img" />
+          </div>
+        </div> -->
       </div>
     </div>
   </nz-carousel>

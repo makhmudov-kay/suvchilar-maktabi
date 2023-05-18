@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { ErrorComponent } from 'src/app/shared/error/error.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { ErrorComponent } from 'src/app/shared/error/error.component';
     ReactiveFormsModule,
     SearchPipe,
     ErrorComponent,
+    NgxMaskModule,
 
     /* Ng-ZORRO */
     NzTableModule,
