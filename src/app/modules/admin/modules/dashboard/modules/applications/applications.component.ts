@@ -7,6 +7,7 @@ import {
   ChangeDetectorRef,
   Component,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { ApplicationsService } from './services/applications.service';
 import { Application } from './models/application.response';
@@ -16,8 +17,8 @@ import { STATUS } from 'src/app/shared/constants';
 import { CertificateService } from 'src/app/modules/main/components/get-sertificate/services/certificate.service';
 import { map } from 'rxjs';
 import { downloadFile } from 'src/app/modules/main/components/get-sertificate/get-sertificate.component';
-import * as FileSaver from 'file-saver';
-import { read, utils, writeFile } from 'xlsx';
+import { ExportAsExcellService } from './services/exportAsExcell.service';
+import { NzTableComponent } from 'ng-zorro-antd/table';
 
 @Component({
   selector: 'app-applications',
@@ -78,17 +79,21 @@ export class ApplicationsComponent implements OnInit {
   tableLoading = false;
 
   /**
-   *
-   * @param $applications
-   * @param $regionAndDistrict
-   * @param cd
+   * 
+   * @param $applications 
+   * @param $regionAndDistrict 
+   * @param fb 
+   * @param cd 
+   * @param $certificate 
+   * @param $importAsExcel 
    */
   constructor(
     private $applications: ApplicationsService,
     private $regionAndDistrict: RegionsAndDistrictsService,
     private fb: FormBuilder,
     private cd: ChangeDetectorRef,
-    private $certificate: CertificateService
+    private $certificate: CertificateService,
+    private $importAsExcel: ExportAsExcellService
   ) {}
 
   /**
@@ -229,56 +234,85 @@ export class ApplicationsComponent implements OnInit {
     this.cd.markForCheck();
   }
 
-  // exportExcel() {
-  //   import('xlsx').then((xlsx) => {
-  //     const worksheet = xlsx.utils.json_to_sheet(this.data); // Sale Data
-  //     const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
-  //     const excelBuffer: any = xlsx.write(workbook, {
-  //       bookType: 'xlsx',
-  //       type: 'array',
-  //     });
-  //     this.saveAsExcelFile(excelBuffer, 'sales');
-  //   });
-  // }
-  // saveAsExcelFile(buffer: any, fileName: string): void {
-  //   let EXCEL_TYPE =
-  //     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-  //   let EXCEL_EXTENSION = '.xlsx';
-  //   const data: Blob = new Blob([buffer], {
-  //     type: EXCEL_TYPE,
-  //   });
-  //   FileSaver.saveAs(
-  //     data,
-  //     fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
-  //   );
-  // }
+  /**
+   *
+   * @param type
+   * @returns
+   */
+  detectFarmType = (type: number): string => {
+    switch (type) {
+      case 1:
+        return 'Пахтачилик/ғаллачилик';
 
+      case 2:
+        return 'Боғдорчилик/Узумчилик';
+
+      case 3:
+        return 'Сабзавотлар/Илдиз сабзавотлари';
+
+      case 4:
+        return 'Сабзавотлар/ғаллачилик';
+
+      default:
+        return 'Бошқа';
+    }
+  };
+
+  /**
+   *
+   * @param status
+   * @returns
+   */
+  detectStatus = (status: number): string => {
+    switch (status) {
+      case 1:
+        return 'Рўйхатдан ўтмоқда';
+      case 2:
+        return 'Сўровнома тўлдирилди';
+      case 3:
+        return 'Сертификат тайёр';
+      case 4:
+        return 'Блокланган';
+
+      default:
+        return '';
+    }
+  };
+
+  /**
+   *
+   */
   exportExcel() {
+    const dataForExcel = this.data.map((el) => {
+      const newData = {
+        f_name: el.f_name,
+        l_name: el.l_name,
+        farm_name: el.farm_name,
+        phone: el.phone,
+        farm_type: this.detectFarmType(el.farm_type),
+        region_name: el.region_name,
+        district_name: el.district_name,
+        status: this.detectStatus(el.status),
+        certificate_id: el.certificate_id,
+      };
+
+      return newData;
+    });
+
     const headers = [
       [
-        'ID пользователя',
         'Имя',
         'Фамилия',
         'Организация',
-        'Сфера деятельности',
-        'Номер сертификата',
-        'Статус заявки',
         'Номер телефона',
-        'Район ID',
+        'Сфера деятельности',
         'Район',
-        'Регион ID',
         'Регион',
+        'Статус сертификата',
+        'Номер сертификата',
       ],
     ];
 
-    const wb = utils.book_new();
-    const ws = utils.json_to_sheet([]);
-    utils.sheet_add_aoa(ws, headers);
-    utils.sheet_add_json(ws, this.data, {
-      origin: 'A2',
-      skipHeader: true,
-    });
-    utils.book_append_sheet(wb, ws, 'Arizalar');
-    writeFile(wb, 'suvchilar-maktabi.xlsx')
+    this.$importAsExcel.exportAsExcell(dataForExcel, headers);
   }
 }

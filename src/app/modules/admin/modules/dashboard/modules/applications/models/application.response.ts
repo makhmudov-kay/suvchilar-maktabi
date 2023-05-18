@@ -10,4 +10,5 @@ export interface Application {
   status: number;
   region_id: number;
   region_name: string;
+  district_name: string;
 }
