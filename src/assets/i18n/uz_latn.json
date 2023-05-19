@@ -80,5 +80,5 @@
   "confirmPassword": "Parolni tasdiqlang",
   "confirmPasswordError": "Parol mos kelmaydi",
   "minlength": "Maydonni uzunligi {{value}}-ta belgidan kam bo'lmasligi kerak",
-  "exportToExcel": "Экспорт в Excell"
+  "exportToExcel": "Excel-ga eksport qilish"
 }

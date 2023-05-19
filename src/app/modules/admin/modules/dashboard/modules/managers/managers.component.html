@@ -33,7 +33,7 @@
       <th>{{ "user" | translate }}</th>
       <th>{{ "phone" | translate }}</th>
       <th>{{ "login" | translate }}</th>
-      <th nzWidth="150px">{{ "actions" | translate }}</th>
+      <th nzWidth="180px">{{ "actions" | translate }}</th>
     </tr>
   </thead>
   <tbody>
@@ -43,8 +43,7 @@
       <td>{{ data.phone }}</td>
       <td>{{ data.login }}</td>
       <td>
-        <nz-button-group nzSize="large">
-          <button (click)="deleteManager(data.id)" nz-button nzType="default">
+          <button nzSize="large" (click)="deleteManager(data.id)" nz-button nzType="default">
             <span
               nz-icon
               nzType="delete"
@@ -52,7 +51,7 @@
               [nzTwotoneColor]="'#52c41a'"
             ></span>
           </button>
-          <button (click)="showModal(data)" nz-button nzType="default">
+          <button nzSize="large" (click)="showModal(data)" nz-button nzType="default">
             <span
               nz-icon
               nzType="edit"
@@ -60,7 +59,6 @@
               [nzTwotoneColor]="'#52c41a'"
             ></span>
           </button>
-        </nz-button-group>
       </td>
     </tr>
   </tbody>
