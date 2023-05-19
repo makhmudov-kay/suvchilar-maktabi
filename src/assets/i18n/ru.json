@@ -80,5 +80,5 @@
   "confirmPassword": "Подтвердите пароль",
   "confirmPasswordError": "Пароль не совпадает",
   "minlength": "Минимальная длина пароля не должна быть меньше {{value}} символов",
-  "exportToExcel": "Экспорт в Excell"
+  "exportToExcel": "Экспорт в Excel"
 }

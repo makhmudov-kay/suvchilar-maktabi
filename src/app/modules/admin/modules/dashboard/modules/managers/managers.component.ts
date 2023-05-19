@@ -195,8 +195,7 @@ export class ManagersComponent implements OnInit {
       return;
     }
 
-    const request = this.form.getRawValue();
-    request.phone = Constants.PREFIX_PHONENUMBER + request.phone;
+    const request = this.form.getRawValue();    
     delete request.checkPassword;
     this.loadingBtn = true;
 
@@ -206,7 +205,8 @@ export class ManagersComponent implements OnInit {
       });
       return;
     }
-
+    
+    request.phone = Constants.PREFIX_PHONENUMBER + request.phone;
     this.$managers.addManager(request).subscribe((result) => {
       this.actionAfterResponseAddEditManager(result);
     });
