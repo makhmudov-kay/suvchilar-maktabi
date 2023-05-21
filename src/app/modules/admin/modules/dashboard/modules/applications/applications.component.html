@@ -37,8 +37,7 @@
   <thead>
     <tr>
       <th nzLeft nzWidth="60px">ID</th>
-      <th nzLeft nzWidth="150px">{{ "user" | translate }}</th>
-      <!-- <th nzLeft nzWidth="150px">{{ "fullName" | translate }}</th> -->
+      <th nzLeft nzWidth="180px">{{ "fullName" | translate }}</th>
       <th nzWidth="150px">{{ "company" | translate }}</th>
       <th nzWidth="150px">{{ "phone" | translate }}</th>
       <th nzWidth="150px">{{ "companySphere" | translate }}</th>
@@ -54,8 +53,7 @@
   <tbody>
     <tr *ngFor="let data of basicTable.data">
       <td nzLeft>{{ data.id }}</td>
-      <td nzLeft>{{ data.f_name + " " + data.l_name }}</td>
-      <!-- <td nzLeft>{{ data.full_name }}</td> -->
+      <td nzLeft>{{ data.full_name }}</td>
       <td>{{ data.farm_name }}</td>
       <td>+{{ data.phone }}</td>
       <td>
@@ -177,37 +175,18 @@
       </nz-form-item>
       <nz-form-item>
         <nz-form-control [nzErrorTip]="errorName">
-          <nz-form-label nzFor="name">{{ "name" | translate }}</nz-form-label>
+          <nz-form-label nzFor="full_name">{{ "full_name" | translate }}</nz-form-label>
           <nz-input-group>
             <input
-              id="name"
+              id="full_name"
               type="text"
               nzSize="large"
               nz-input
-              formControlName="f_name"
+              formControlName="full_name"
             />
           </nz-input-group>
         </nz-form-control>
         <ng-template #errorName let-control>
-          <error [control]="control"></error>
-        </ng-template>
-      </nz-form-item>
-      <nz-form-item>
-        <nz-form-control [nzErrorTip]="errorLastName">
-          <nz-form-label nzFor="l_name">{{
-            "lastName" | translate
-          }}</nz-form-label>
-          <nz-input-group>
-            <input
-              type="text"
-              nzSize="large"
-              id="l_name"
-              nz-input
-              formControlName="l_name"
-            />
-          </nz-input-group>
-        </nz-form-control>
-        <ng-template #errorLastName let-control>
           <error [control]="control"></error>
         </ng-template>
       </nz-form-item>
