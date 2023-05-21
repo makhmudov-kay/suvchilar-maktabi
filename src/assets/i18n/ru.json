@@ -83,5 +83,6 @@
   "exportToExcel": "Экспорт в Excel",
   "created_at": "Дата регистрации",
   "registerType": "Платформа регистрации",
-  "fullName": "ФИО"
+  "fullName": "ФИО",
+  "dateFormat": "день.месяц.год"
 }

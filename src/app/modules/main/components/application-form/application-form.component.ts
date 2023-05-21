@@ -113,6 +113,7 @@ export class ApplicationFormComponent implements OnInit {
       ],
       birthday: [null, [Validators.required]],
       full_name: [null, [Validators.required]],
+      device_type: ['web'],
     });
   }
 
