@@ -83,5 +83,6 @@
   "exportToExcel": "Excel-га экспорт қилиш",
   "created_at": "Рўйхатдан ўтган сана",
   "registerType": "Рўйхатдан ўтган платформаси",
-  "fullName": "ФИШ"
+  "fullName": "ФИШ",
+  "dateFormat": "кун.ой.йил"
 }

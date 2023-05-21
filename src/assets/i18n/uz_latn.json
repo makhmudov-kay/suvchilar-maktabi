@@ -83,5 +83,6 @@
   "exportToExcel": "Excel-ga eksport qilish",
   "created_at": "Ro'yxatdan o'tgan sana",
   "registerType": "Ro'yxatdan o'tgan platformasi",
-  "fullName": "FISH"
+  "fullName": "FISH",
+  "dateFormat": "kun.oy.yil"
 }
