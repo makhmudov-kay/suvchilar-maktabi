@@ -27,4 +27,13 @@ export class ApplicationsService extends BaseService {
   edit(model: Application) {
     return this.put(`${this.url}/${model.id}`, model);
   }
+
+  /**
+   * 
+   * @param id 
+   * @returns 
+   */
+  deleteApplication(id: number) {
+    return this.delete(`${this.url}/${id}`)
+  }
 }

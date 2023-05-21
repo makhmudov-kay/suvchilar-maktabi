@@ -80,5 +80,8 @@
   "confirmPassword": "Подтвердите пароль",
   "confirmPasswordError": "Пароль не совпадает",
   "minlength": "Минимальная длина пароля не должна быть меньше {{value}} символов",
-  "exportToExcel": "Экспорт в Excel"
+  "exportToExcel": "Экспорт в Excel",
+  "created_at": "Дата регистрации",
+  "registerType": "Платформа регистрации",
+  "fullName": "ФИО"
 }

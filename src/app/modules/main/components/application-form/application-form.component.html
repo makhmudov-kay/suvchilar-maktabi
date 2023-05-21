@@ -35,6 +35,30 @@
               </ng-template>
             </nz-form-item>
           </div>
+
+          <!-- FULLNAME -->
+          <!-- <div class="application__form__item">
+            <nz-form-item>
+              <label for="first" class="application__form__item__label">{{
+                "fullName" | translate
+              }}</label>
+              <nz-form-control [nzErrorTip]="errorLastName">
+                <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
+                  <input
+                    formControlName="fullName"
+                    id="first"
+                    nz-input
+                    [placeholder]="'fullName' | translate"
+                  />
+                </nz-input-group>
+              </nz-form-control>
+              <ng-template #errorLastName let-control>
+                <error [control]="control"></error>
+              </ng-template>
+            </nz-form-item>
+          </div> -->
+
+          <!-- S_NAME -->
           <div class="application__form__item">
             <nz-form-item>
               <label for="first" class="application__form__item__label">{{
@@ -55,6 +79,8 @@
               </ng-template>
             </nz-form-item>
           </div>
+
+          <!-- F_NAME -->
           <div class="application__form__item">
             <nz-form-item>
               <label for="first" class="application__form__item__label">{{
@@ -75,6 +101,7 @@
               </ng-template>
             </nz-form-item>
           </div>
+
           <div class="application__form__item">
             <nz-form-item>
               <label for="first" class="application__form__item__label">{{
@@ -85,6 +112,8 @@
                   formControlName="birthday"
                   nzSize="large"
                   nzSuffixIcon=""
+                  [nzFormat]="dateFormat"
+                  nzInputReadOnly
                   [nzPlaceHolder]="'yourDateOfBirth' | translate"
                 ></nz-date-picker>
               </nz-form-control>
@@ -93,6 +122,8 @@
               </ng-template>
             </nz-form-item>
           </div>
+
+          <!-- L_NAME -->
           <div class="application__form__item">
             <nz-form-item>
               <label for="first" class="application__form__item__label">{{
@@ -113,6 +144,7 @@
               </ng-template>
             </nz-form-item>
           </div>
+          
           <div class="application__form__item">
             <label for="first" class="application__form__item__label">{{
               "yourSex" | translate

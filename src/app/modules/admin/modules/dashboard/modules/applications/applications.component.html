@@ -32,24 +32,30 @@
   [nzScroll]="{ y: '400px' }"
   [nzData]="data | search : searchText"
   [nzLoading]="tableLoading"
+  nzBordered 
 >
   <thead>
     <tr>
-      <th nzWidth="100px">ID</th>
-      <th>{{ "user" | translate }}</th>
-      <th>{{ "company" | translate }}</th>
-      <th>{{ "phone" | translate }}</th>
-      <th>{{ "companySphere" | translate }}</th>
-      <th>{{ "district" | translate }}</th>
-      <th>{{ "sertificate" | translate }}</th>
-      <th>{{ "status" | translate }}</th>
-      <th nzWidth="150px">{{ "actions" | translate }}</th>
+      <th nzLeft nzWidth="60px">ID</th>
+      <th nzLeft nzWidth="150px">{{ "user" | translate }}</th>
+      <!-- <th nzLeft nzWidth="150px">{{ "fullName" | translate }}</th> -->
+      <th nzWidth="150px">{{ "company" | translate }}</th>
+      <th nzWidth="150px">{{ "phone" | translate }}</th>
+      <th nzWidth="150px">{{ "companySphere" | translate }}</th>
+      <th nzWidth="150px">{{ "region" | translate }}</th>
+      <th nzWidth="150px">{{ "district" | translate }}</th>
+      <th nzWidth="150px">{{ "sertificate" | translate }}</th>
+      <th nzWidth="150px">{{ "registerType" | translate }}</th>
+      <th nzWidth="150px">{{ "created_at" | translate }}</th>
+      <th nzWidth="150px">{{ "status" | translate }}</th>
+      <th nzRight nzWidth="200px">{{ "actions" | translate }}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.id }}</td>
-      <td>{{ data.f_name + " " + data.l_name }}</td>
+      <td nzLeft>{{ data.id }}</td>
+      <td nzLeft>{{ data.f_name + " " + data.l_name }}</td>
+      <!-- <td nzLeft>{{ data.full_name }}</td> -->
       <td>{{ data.farm_name }}</td>
       <td>+{{ data.phone }}</td>
       <td>
@@ -68,10 +74,13 @@
           <div *ngSwitchDefault></div>
         </div>
       </td>
+      <td>{{ data.region_name }}</td>
       <td>{{ data.district_name }}</td>
       <td>{{ data.certificate_id }}</td>
+      <td>{{ data.device_type === 'web' ? 'WEB': 'TG BOT' }}</td>
+      <td>{{ data.created_at | date : "dd.MM.YYYY" }}</td>
       <td>{{ STATUS[data.status] | translate }}</td>
-      <td>
+      <td nzRight>
         <button
           class="action"
           nz-button
@@ -113,6 +122,20 @@
             nzType="download"
             nzTheme="outline"
             style="color: #52c41a"
+          ></span>
+        </button>
+
+        <button
+          class="action"
+          nz-button
+          nzType="default"
+          (click)="deleteApplication(data.id)"
+        >
+          <span
+            nz-icon
+            nzType="delete"
+            nzTheme="twotone"
+            [nzTwotoneColor]="'#52c41a'"
           ></span>
         </button>
       </td>

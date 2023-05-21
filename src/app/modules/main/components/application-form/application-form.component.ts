@@ -82,6 +82,11 @@ export class ApplicationFormComponent implements OnInit {
 
   /**
    *
+   */
+  dateFormat = 'dd.MM.yyyy';
+
+  /**
+   *
    * @param fb
    * @param $application
    * @param $regionsAndDistricts
@@ -106,10 +111,13 @@ export class ApplicationFormComponent implements OnInit {
         [Validators.required],
         [this.$checkPhone.phoneAsyncValidator()],
       ],
+      /* ---- */
       l_name: [null, [Validators.required]],
       f_name: [null, [Validators.required]],
       s_name: [null, [Validators.required]],
+      /* ---- */
       birthday: [null, [Validators.required]],
+      // fullName: [null, [Validators.required]],
     });
   }
 

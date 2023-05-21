@@ -79,13 +79,13 @@ export class ApplicationsComponent implements OnInit {
   tableLoading = false;
 
   /**
-   * 
-   * @param $applications 
-   * @param $regionAndDistrict 
-   * @param fb 
-   * @param cd 
-   * @param $certificate 
-   * @param $importAsExcel 
+   *
+   * @param $applications
+   * @param $regionAndDistrict
+   * @param fb
+   * @param cd
+   * @param $certificate
+   * @param $importAsExcel
    */
   constructor(
     private $applications: ApplicationsService,
@@ -285,6 +285,7 @@ export class ApplicationsComponent implements OnInit {
   exportExcel() {
     const dataForExcel = this.data.map((el) => {
       const newData = {
+        // full_name: el.full_name,
         f_name: el.f_name,
         l_name: el.l_name,
         farm_name: el.farm_name,
@@ -292,6 +293,8 @@ export class ApplicationsComponent implements OnInit {
         farm_type: this.detectFarmType(el.farm_type),
         region_name: el.region_name,
         district_name: el.district_name,
+        device_type: el.device_type,
+        created_at: new Date(el.created_at).toLocaleDateString(),
         status: this.detectStatus(el.status),
         certificate_id: el.certificate_id,
       };
@@ -301,6 +304,7 @@ export class ApplicationsComponent implements OnInit {
 
     const headers = [
       [
+        // 'ФИО',
         'Имя',
         'Фамилия',
         'Организация',
@@ -308,11 +312,24 @@ export class ApplicationsComponent implements OnInit {
         'Сфера деятельности',
         'Район',
         'Регион',
+        'Платформа регистрации',
+        'Дата регистрации',
         'Статус сертификата',
         'Номер сертификата',
       ],
     ];
 
     this.$importAsExcel.exportAsExcell(dataForExcel, headers);
+  }
+
+  /**
+   *
+   * @param id
+   */
+  deleteApplication(id: number) {
+    this.$applications.deleteApplication(id).subscribe(() => {
+      this.getApplications();
+      this.cd.markForCheck();
+    });
   }
 }

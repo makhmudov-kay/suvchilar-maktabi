@@ -19,6 +19,8 @@ export class ExportAsExcellService {
       { wch: 30 },
       { wch: 25 },
       { wch: 20 },
+      { wch: 10 },
+      { wch: 12 },
       { wch: 25 },
       { wch: 20 },
     ];

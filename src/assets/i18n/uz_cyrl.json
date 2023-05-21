@@ -80,5 +80,8 @@
   "confirmPassword": "Паролни тасдиқланг",
   "confirmPasswordError": "Парол мос келмайди",
   "minlength": "Майдонни узунлиги {{валуе}}-та белгидан кам бўлмаслиги керак",
-  "exportToExcel": "Excel-га экспорт қилиш"
+  "exportToExcel": "Excel-га экспорт қилиш",
+  "created_at": "Рўйхатдан ўтган сана",
+  "registerType": "Рўйхатдан ўтган платформаси",
+  "fullName": "ФИШ"
 }
