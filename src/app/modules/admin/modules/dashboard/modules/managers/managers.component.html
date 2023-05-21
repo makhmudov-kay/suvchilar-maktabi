@@ -26,6 +26,7 @@
   [nzData]="(data$ | async) ?? [] | search : searchText"
   [nzScroll]="{ y: '400px' }"
   [nzLoading]="tableLoading"
+  nzBordered 
 >
   <thead>
     <tr>

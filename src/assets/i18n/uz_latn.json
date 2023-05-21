@@ -80,5 +80,8 @@
   "confirmPassword": "Parolni tasdiqlang",
   "confirmPasswordError": "Parol mos kelmaydi",
   "minlength": "Maydonni uzunligi {{value}}-ta belgidan kam bo'lmasligi kerak",
-  "exportToExcel": "Excel-ga eksport qilish"
+  "exportToExcel": "Excel-ga eksport qilish",
+  "created_at": "Ro'yxatdan o'tgan sana",
+  "registerType": "Ro'yxatdan o'tgan platformasi",
+  "fullName": "FISH"
 }
