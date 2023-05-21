@@ -1,8 +1,6 @@
 export interface FirstStepResponse {
   phone: number;
-  f_name: string;
-  l_name: string;
-  s_name: string;
+  full_name: string;
   birthday: string;
   gender: string;
   status: number;

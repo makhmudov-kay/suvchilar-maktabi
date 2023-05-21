@@ -37,16 +37,16 @@
           </div>
 
           <!-- FULLNAME -->
-          <!-- <div class="application__form__item">
+          <div class="application__form__item">
             <nz-form-item>
-              <label for="first" class="application__form__item__label">{{
+              <label for="full_name" class="application__form__item__label">{{
                 "fullName" | translate
               }}</label>
               <nz-form-control [nzErrorTip]="errorLastName">
                 <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
                   <input
-                    formControlName="fullName"
-                    id="first"
+                    formControlName="full_name"
+                    id="full_name"
                     nz-input
                     [placeholder]="'fullName' | translate"
                   />
@@ -56,51 +56,8 @@
                 <error [control]="control"></error>
               </ng-template>
             </nz-form-item>
-          </div> -->
-
-          <!-- S_NAME -->
-          <div class="application__form__item">
-            <nz-form-item>
-              <label for="first" class="application__form__item__label">{{
-                "yourPatronymic" | translate
-              }}</label>
-              <nz-form-control [nzErrorTip]="errorLastName">
-                <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
-                  <input
-                    formControlName="s_name"
-                    id="first"
-                    nz-input
-                    [placeholder]="'yourPatronymic' | translate"
-                  />
-                </nz-input-group>
-              </nz-form-control>
-              <ng-template #errorLastName let-control>
-                <error [control]="control"></error>
-              </ng-template>
-            </nz-form-item>
           </div>
 
-          <!-- F_NAME -->
-          <div class="application__form__item">
-            <nz-form-item>
-              <label for="first" class="application__form__item__label">{{
-                "yourName" | translate
-              }}</label>
-              <nz-form-control [nzErrorTip]="errorFirstName">
-                <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
-                  <input
-                    formControlName="f_name"
-                    id="first"
-                    nz-input
-                    [placeholder]="'yourName' | translate"
-                  />
-                </nz-input-group>
-              </nz-form-control>
-              <ng-template #errorFirstName let-control>
-                <error [control]="control"></error>
-              </ng-template>
-            </nz-form-item>
-          </div>
 
           <div class="application__form__item">
             <nz-form-item>
@@ -118,28 +75,6 @@
                 ></nz-date-picker>
               </nz-form-control>
               <ng-template #errorBirthdate let-control>
-                <error [control]="control"></error>
-              </ng-template>
-            </nz-form-item>
-          </div>
-
-          <!-- L_NAME -->
-          <div class="application__form__item">
-            <nz-form-item>
-              <label for="first" class="application__form__item__label">{{
-                "yourSurname" | translate
-              }}</label>
-              <nz-form-control [nzErrorTip]="errorMiddleName">
-                <nz-input-group [nzPrefix]="prefixTemplateUser" nzSize="large">
-                  <input
-                    id="first"
-                    formControlName="l_name"
-                    nz-input
-                    [placeholder]="'yourSurname' | translate"
-                  />
-                </nz-input-group>
-              </nz-form-control>
-              <ng-template #errorMiddleName let-control>
                 <error [control]="control"></error>
               </ng-template>
             </nz-form-item>

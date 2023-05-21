@@ -130,8 +130,7 @@ export class ApplicationsComponent implements OnInit {
   private editingData(editingData?: Application) {
     this.form = this.fb.group({
       phone: [editingData?.phone, [Validators.required]],
-      l_name: [editingData?.l_name, [Validators.required]],
-      f_name: [editingData?.f_name, [Validators.required]],
+      full_name: [editingData?.full_name, [Validators.required]],
       farm_name: [editingData?.farm_name, [Validators.required]],
       district_id: [editingData?.district_id, [Validators.required]],
       farm_type: [editingData?.farm_type, [Validators.required]],
@@ -285,9 +284,7 @@ export class ApplicationsComponent implements OnInit {
   exportExcel() {
     const dataForExcel = this.data.map((el) => {
       const newData = {
-        // full_name: el.full_name,
-        f_name: el.f_name,
-        l_name: el.l_name,
+        full_name: el.full_name,
         farm_name: el.farm_name,
         phone: el.phone,
         farm_type: this.detectFarmType(el.farm_type),
@@ -304,9 +301,7 @@ export class ApplicationsComponent implements OnInit {
 
     const headers = [
       [
-        // 'ФИО',
-        'Имя',
-        'Фамилия',
+        'ФИО',
         'Организация',
         'Номер телефона',
         'Сфера деятельности',

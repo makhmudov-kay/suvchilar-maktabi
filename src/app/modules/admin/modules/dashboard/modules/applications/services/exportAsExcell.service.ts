@@ -12,8 +12,7 @@ export class ExportAsExcellService {
     const wb = utils.book_new();
     const ws = utils.json_to_sheet([]);
     ws['!cols'] = [
-      { wch: 16 },
-      { wch: 14 },
+      { wch: 30 },
       { wch: 20 },
       { wch: 15 },
       { wch: 30 },
