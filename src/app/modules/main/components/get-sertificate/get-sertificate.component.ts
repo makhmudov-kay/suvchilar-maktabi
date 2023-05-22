@@ -73,6 +73,6 @@ export function downloadFile(data: Blob, certificateId: string) {
   var downloadURL = window.URL.createObjectURL(data);
   var link = document.createElement('a');
   link.href = downloadURL;
-  link.download = `Sertificate_${certificateId}.pdf`;
+  link.download = `Certificate_${certificateId}.pdf`;
   link.click();
 }
