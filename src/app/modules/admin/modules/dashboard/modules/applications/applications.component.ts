@@ -163,8 +163,10 @@ export class ApplicationsComponent implements OnInit {
     if (data) {
       this.editingData(data);
       this.id = data.id;
-      this.selectedRegion = data.region_id;
-      this.filterDistrictsByRegion(this.selectedRegion);
+      if (data.region_id) {
+        this.selectedRegion = data.region_id;
+        this.filterDistrictsByRegion(this.selectedRegion);
+      }
     }
     this.isVisible = true;
     this.cd.markForCheck();
