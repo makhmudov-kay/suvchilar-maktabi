@@ -19,7 +19,7 @@
         <span nz-icon nzType="profile" nzTheme="outline"></span>
         <span>{{ "applications" | translate }}</span>
       </li>
-      <li nz-menu-item routerLink="managers" nzMatchRouter>
+      <li nz-menu-item routerLink="managers" nzMatchRouter *ngIf="admin">
         <span nz-icon nzType="user" nzTheme="outline"></span>
         <span>{{ "managers" | translate }}</span>
       </li>

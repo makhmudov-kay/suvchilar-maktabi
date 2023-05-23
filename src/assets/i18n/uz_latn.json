@@ -84,5 +84,6 @@
   "created_at": "Ro'yxatdan o'tgan sana",
   "registerType": "Ro'yxatdan o'tgan platformasi",
   "fullName": "FISH",
-  "dateFormat": "kun.oy.yil"
+  "dateFormat": "kun.oy.yil",
+  "mask.00.00.0000": "Sana noto'g'ri kiritilgan"
 }

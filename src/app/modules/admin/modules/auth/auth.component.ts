@@ -41,6 +41,7 @@ export class AuthComponent implements OnInit {
    */
   ngOnInit(): void {
     this.initForm();
+    
   }
 
   /**
@@ -66,11 +67,14 @@ export class AuthComponent implements OnInit {
       });
       return;
     }
-    
+
     const request = this.validateForm.getRawValue();
     this.isLoading = true;
     this.$auth.login(request).subscribe({
-      next: () => {
+      next: (result) => {
+        if (result.role === 1) {          
+          localStorage.setItem('admin', JSON.stringify(true));
+        }
         this.validateForm.reset();
         this.router.navigate(['admin']);
         this.isLoading = false;

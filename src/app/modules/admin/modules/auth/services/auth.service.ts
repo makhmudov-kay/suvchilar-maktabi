@@ -44,6 +44,7 @@ export class AuthService extends BaseService {
    */
   logout(): void {
     this.setToken(null);
+    localStorage.removeItem('admin');
   }
 
   /**
