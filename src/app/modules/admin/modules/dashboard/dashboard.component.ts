@@ -8,12 +8,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.less'],
 })
 export class DashboardComponent {
+  /**
+   *
+   */
   isCollapsed = false;
 
+  /**
+   *
+   */
+  get admin() {
+    return !!localStorage.getItem('admin');
+  }
+
+  /**
+   *
+   * @param $auth
+   * @param router
+   */
   constructor(private $auth: AuthService, private router: Router) {}
 
+  /**
+   *
+   */
   logout() {
     this.$auth.logout();
-    this.router.navigate(['admin', 'auth'])
+    this.router.navigate(['admin', 'auth']);
   }
 }
