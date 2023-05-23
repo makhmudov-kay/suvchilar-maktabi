@@ -85,5 +85,6 @@
   "registerType": "Ro'yxatdan o'tgan platformasi",
   "fullName": "FISH",
   "dateFormat": "kun.oy.yil",
-  "mask.00.00.0000": "Sana noto'g'ri kiritilgan"
+  "mask.00.00.0000": "Sana noto'g'ri kiritilgan",
+  "namePlaceholder": "Azizov Aziz Aziziovich"
 }
