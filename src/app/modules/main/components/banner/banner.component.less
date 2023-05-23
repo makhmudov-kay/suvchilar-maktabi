@@ -46,6 +46,7 @@ nz-carousel {
   @media (max-width: 575px) {
     height: 490px;
   }
+
   @media (max-width: 390px) {
     height: 505px;
   }
@@ -94,13 +95,10 @@ nz-carousel {
     }
 
     &.background {
-      background: linear-gradient(
-          to left,
+      background: linear-gradient(to left,
           rgba(255, 255, 255, 0.1),
-          rgba(0, 0, 0, 0.3)
-        ),
-        url(../../../../../assets/images/banner.jpg) center center / cover
-          no-repeat;
+          rgba(0, 0, 0, 0.65)),
+        url(../../../../../assets/images/banner-new.jpg) center center / cover no-repeat;
 
       @media (max-width: 575px) {
         background-position: center left;
@@ -279,4 +277,12 @@ nz-carousel {
     background: #00cd69;
     border-radius: 12px;
   }
+}
+
+.banner-text {
+  font-size: 48px;
+  line-height: 60px;
+  color: #fff;
+  font-family: Agrofont-BExpanded;
+  margin-bottom: 24px;
 }

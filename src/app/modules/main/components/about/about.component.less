@@ -6,6 +6,7 @@
   @media (max-width: 1080px) {
     padding-top: 80px;
     gap: 0 20px;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 768px) {
@@ -29,7 +30,9 @@
 
     @media (max-width: 1080px) {
       height: 485px;
-      width: 307px;
+      // width: 307px;
+      width: 100%;
+      order: 2;
     }
 
     @media (max-width: 575px) {
@@ -54,20 +57,22 @@
     width: 100%;
 
     @media (max-width: 1080px) {
-      max-width: 600px;
+      // max-width: 600px;
+      max-width: 100%;
+      order: 1;
     }
 
-    @media (max-width: 992px) {
-      max-width: 530px;
-    }
+    // @media (max-width: 992px) {
+    //   max-width: 530px;
+    // }
 
-    @media (max-width: 870px) {
-      max-width: 50vw;
-    }
+    // @media (max-width: 870px) {
+    //   max-width: 50vw;
+    // }
 
-    @media (max-width: 630px) {
-      max-width: 50vw;
-    }
+    // @media (max-width: 630px) {
+    //   max-width: 50vw;
+    // }
 
     @media (max-width: 575px) {
       max-width: 600px;
@@ -125,8 +130,8 @@
       }
 
       @media (max-width: 992px) {
-        font-size: 16px;
-        line-height: 20px;
+        // font-size: 16px;
+        // line-height: 20px;
         margin-bottom: 20px;
       }
 
@@ -135,16 +140,26 @@
         line-height: 18px;
         margin-bottom: 20px;
       }
+
+      &.tab-text {
+        font-size: 16px;
+        line-height: 20px;
+
+        @media (max-width: 1080px) {
+          font-size: 14px;
+          line-height: 18px;
+        }
+      }
     }
   }
 }
 
 :host ::ng-deep {
-  .ant-tabs-top > .ant-tabs-nav::before {
+  .ant-tabs-top>.ant-tabs-nav::before {
     border-bottom: none !important;
   }
 
-  .ant-tabs-tab + .ant-tabs-tab {
+  .ant-tabs-tab+.ant-tabs-tab {
     margin-left: 16px;
   }
 
