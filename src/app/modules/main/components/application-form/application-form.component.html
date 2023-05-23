@@ -48,7 +48,7 @@
                     formControlName="full_name"
                     id="full_name"
                     nz-input
-                    placeholder="Azizov Aziz Azizovich"
+                    [placeholder]="'namePlaceholder' | translate"
                   />
                 </nz-input-group>
               </nz-form-control>
@@ -71,7 +71,10 @@
                   [nzFormat]="dateFormat"
                   [nzPlaceHolder]="'dateFormat' | translate"
                 ></nz-date-picker> -->
-                <nz-input-group [nzPrefix]="prefixTemplateCalendar" nzSize="large">
+                <nz-input-group
+                  [nzPrefix]="prefixTemplateCalendar"
+                  nzSize="large"
+                >
                   <input
                     nz-input
                     mask="00.00.0000"
@@ -355,6 +358,4 @@
   ><span nz-icon style="color: #b0b4c1" nzType="user"></span
 ></ng-template>
 
-<ng-template #prefixTemplateCalendar
-  >
-</ng-template>
+<ng-template #prefixTemplateCalendar> </ng-template>
