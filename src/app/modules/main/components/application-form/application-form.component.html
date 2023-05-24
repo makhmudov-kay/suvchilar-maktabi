@@ -59,24 +59,76 @@
           </div>
 
           <div class="application__form__item">
+            <label for="company" class="application__form__item__label">{{
+              "companyLocation" | translate
+            }}</label>
+            <div class="application__form__item-double-select">
+              <div class="application__form__item-double-select__left select">
+                <nz-form-item>
+                  <nz-form-control [nzErrorTip]="errorRegion">
+                    <nz-select
+                      nzSize="large"
+                      formControlName="region_id"
+                      [nzPlaceHolder]="'region' | translate"
+                      (ngModelChange)="regionChange($event)"
+                    >
+                      <nz-option
+                        *ngFor="let reg of region"
+                        [nzValue]="reg"
+                        [nzLabel]="reg.name"
+                      ></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                  <ng-template #errorRegion let-control>
+                    <error [control]="control"></error>
+                  </ng-template>
+                </nz-form-item>
+              </div>
+            </div>
+          </div>
+
+          <div class="application__form__item">
+            <label for="company" class="application__form__item__label">{{
+              "companyLocation" | translate
+            }}</label>
+            <div class="application__form__item-double-select">
+              <div class="application__form__item-double-select__right select">
+                <nz-form-item>
+                  <nz-form-control [nzErrorTip]="errorDistrict">
+                    <nz-select
+                      formControlName="district_id"
+                      nzSize="large"
+                      [nzPlaceHolder]="'district' | translate"
+                      [nzDisabled]="!districts"
+                    >
+                      <nz-option
+                        *ngFor="let district of districts"
+                        [nzValue]="district.id"
+                        [nzLabel]="district.name"
+                      ></nz-option>
+                    </nz-select>
+                  </nz-form-control>
+                  <ng-template #errorDistrict let-control>
+                    <error [control]="control"></error>
+                  </ng-template>
+                </nz-form-item>
+              </div>
+            </div>
+          </div>
+
+          <div class="application__form__item">
             <nz-form-item>
               <label for="first" class="application__form__item__label">{{
                 "yourDateOfBirth" | translate
               }}</label>
               <nz-form-control [nzErrorTip]="errorBirthdate">
-                <!-- <nz-date-picker
-                  formControlName="birthday"
-                  nzSize="large"
-                  nzSuffixIcon=""
-                  [nzFormat]="dateFormat"
-                  [nzPlaceHolder]="'dateFormat' | translate"
-                ></nz-date-picker> -->
                 <nz-input-group
                   [nzPrefix]="prefixTemplateCalendar"
                   nzSize="large"
                 >
                   <input
                     nz-input
+                    [dropSpecialCharacters]="false"
                     mask="00.00.0000"
                     [placeholder]="'dateFormat' | translate"
                     formControlName="birthday"
@@ -125,7 +177,7 @@
     <div class="application__steps__content" *ngIf="current === 1">
       <form nz-form [nzLayout]="'vertical'" [formGroup]="formStepSecond">
         <div class="application__form second-form">
-          <div class="application__form__item">
+          <div class="application__form__item" style="flex: 100%">
             <nz-form-item>
               <label
                 for="company"
@@ -145,7 +197,8 @@
               </ng-template>
             </nz-form-item>
           </div>
-          <div class="application__form__item">
+
+          <!-- <div class="application__form__item">
             <label for="company" class="application__form__item__label">{{
               "companyLocation" | translate
             }}</label>
@@ -193,8 +246,9 @@
                 </nz-form-item>
               </div>
             </div>
-          </div>
-          <div class="application__form__item">
+          </div> -->
+
+          <div class="application__form__item" style="order: 2">
             <label for="first" class="application__form__item__label">{{
               "yourPosition" | translate
             }}</label>
@@ -234,7 +288,8 @@
               </label>
             </div>
           </div>
-          <div class="application__form__item">
+
+          <div class="application__form__item" style="order: 1">
             <label for="company" class="application__form__item__label">{{
               "companyCategory" | translate
             }}</label>
