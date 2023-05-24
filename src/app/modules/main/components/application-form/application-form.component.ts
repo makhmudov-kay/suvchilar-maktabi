@@ -114,6 +114,8 @@ export class ApplicationFormComponent implements OnInit {
       birthday: [null, [Validators.required]],
       full_name: [null, [Validators.required]],
       device_type: ['web'],
+      region_id: [null, [Validators.required]],
+      district_id: [null, [Validators.required]],
     });
   }
 
@@ -123,8 +125,8 @@ export class ApplicationFormComponent implements OnInit {
   private initSecondForm() {
     this.formStepSecond = this.fb.group({
       farm_name: [null, [Validators.required]],
-      region_id: [null, [Validators.required]],
-      district_id: [null, [Validators.required]],
+      // region_id: [null, [Validators.required]],
+      // district_id: [null, [Validators.required]],
       farm_type: [null, [Validators.required]],
     });
   }
@@ -153,7 +155,8 @@ export class ApplicationFormComponent implements OnInit {
    * @param region
    */
   regionChange(region: Region) {
-    this.formStepSecond.controls['district_id'].reset();
+    this.formStepFirst.controls['district_id'].reset();
+    // this.formStepSecond.controls['district_id'].reset();
     this.districts = region.districts;
     this.cd.markForCheck();
   }
@@ -200,7 +203,8 @@ export class ApplicationFormComponent implements OnInit {
     const request = this.formStepFirst.getRawValue();
     request.phone = Constants.PREFIX_PHONENUMBER + request.phone;
     this.phone = request.phone;
-    request.gender = this.gender;
+    request.gender = this.gender;        
+    request.birthday = new Date(request.birthday)
 
     this.isLoading = true;
     this.$application.sendFirstStep(request).subscribe((result) => {
