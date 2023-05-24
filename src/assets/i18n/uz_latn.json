@@ -8,8 +8,8 @@
   "waterSchoolStart": "Suvchilar maktabi",
   "waterSchoolText": "Turkiya tajribasi asosida Agrobank tashabbusi bilan zamonaviy suv tejovchi texnologiyalar va usullarni tadbiq etishga qaratilgan yangi loyiha",
   "registration": "Ro'yxatdan o'tish",
-  "aboutUsText": "Suvchilar maktabi – bu qishloq xo'jaligi maxsulotlari etishtirish, qayta ishlash va hosildorlikni oshirishda suvdan foydalanishning zamonaviy usullari, innovatsion va energiya tejamkor texnalogiyalardan foydalanish va ilg'or xorijiy mamlakatlar tajribasini amaliyot asosida fermer va dehqonlarimizga o'rgatishda Agrobank tomonidan tashkil qilingan yangi loyiha",
-  "ourTargetText": "So'nggi yillarda agrosanoat majmuasida yuqori hosil olish , suv va energiya resurslaridan oqilona foydalanish bugungi kun talabiga aylanib bormoqda. Ushbu loyiha– oliy ta'lim muassasalari hamda ilg'or xorijiy mamlakatlar mutaxasislari bilan hamkorlikda zamonaviy sug'orish usullari va texnologiyalaridan foydalanishda fermer-dehqonlarimiz va soha mutaxassislarini qisqa muddatli kurslarda o'qitish orqali malakasini oshirish va zamonaviy bilimlar bilan tanishtirish maqsadida tashkil etilgan",
+
+
   "studyPlanText": "- an'anaviy usulda respublikamizni barcha tumanlarida grafik asosida tashkil etiladi.<br><br><strong>Kimlar qatnashishi mumkin:</strong><br><br> Soha mutaxasislari va fermer xo'jaligi hamda tomorqa yer egalari rahbarlari. <br><br><strong>Qanday ro'yxatdan o'tish kerak:</strong><br><br> Ro'yxatdan o'tish online formatda ushbu sayt va telegram-bot orqali amalga oshiriladi. Kurs yakunida ishtirokchilar maxsus sertifikatga ega bo'ladilar",
   "waterSchoolRegistrationTitle": "Suvchilik o'quv kursi ro'yxatga olish so'rovnomasi",
   "phoneNumber": "Telefon raqamingiz",
@@ -86,5 +86,24 @@
   "fullName": "FISH",
   "dateFormat": "kun.oy.yil",
   "mask.00.00.0000": "Sana noto'g'ri kiritilgan",
-  "namePlaceholder": "Azizov Aziz Aziziovich"
+  "namePlaceholder": "Azizov Aziz Aziziovich",
+  "start": "Boshlanishi",
+  "finish": "Tugashi",
+
+  "td1": "Qatnashchilarni ro'yxatdan o'tkazish va ochilish qismi",
+  "td2": "Suv tejovchi texnologiyalarning afzalliklari va ularni samaradorligi",
+  "td3": "Tanaffus",
+  "td4": "Xorijiy tajriba. Zamonaviy sug'orish tizimining ahamiyati va suvdan foydalanish madaniyati (Turkiya tajribasi)",
+  "td5": "Kofe-breyk",
+  "td6": "Iqtisodiy va huquqiy savodxonlik: subsidiya, kafilliklar, soliq imtiyozlari va bank kreditlari",
+  "td7": "Tushlik",
+  "td8": "Tuproqning suv xossalari va nam saqlovchi texnologiyalarni o'rganish",
+  "td10": "Xorijiy tajriba. Zamonaviy sug'orish tizimlarini qurish va ishga tushurish tartibi. (Turkiya misolida)",
+
+  "bannerTitle": "Аgrobankdan yangi loyiha",
+  "bannerText": "Аgrobank, Suv xo‘jaligi vazirligi, O‘zFDTEK va TIQXMMI milliy tadqiqot universiteti hamkorligida yangi maktab tashkil etilmoqda",
+
+  "aboutUsText": " “Suvchilar maktabi” o‘quv kursi O‘zbekiston Respublikasi Prezidenti tashabbusi bilan Suv xo‘jaligi vazirligi, “Toshkent irrigatsiya va qishloq xo‘jaligini mexanizatsiyalash muhandislari instituti” milliy tadqiqot universiteti va “Аgrobank” АTB tomonidan tashkil etilgan bo‘lib, qishloq xo‘jaligi sohasida o‘z faoliyatini olib borayotgan fermer xo‘jaliklari rahbar va suvchilari hamda suv xo‘jaligi xodimlari bugungi kunda o‘z sohalarida qo‘llanilayotgan innovatsion texnologiyalar, sohada rivojlangan xorijiy mamlakatlar amaliyotiga joriy etilayotgan yangi bilim va ko‘nikmalarni egallagan holda , o‘z faoliyatlarini  takomillashtirib, suvdan samarali foydalanish orqali yuqori hosildorlikka erishishlari o‘quv kursining asosiy maqsadi hisoblanadi. O‘quv kursini ishtirokchilari Respublikamizda faoliyat olib borayotgan fermer xo‘jaliklari rahbar va suvchilari hamda suv xo‘jaligi xodimlari hisoblanadi. Mazkur o‘quv kursining o‘quv dasturlari xalqaro taʼlim standartlarini hisobga olgan holda tayyorlangan bo‘lib, o‘quv jarayoni ilg‘or pedagogik va axborot-kommunikatsiya texnologiyalaridan keng foydalangan holda tashkil etiladi. O‘quv ishlarini olib borish, maslahatlar berish uchun yuqori malakali xorijiy va mahalliy mutaxassislar shartnomalar asosida jalb etilgan. Nazariy va amaliy taʼlim berish tumanlar kesimida o‘quv kursi mashg‘ulotlari namunaviy o‘quv binolari va ochiq dala maydonlarida tashkil etiladi.",
+
+  "ourTargetText": "So‘nggi yillarda agrosanoat majmuasida yuqori hosil olish, suv va energiya resusrlaridan oqilona foydalanish hamda sug‘oriladigan yerlarning meliorativ holatini yaxshilash bugungi kun talabiga aylanib bormoqda. Ushbu loyiha – oliy taʼlim muassasalari hamda ilg‘or xorijiy mamlakatlar mutaxassislari bilan hamkorlikda zamonaviy sug‘orish usullari va texnologiyalaridan foydalanishda fermer-dehqonlarimiz va soha mutaxassislarini qisqa muddatli kurslarda o‘qitish orqali malakasini oshirish va zamonaviy bilimlar bilan tanishtirish maqsadida tashkil etilgan"
 }

@@ -203,9 +203,10 @@ export class ApplicationFormComponent implements OnInit {
     const request = this.formStepFirst.getRawValue();
     request.phone = Constants.PREFIX_PHONENUMBER + request.phone;
     this.phone = request.phone;
-    request.gender = this.gender;        
+    request.gender = this.gender;  
+    request.region_id = request.region_id.id          
     request.birthday = new Date(request.birthday)
-
+    
     this.isLoading = true;
     this.$application.sendFirstStep(request).subscribe((result) => {
       if (result.success) {
