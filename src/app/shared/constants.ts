@@ -35,6 +35,6 @@ export class Constants {
   public static readonly LANGUAGES: Language[] = [
     this.UZ_LATIN,
     this.UZ_CYRILLIC,
-    this.RU,
+    // this.RU,
   ];
 }

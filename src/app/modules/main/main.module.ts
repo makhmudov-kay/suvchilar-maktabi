@@ -31,6 +31,7 @@ import { LanguagesComponent } from 'src/app/shared/languages/languages.component
 import { AsyncClickDirective } from 'ngx-async-click';
 import { ErrorComponent } from 'src/app/shared/error/error.component';
 import { NzCalendarModule } from 'ng-zorro-antd/calendar';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { NzCalendarModule } from 'ng-zorro-antd/calendar';
     NzDrawerModule,
     NzTypographyModule,
     NzToolTipModule,
-    NzCalendarModule
+    NzCalendarModule,
+    NzTableModule,
   ],
   declarations: [
     MainComponent,
