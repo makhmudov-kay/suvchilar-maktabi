@@ -56,7 +56,7 @@ export class AboutComponent {
     {
       name: "td10",
       start: '15.10',
-      finish: '15.10',
+      finish: '16.10',
     },
   ];
 }
