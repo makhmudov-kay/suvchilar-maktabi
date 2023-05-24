@@ -17,18 +17,38 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TokenInterceptor } from './modules/admin/shared/auth.interceptor';
 import { HandleErrorInterceptor } from './shared/handle.error.interceptor';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { LanguageInterceptor } from './shared/interceptors/language.interceptor';
 import { NgxMaskModule } from 'ngx-mask';
+import { JwtModule } from '@auth0/angular-jwt';
+import { Constants } from './shared/constants';
 
+/**
+ *
+ * @param http
+ * @returns
+ */
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
+/**
+ *
+ * @returns
+ */
+export function tokenGetter() {
+  return localStorage.getItem('accessToken');
+}
+
+/**
+ *
+ */
 registerLocaleData(ru);
 
+/**
+ *
+ */
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
   imports: [
@@ -49,14 +69,15 @@ registerLocaleData(ru);
         deps: [HttpClient],
       },
     }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [Constants.DOMAINS.prod, Constants.DOMAINS.dev],
+      },
+    }),
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true,
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LanguageInterceptor,

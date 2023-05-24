@@ -15,6 +15,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { BaseResponse } from 'src/app/shared/base-response.interface';
+import { RegionsAndDistrictsService } from 'src/app/modules/main/components/application-form/services/regions-and-districts.service';
+import { Region } from 'src/app/modules/main/components/application-form/models/region-and-districts.response';
 
 @Component({
   selector: 'app-managers',
@@ -70,13 +72,21 @@ export class ManagersComponent implements OnInit {
 
   /**
    *
+   */
+  regions$!: Observable<Region[]>;
+
+  /**
+   *
    * @param $managers
+   * @param fb
    * @param cd
+   * @param $regions
    */
   constructor(
     private $managers: ManagersService,
     private fb: UntypedFormBuilder,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private $regions: RegionsAndDistrictsService
   ) {}
 
   /**
@@ -116,6 +126,7 @@ export class ManagersComponent implements OnInit {
       l_name: [editingData?.l_name, [Validators.required]],
       login: [editingData?.login, [Validators.required]],
       phone: [editingData?.phone, [Validators.required]],
+      region_id: [editingData?.region_id, [Validators.required]],
       password: [null, [Validators.required, Validators.minLength(6)]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
     });
@@ -141,7 +152,17 @@ export class ManagersComponent implements OnInit {
   /**
    *
    */
+  private getRegions() {
+    this.regions$ = this.$regions
+      .getRegionAndDistricts()
+      .pipe(map((result) => result.data));
+  }
+
+  /**
+   *
+   */
   ngOnInit() {
+    this.getRegions();
     this.getManagersList();
     this.initForm();
   }
@@ -171,10 +192,10 @@ export class ManagersComponent implements OnInit {
     );
   }
 
- /**
-  * 
-  * @param editingData 
-  */
+  /**
+   *
+   * @param editingData
+   */
   showModal(editingData?: Manager) {
     if (editingData) {
       this.modalTitle = 'edit';
@@ -195,7 +216,7 @@ export class ManagersComponent implements OnInit {
       return;
     }
 
-    const request = this.form.getRawValue();    
+    const request = this.form.getRawValue();
     delete request.checkPassword;
     this.loadingBtn = true;
 
@@ -205,7 +226,7 @@ export class ManagersComponent implements OnInit {
       });
       return;
     }
-    
+
     request.phone = Constants.PREFIX_PHONENUMBER + request.phone;
     this.$managers.addManager(request).subscribe((result) => {
       this.actionAfterResponseAddEditManager(result);
