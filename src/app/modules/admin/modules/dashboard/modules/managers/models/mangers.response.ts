@@ -5,4 +5,6 @@ export interface Manager {
   f_name: string;
   l_name: string;
   created_at: Date;
+  region_id: number;
+  region_name: string;
 }

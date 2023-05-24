@@ -14,6 +14,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { ErrorComponent } from 'src/app/shared/error/error.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { NgxMaskModule } from 'ngx-mask';
     NzIconModule,
     NzModalModule,
     NzFormModule,
+    NzSelectModule
   ],
   declarations: [ManagersComponent],
 })

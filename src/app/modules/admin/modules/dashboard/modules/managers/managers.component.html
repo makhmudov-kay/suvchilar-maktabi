@@ -26,7 +26,7 @@
   [nzData]="(data$ | async) ?? [] | search : searchText"
   [nzScroll]="{ y: '400px' }"
   [nzLoading]="tableLoading"
-  nzBordered 
+  nzBordered
 >
   <thead>
     <tr>
@@ -34,6 +34,7 @@
       <th>{{ "user" | translate }}</th>
       <th>{{ "phone" | translate }}</th>
       <th>{{ "login" | translate }}</th>
+      <th>{{ "region" | translate }}</th>
       <th nzWidth="180px">{{ "actions" | translate }}</th>
     </tr>
   </thead>
@@ -43,23 +44,34 @@
       <td>{{ data.f_name + " " + data.l_name }}</td>
       <td>{{ data.phone }}</td>
       <td>{{ data.login }}</td>
+      <td>{{ data.region_name }}</td>
       <td>
-          <button nzSize="large" (click)="deleteManager(data.id)" nz-button nzType="default">
-            <span
-              nz-icon
-              nzType="delete"
-              nzTheme="twotone"
-              [nzTwotoneColor]="'#52c41a'"
-            ></span>
-          </button>
-          <button nzSize="large" (click)="showModal(data)" nz-button nzType="default">
-            <span
-              nz-icon
-              nzType="edit"
-              nzTheme="twotone"
-              [nzTwotoneColor]="'#52c41a'"
-            ></span>
-          </button>
+        <button
+          nzSize="large"
+          (click)="deleteManager(data.id)"
+          nz-button
+          nzType="default"
+        >
+          <span
+            nz-icon
+            nzType="delete"
+            nzTheme="twotone"
+            [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
+        <button
+          nzSize="large"
+          (click)="showModal(data)"
+          nz-button
+          nzType="default"
+        >
+          <span
+            nz-icon
+            nzType="edit"
+            nzTheme="twotone"
+            [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
       </td>
     </tr>
   </tbody>
@@ -73,7 +85,7 @@
   (nzOnOk)="handleOk()"
 >
   <ng-container *nzModalContent>
-    <p class="error">{{errorMessage}}</p>
+    <p class="error">{{ errorMessage }}</p>
     <form
       nz-form
       nzLayout="vertical"
@@ -153,6 +165,23 @@
           <error [control]="control"></error>
         </ng-template>
       </nz-form-item>
+
+      <nz-form-item *ngIf="regions$ | async as regions">
+        <nz-form-label nzFor="login">{{ "region" | translate }}</nz-form-label>
+        <nz-form-control [nzErrorTip]="errorLogin">
+          <nz-select formControlName="region_id">
+            <nz-option
+              *ngFor="let region of regions"
+              [nzValue]="region.id"
+              [nzLabel]="region.name"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+        <ng-template #errorLogin let-control>
+          <error [control]="control"></error>
+        </ng-template>
+      </nz-form-item>
+
       <nz-form-item>
         <nz-form-label nzFor="password">{{
           "password" | translate
