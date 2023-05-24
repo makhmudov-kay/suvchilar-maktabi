@@ -33,7 +33,7 @@
   "yourID": "Sizning ID raqamingiz",
   "completeTheCourse": "Kurs yakunlangandan so'ng, shu yerda sertifikatingizni yuklab olishingiz mumkin",
   "understand": "Tushunarli",
-  "downloadTheSertificate": "Sertifikat yuklab olish",
+  "downloadTheSertificate": "Sertifikatni yuklab olish",
   "sertificateID": "Sertifikat raqami",
   "putSertificateID": "Sertifikat raqamini kiriting",
   "search": "Qidirish",
@@ -105,5 +105,8 @@
 
   "aboutUsText": " “Suvchilar maktabi” o‘quv kursi O‘zbekiston Respublikasi Prezidenti tashabbusi bilan Suv xo‘jaligi vazirligi, “Toshkent irrigatsiya va qishloq xo‘jaligini mexanizatsiyalash muhandislari instituti” milliy tadqiqot universiteti va “Аgrobank” АTB tomonidan tashkil etilgan bo‘lib, qishloq xo‘jaligi sohasida o‘z faoliyatini olib borayotgan fermer xo‘jaliklari rahbar va suvchilari hamda suv xo‘jaligi xodimlari bugungi kunda o‘z sohalarida qo‘llanilayotgan innovatsion texnologiyalar, sohada rivojlangan xorijiy mamlakatlar amaliyotiga joriy etilayotgan yangi bilim va ko‘nikmalarni egallagan holda , o‘z faoliyatlarini  takomillashtirib, suvdan samarali foydalanish orqali yuqori hosildorlikka erishishlari o‘quv kursining asosiy maqsadi hisoblanadi. O‘quv kursini ishtirokchilari Respublikamizda faoliyat olib borayotgan fermer xo‘jaliklari rahbar va suvchilari hamda suv xo‘jaligi xodimlari hisoblanadi. Mazkur o‘quv kursining o‘quv dasturlari xalqaro taʼlim standartlarini hisobga olgan holda tayyorlangan bo‘lib, o‘quv jarayoni ilg‘or pedagogik va axborot-kommunikatsiya texnologiyalaridan keng foydalangan holda tashkil etiladi. O‘quv ishlarini olib borish, maslahatlar berish uchun yuqori malakali xorijiy va mahalliy mutaxassislar shartnomalar asosida jalb etilgan. Nazariy va amaliy taʼlim berish tumanlar kesimida o‘quv kursi mashg‘ulotlari namunaviy o‘quv binolari va ochiq dala maydonlarida tashkil etiladi.",
 
-  "ourTargetText": "So‘nggi yillarda agrosanoat majmuasida yuqori hosil olish, suv va energiya resusrlaridan oqilona foydalanish hamda sug‘oriladigan yerlarning meliorativ holatini yaxshilash bugungi kun talabiga aylanib bormoqda. Ushbu loyiha – oliy taʼlim muassasalari hamda ilg‘or xorijiy mamlakatlar mutaxassislari bilan hamkorlikda zamonaviy sug‘orish usullari va texnologiyalaridan foydalanishda fermer-dehqonlarimiz va soha mutaxassislarini qisqa muddatli kurslarda o‘qitish orqali malakasini oshirish va zamonaviy bilimlar bilan tanishtirish maqsadida tashkil etilgan"
+  "ourTargetText": "So‘nggi yillarda agrosanoat majmuasida yuqori hosil olish, suv va energiya resusrlaridan oqilona foydalanish hamda sug‘oriladigan yerlarning meliorativ holatini yaxshilash bugungi kun talabiga aylanib bormoqda. Ushbu loyiha – oliy taʼlim muassasalari hamda ilg‘or xorijiy mamlakatlar mutaxassislari bilan hamkorlikda zamonaviy sug‘orish usullari va texnologiyalaridan foydalanishda fermer-dehqonlarimiz va soha mutaxassislarini qisqa muddatli kurslarda o‘qitish orqali malakasini oshirish va zamonaviy bilimlar bilan tanishtirish maqsadida tashkil etilgan",
+
+  "companyLocationRegion": "Fermer yoki dehqon xo'jaligi joylashgan viloyatingizni tanlang",
+  "companyLocationDistrict": "Fermer yoki dehqon xo'jaligi joylashgan tumaningizni tanlang"
 }
