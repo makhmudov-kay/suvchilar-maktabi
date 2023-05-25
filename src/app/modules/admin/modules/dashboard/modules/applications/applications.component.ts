@@ -293,7 +293,7 @@ export class ApplicationsComponent implements OnInit {
         region_name: el.region_name,
         district_name: el.district_name,
         device_type: el.device_type,
-        created_at: new Date(el.created_at).toLocaleDateString(),
+        created_at: new Date(el.created_at).toLocaleString(),
         status: this.detectStatus(el.status),
         certificate_id: el.certificate_id,
       };

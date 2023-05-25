@@ -7,6 +7,7 @@ import {
 import { CertificateService } from './services/certificate.service';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { map, of } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-get-sertificate',
@@ -25,14 +26,23 @@ export class GetSertificateComponent {
   certificate_id!: string;
 
   /**
+   */
+  form!: FormGroup
+
+  /**
    *
    * @param $certificate
    * @param cd
    */
   constructor(
     private $certificate: CertificateService,
-    private cd: ChangeDetectorRef
-  ) {}
+    private cd: ChangeDetectorRef,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      certificate_id: [null]
+    });
+  }
 
   /**
    *

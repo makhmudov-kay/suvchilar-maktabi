@@ -38,7 +38,7 @@ export class ApplicationFormComponent implements OnInit {
   /**
    *
    */
-  current = 0;
+  current = 2;
 
   /**
    *

@@ -342,16 +342,16 @@
           <div class="application__finish__block__img">
             <img src="./assets/images/user-id.svg" alt="user-id" />
           </div>
-          <h3 class="application__finish__block__title">
+          <h3 class="application__finish__block__title" [innerHTML]="'yourID' | translate: {id: certificate}">
             {{ "yourID" | translate }}
           </h3>
-          <span
+          <!-- <span
             nz-tooltip
             [nzTooltipTitle]="'copy' | translate"
             (click)="copyId(certificate)"
             class="application__finish__block__num"
             >{{ certificate }}</span
-          >
+          > -->
         </div>
         <div class="application__finish__block">
           <div class="application__finish__block__img">

@@ -124,6 +124,8 @@
       line-height: 25px;
       font-family: Agrofont-Regular;
       color: #000;
+      text-align: justify;
+      text-indent: 30px;
 
       @media (max-width: 1080px) {
         font-size: 18px;
@@ -156,11 +158,11 @@
 }
 
 :host ::ng-deep {
-  .ant-tabs-top > .ant-tabs-nav::before {
+  .ant-tabs-top>.ant-tabs-nav::before {
     border-bottom: none !important;
   }
 
-  .ant-tabs-tab + .ant-tabs-tab {
+  .ant-tabs-tab+.ant-tabs-tab {
     margin-left: 16px;
   }
 

@@ -11,7 +11,7 @@
 
 
   "studyPlanText": "- an'anaviy usulda respublikamizni barcha tumanlarida grafik asosida tashkil etiladi.<br><br><strong>Kimlar qatnashishi mumkin:</strong><br><br> Soha mutaxasislari va fermer xo'jaligi hamda tomorqa yer egalari rahbarlari. <br><br><strong>Qanday ro'yxatdan o'tish kerak:</strong><br><br> Ro'yxatdan o'tish online formatda ushbu sayt va telegram-bot orqali amalga oshiriladi. Kurs yakunida ishtirokchilar maxsus sertifikatga ega bo'ladilar",
-  "waterSchoolRegistrationTitle": "Suvchilik o'quv kursi ro'yxatga olish so'rovnomasi",
+  "waterSchoolRegistrationTitle": "Suvchilar maktabida ro‘yxatdan o‘tish",
   "phoneNumber": "Telefon raqamingiz",
   "yourName": "Ismingiz",
   "yourSurname": "Familiyangiz",
@@ -30,8 +30,8 @@
   "worker": "Ishchisi",
   "region": "Viloyat",
   "district": "Tuman",
-  "yourID": "Sizning ID raqamingiz",
-  "completeTheCourse": "Kurs yakunlangandan so'ng, shu yerda sertifikatingizni yuklab olishingiz mumkin",
+  "yourID": "Siz muvafaqqiyatli ro‘yxatdan o‘tdingiz.<br>Sizning <strong>ID raqamingiz {{id}}</strong>",
+  "completeTheCourse": "Kurs yakunlanganidan so‘ng, shu yerda sertifikatni yuklab olishingiz mumkin. Qo‘shimcha ma’lumot sms orqali yuboriladi.",
   "understand": "Tushunarli",
   "downloadTheSertificate": "Sertifikatni yuklab olish",
   "sertificateID": "Sertifikat raqami",
@@ -86,7 +86,7 @@
   "fullName": "FISH",
   "dateFormat": "kun.oy.yil",
   "mask.00.00.0000": "Sana noto'g'ri kiritilgan",
-  "namePlaceholder": "Azizov Aziz Aziziovich",
+  "namePlaceholder": "Azizov Aziz Azizovich",
   "start": "Boshlanishi",
   "finish": "Tugashi",
 
@@ -107,6 +107,6 @@
 
   "ourTargetText": "So‘nggi yillarda agrosanoat majmuasida yuqori hosil olish, suv va energiya resusrlaridan oqilona foydalanish hamda sug‘oriladigan yerlarning meliorativ holatini yaxshilash bugungi kun talabiga aylanib bormoqda. Ushbu loyiha – oliy taʼlim muassasalari hamda ilg‘or xorijiy mamlakatlar mutaxassislari bilan hamkorlikda zamonaviy sug‘orish usullari va texnologiyalaridan foydalanishda fermer-dehqonlarimiz va soha mutaxassislarini qisqa muddatli kurslarda o‘qitish orqali malakasini oshirish va zamonaviy bilimlar bilan tanishtirish maqsadida tashkil etilgan",
 
-  "companyLocationRegion": "Fermer yoki dehqon xo'jaligi joylashgan viloyatingizni tanlang",
-  "companyLocationDistrict": "Fermer yoki dehqon xo'jaligi joylashgan tumaningizni tanlang"
+  "companyLocationRegion": "Fermer yoki dehqon xo'jaligi joylashgan viloyatni tanlang",
+  "companyLocationDistrict": "Fermer yoki dehqon xo'jaligi joylashgan tumanni tanlang"
 }
