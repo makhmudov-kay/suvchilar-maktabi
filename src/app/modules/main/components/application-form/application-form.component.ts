@@ -204,8 +204,9 @@ export class ApplicationFormComponent implements OnInit {
     request.phone = Constants.PREFIX_PHONENUMBER + request.phone;
     this.phone = request.phone;
     request.gender = this.gender;  
-    request.region_id = request.region_id.id          
-    request.birthday = new Date(request.birthday)
+    request.region_id = request.region_id.id
+    const date = request.birthday.split('.')       
+    request.birthday = new Date(`${date[1]}.${date[0]}.${date[2]}`)
     
     this.isLoading = true;
     this.$application.sendFirstStep(request).subscribe((result) => {
