@@ -2,45 +2,49 @@
   <div class="container">
     <h3 class="contacts__title title">{{ "contactUs" | translate }}</h3>
     <div class="contacts__cards">
-      <div class="card">
+      <div class="card" (click)="phone.click()">
         <div class="card__img">
           <img src="./assets/images/call-contact.svg" alt="icon" />
         </div>
         <div class="card__info">
           <h5>{{ "phone" | translate }}</h5>
-          <p><a href="tel:1319">1319</a></p>
+          <p><a #phone href="tel:1319">1319</a></p>
         </div>
       </div>
-      <div class="card">
+      <div (click)="mail.click()" class="card">
         <div class="card__img">
           <img src="./assets/images/letter-contact.svg" alt="icon" />
         </div>
         <div class="card__info">
           <h5>E-mail</h5>
-          <p>suvchilarmaktabi@agrobank.uz</p>
+          <p>
+            <a #mail href="mailto:suvchilarmaktabi@agrobank.uz">
+              suvchilarmaktabi@agrobank.uz</a
+            >
+          </p>
         </div>
       </div>
-      <div class="card">
+      <div (click)="site.click()" class="card">
         <div class="card__img">
           <img src="./assets/images/network.svg" alt="icon" />
         </div>
         <div class="card__info">
           <h5>Agrobank</h5>
           <p>
-            <a target="_blank" href="https://agrobank.uz/uz/person"
+            <a #site target="_blank" href="https://agrobank.uz/uz/person"
               >www.agrobank.uz</a
             >
           </p>
         </div>
       </div>
-      <div class="card">
+      <div class="card" (click)="tg.click()">
         <div class="card__img">
           <img src="./assets/images/tg.svg" alt="icon" />
         </div>
         <div class="card__info">
           <h5>Telegram bot</h5>
           <p>
-            <a target="_blank" href="https://t.me/suvchilar_maktabi_bot">{{
+            <a #tg target="_blank" href="https://t.me/suvchilar_maktabi_bot">{{
               "tgBotText" | translate
             }}</a>
           </p>
