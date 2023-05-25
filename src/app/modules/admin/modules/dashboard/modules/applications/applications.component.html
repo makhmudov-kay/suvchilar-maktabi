@@ -76,7 +76,7 @@
       <td>{{ data.district_name }}</td>
       <td>{{ data.certificate_id }}</td>
       <td>{{ data.device_type === 'web' ? 'WEB': 'TG BOT' }}</td>
-      <td>{{ data.created_at | date : "dd.MM.YYYY" }}</td>
+      <td>{{ data.created_at | date : "dd.MM.YYYY HH:mm" }}</td>
       <td>{{ STATUS[data.status] | translate }}</td>
       <td nzRight>
         <button

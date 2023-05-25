@@ -10,7 +10,7 @@
             "sertificateID" | translate
           }}</span></nz-form-label
         >
-        <nz-form-control>
+        <nz-form-control [nzErrorTip]="errorPhone">
           <nz-input-group nzSize="large" [nzPrefix]="prefixTemplateUser">
             <input
               type="text"
@@ -22,6 +22,9 @@
             />
           </nz-input-group>
         </nz-form-control>
+        <ng-template #errorPhone let-control>
+          <error [control]="control"></error>
+        </ng-template>
       </nz-form-item>
       <button
         #searchBtn
