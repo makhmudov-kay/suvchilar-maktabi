@@ -38,7 +38,7 @@ export class ApplicationFormComponent implements OnInit {
   /**
    *
    */
-  current = 2;
+  current = 0;
 
   /**
    *
@@ -113,7 +113,7 @@ export class ApplicationFormComponent implements OnInit {
       ],
       birthday: [null, [Validators.required]],
       full_name: [null, [Validators.required]],
-      device_type: ['web'],
+      device_type: [null],
       region_id: [null, [Validators.required]],
       district_id: [null, [Validators.required]],
     });
@@ -125,8 +125,6 @@ export class ApplicationFormComponent implements OnInit {
   private initSecondForm() {
     this.formStepSecond = this.fb.group({
       farm_name: [null, [Validators.required]],
-      // region_id: [null, [Validators.required]],
-      // district_id: [null, [Validators.required]],
       farm_type: [null, [Validators.required]],
     });
   }
@@ -134,7 +132,7 @@ export class ApplicationFormComponent implements OnInit {
   /**
    *
    */
-  private getRegionsAndDistricts() {
+  getRegionsAndDistricts() {
     this.$regionsAndDistricts.getRegionAndDistricts().subscribe((result) => {
       this.region = result.data;
       this.cd.markForCheck();
@@ -203,11 +201,12 @@ export class ApplicationFormComponent implements OnInit {
     const request = this.formStepFirst.getRawValue();
     request.phone = Constants.PREFIX_PHONENUMBER + request.phone;
     this.phone = request.phone;
-    request.gender = this.gender;  
-    request.region_id = request.region_id.id
-    const date = request.birthday.split('.')       
-    request.birthday = new Date(`${date[1]}.${date[0]}.${date[2]}`)
-    
+    request.gender = this.gender;
+    request.region_id = request.region_id.id;
+    const date = request.birthday.split('.');
+    request.birthday = new Date(`${date[1]}.${date[0]}.${date[2]}`);
+    request.device_type = 'web';
+
     this.isLoading = true;
     this.$application.sendFirstStep(request).subscribe((result) => {
       if (result.success) {

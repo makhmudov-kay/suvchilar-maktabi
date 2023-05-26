@@ -32,7 +32,7 @@
           <span><img src="./assets/images/phone.svg" alt="phone" /></span
           ><a href="tel:1319">1319</a>
         </div>
-        <app-languages></app-languages>
+        <app-languages (changesLanguage)="changesLanguage()"></app-languages>
         <div class="header__burger">
           <button (click)="openDrawer()">
             <span nz-icon

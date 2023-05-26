@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { Constants } from '../constants';
@@ -17,6 +17,12 @@ export class LanguagesComponent {
    */
   @Input()
   drawerClass!: boolean;
+
+  /**
+   * 
+   */
+  @Output()
+  changesLanguage = new EventEmitter()
 
   /**
    *
@@ -42,5 +48,6 @@ export class LanguagesComponent {
     this.currentLanguage = selectedLanguage;
     localStorage.setItem(Constants.LANGUAGE, selectedLanguage);
     this.translate.use(selectedLanguage);
+    this.changesLanguage.emit()
   }
 }
