@@ -2,6 +2,8 @@ import { ViewportScroller } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
+  Output,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,6 +16,12 @@ import { Constants } from 'src/app/shared/constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  /**
+   * 
+   */
+  @Output()
+  languageChangeEvent = new EventEmitter();
+
   /**
    *
    */
@@ -30,11 +38,7 @@ export class HeaderComponent {
    *
    * @param translate
    */
-  constructor(
-    private router: Router,
-    private viewPort: ViewportScroller
-  ) {}
-
+  constructor(private router: Router, private viewPort: ViewportScroller) {}
 
   /**
    *
@@ -51,8 +55,8 @@ export class HeaderComponent {
   }
 
   /**
-   * 
-   * @param fragment 
+   *
+   * @param fragment
    */
   closeDrawerAndNavigate(fragment: string) {
     this.closeDrawer();
@@ -60,5 +64,12 @@ export class HeaderComponent {
       this.router.navigate([], { fragment });
       this.viewPort.scrollToAnchor(fragment);
     }, 500);
+  }
+
+  /**
+   * 
+   */
+  changesLanguage() {
+    this.languageChangeEvent.emit();
   }
 }
