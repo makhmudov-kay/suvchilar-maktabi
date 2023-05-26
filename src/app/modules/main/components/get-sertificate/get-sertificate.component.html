@@ -15,7 +15,8 @@
             <input
               type="text"
               id="number"
-              [(ngModel)]="certificate_id"
+              [ngModel]="certificate_id"
+              (ngModelChange)="changeInputCertificate($event)"
               nz-input
               [placeholder]="'putSertificateID' | translate"
               [ngModelOptions]="{ standalone: true }"
@@ -25,6 +26,8 @@
         <ng-template #errorPhone let-control>
           <error [control]="control"></error>
         </ng-template>
+
+        <span *ngIf="messageError" style="color: tomato">{{ "errorCertificate" | translate }}</span>
       </nz-form-item>
       <button
         #searchBtn

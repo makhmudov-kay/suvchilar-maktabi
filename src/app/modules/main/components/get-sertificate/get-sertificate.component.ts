@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { CertificateService } from './services/certificate.service';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { map, of } from 'rxjs';
+import { catchError, map, of } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -27,12 +27,18 @@ export class GetSertificateComponent {
 
   /**
    */
-  form!: FormGroup
+  form!: FormGroup;
+
+  /**
+   *
+   */
+  messageError = false;
 
   /**
    *
    * @param $certificate
    * @param cd
+   * @param fb
    */
   constructor(
     private $certificate: CertificateService,
@@ -40,8 +46,18 @@ export class GetSertificateComponent {
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
-      certificate_id: [null]
+      certificate_id: [null],
     });
+  }
+
+  /**
+   *
+   * @param certificateID
+   */
+  changeInputCertificate(certificateID: string) {
+    this.certificate_id = certificateID;
+    this.messageError = false;
+    this.cd.markForCheck();
   }
 
   /**
@@ -59,6 +75,12 @@ export class GetSertificateComponent {
           button.nzLoading = false;
           this.cd.markForCheck();
           return data;
+        }),
+        catchError((error) => {
+          button.nzLoading = false;
+          this.messageError = true;
+          this.cd.markForCheck();
+          return error;
         })
       );
     }
