@@ -109,5 +109,10 @@
 
   "companyLocationRegion": "Fermer yoki dehqon xo'jaligi joylashgan viloyatingizni tanlang",
   "companyLocationDistrict": "Fermer yoki dehqon xo'jaligi joylashgan tumaningizni tanlang",
-   "waterSchoolRegistrationTitle": "Suvchilar maktabida ro‘yxatdan o‘tish"
+  "waterSchoolRegistrationTitle": "Suvchilar maktabida ro‘yxatdan o‘tish",
+  "banner": "Баннер",
+  "sliders": "Слайдеры",
+  "title": "Заголовок",
+  "description": "Описание",
+  "image": "Изображение"
 }

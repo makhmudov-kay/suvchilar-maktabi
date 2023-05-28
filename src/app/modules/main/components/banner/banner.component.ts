@@ -2,7 +2,10 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  OnInit,
 } from '@angular/core';
+import { GetBannersListService } from './service/get-banners-list.service';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-banner',
@@ -10,7 +13,7 @@ import {
   styleUrls: ['./banner.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BannerComponent {
+export class BannerComponent implements OnInit {
   /**
    *
    */
@@ -22,10 +25,33 @@ export class BannerComponent {
   current = 0;
 
   /**
+   */
+  carousels$!: Observable<any[]>;
+
+  /**
    *
    * @param cd
    */
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(
+    private cd: ChangeDetectorRef,
+    private $banner: GetBannersListService
+  ) {}
+
+  /**
+   *
+   */
+  private getCarousel() {
+    this.carousels$ = this.$banner
+      .getBanners()
+      .pipe(map((result) => result.data));
+  }
+
+  /**
+   *
+   */
+  ngOnInit() {
+    this.getCarousel();
+  }
 
   /**
    *

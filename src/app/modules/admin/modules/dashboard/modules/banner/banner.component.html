@@ -1,0 +1,257 @@
+<div class="content-header">
+  <h4>{{ "sliders" | translate }} ({{ (data$ | async)?.length }})</h4>
+  <div class="content-header__right">
+    <button (click)="showModal()" nz-button nzType="primary">
+      {{ "add" | translate }}
+    </button>
+  </div>
+</div>
+
+<nz-table
+  class="table"
+  #basicTable
+  [nzData]="(data$ | async) ?? [] | search : searchText"
+  [nzScroll]="{ y: '400px' }"
+  [nzLoading]="tableLoading"
+  nzBordered
+>
+  <thead>
+    <tr>
+      <th rowspan="2" nzWidth="80px">ID</th>
+      <th colspan="3">{{ "title" | translate }}</th>
+      <th colspan="3">{{ "description" | translate }}</th>
+      <th rowspan="2">{{ "image" | translate }}</th>
+      <th rowspan="2">{{ "actions" | translate }}</th>
+    </tr>
+    <tr>
+      <th>Рус</th>
+      <th>Ўзб</th>
+      <th>O'zb</th>
+      <th>Рус</th>
+      <th>Ўзб</th>
+      <th>O'zb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.title.uz_latn }}</td>
+      <td>{{ data.title.uz_cyrl }}</td>
+      <td>{{ data.title.ru }}</td>
+      <td>{{ data.description.uz_latn }}</td>
+      <td>{{ data.description.uz_cyrl }}</td>
+      <td>{{ data.description.ru }}</td>
+      <td>
+        <img
+          nz-image
+          width="150px"
+          height="120px"
+          [nzSrc]="data.photo"
+          alt="image"
+        />
+      </td>
+      <td>
+        <button
+          nzSize="large"
+          (click)="deleteBanner(data.id)"
+          nz-button
+          nzType="default"
+        >
+          <span
+            nz-icon
+            nzType="delete"
+            nzTheme="twotone"
+            [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
+        <button
+          nzSize="large"
+          (click)="showModal(data)"
+          nz-button
+          nzType="default"
+        >
+          <span
+            nz-icon
+            nzType="edit"
+            nzTheme="twotone"
+            [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<!-- MODAL -->
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle | translate"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-container *nzModalContent>
+    <p class="error">{{ errorMessage }}</p>
+    <form
+      nz-form
+      nzLayout="vertical"
+      [formGroup]="form"
+      (ngSubmit)="handleOk()"
+    >
+      <div>
+        <h3 class="modal-title">{{ "title" | translate }}</h3>
+        <nz-form-item>
+          <nz-form-label nzFor="title-uz_cyrl">Ўзб</nz-form-label>
+          <nz-form-control [nzErrorTip]="errorTitleUzb">
+            <nz-input-group>
+              <input
+                id="title-uz_cyrl"
+                type="text"
+                nz-input
+                nzSize="large"
+                formControlName="title_uz_cyrl"
+              />
+            </nz-input-group>
+          </nz-form-control>
+          <ng-template #errorTitleUzb let-control>
+            <error [control]="control"></error>
+          </ng-template>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="title-uz_latn">O'zb</nz-form-label>
+          <nz-form-control [nzErrorTip]="errorTitleOzb">
+            <nz-input-group>
+              <input
+                id="title-uz_latn"
+                type="text"
+                nz-input
+                nzSize="large"
+                formControlName="title_uz_latn"
+              />
+            </nz-input-group>
+          </nz-form-control>
+          <ng-template #errorTitleOzb let-control>
+            <error [control]="control"></error>
+          </ng-template>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="title-ru">Рус</nz-form-label>
+          <nz-form-control [nzErrorTip]="errorTitleRu">
+            <nz-input-group>
+              <input
+                id="title-ru"
+                type="text"
+                nz-input
+                nzSize="large"
+                formControlName="title_ru"
+              />
+            </nz-input-group>
+          </nz-form-control>
+          <ng-template #errorTitleRu let-control>
+            <error [control]="control"></error>
+          </ng-template>
+        </nz-form-item>
+      </div>
+
+      <div>
+        <h3 class="modal-title">{{ "description" | translate }}</h3>
+        <nz-form-item>
+          <nz-form-label nzFor="uz_cyrl">Ўзб</nz-form-label>
+          <nz-form-control [nzErrorTip]="errorDescUzb">
+            <nz-input-group>
+              <textarea
+                rows="4"
+                nz-input
+                formControlName="description_uz_cyrl"
+              ></textarea>
+            </nz-input-group>
+          </nz-form-control>
+          <ng-template #errorDescUzb let-control>
+            <error [control]="control"></error>
+          </ng-template>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="uz_latn">O'zb</nz-form-label>
+          <nz-form-control [nzErrorTip]="errorDescOzb">
+            <nz-input-group>
+              <textarea
+                rows="4"
+                nz-input
+                formControlName="description_uz_latn"
+              ></textarea>
+            </nz-input-group>
+          </nz-form-control>
+          <ng-template #errorDescOzb let-control>
+            <error [control]="control"></error>
+          </ng-template>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-label nzFor="ru">Рус</nz-form-label>
+          <nz-form-control [nzErrorTip]="errorDescRu">
+            <nz-input-group>
+              <textarea
+                rows="4"
+                nz-input
+                formControlName="description_ru"
+              ></textarea>
+            </nz-input-group>
+          </nz-form-control>
+          <ng-template #errorDescRu let-control>
+            <error [control]="control"></error>
+          </ng-template>
+        </nz-form-item>
+      </div>
+
+      <div class="upload">
+        <h3 class="modal-title">{{ "image" | translate }}</h3>
+        <input
+          type="file"
+          [hidden]="true"
+          #input
+          accept="image/png, image/jpeg"
+          (change)="handleFileInput($event)"
+        />
+        <ng-container *ngIf="fileSrc || fileSrcFromBackend">
+          <div class="upload__view">
+            <img [src]="fileSrc || fileSrcFromBackend" alt="image" />
+            <div class="upload__view__layout">
+              <button
+                nz-button
+                nzGhost
+                nzType="default"
+                (click)="deleteNotUploadedImage()"
+              >
+                <span nz-icon nzType="delete" nzTheme="outline"></span>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+        <button
+          *ngIf="!(fileSrc || fileSrcFromBackend)"
+          (click)="input.click()"
+          nz-button
+          type="button"
+          class="upload__btn"
+        >
+          <span nz-icon nzType="plus" nzTheme="outline"></span>
+        </button>
+      </div>
+    </form>
+  </ng-container>
+  <div *nzModalFooter>
+    <button
+      [nzLoading]="loadingBtn"
+      nz-button
+      nzType="default"
+      (click)="handleCancel()"
+    >
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      [nzLoading]="loadingBtn"
+      nz-button
+      nzType="primary"
+      (click)="handleOk()"
+    >
+      {{ "save" | translate }}
+    </button>
+  </div>
+</nz-modal>

@@ -1,6 +1,7 @@
 import { StatisticModule } from './modules/statistic/statistic.module';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { AuthGuard } from '../../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
           import('./modules/statistic/statistic.module').then(
             (m) => m.StatisticModule
           ),
+        canActivate: [AuthGuard],
       },
       {
         path: 'applications',
@@ -21,6 +23,7 @@ const routes: Routes = [
           import('./modules/applications/applications.module').then(
             (m) => m.ApplicationsModule
           ),
+        canActivate: [AuthGuard],
       },
       {
         path: 'managers',
@@ -28,6 +31,19 @@ const routes: Routes = [
           import('./modules/managers/managers.module').then(
             (m) => m.ManagersModule
           ),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'banner',
+        loadChildren: () =>
+          import('./modules/banner/banner.module').then((m) => m.BannerModule),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'about',
+        loadChildren: () =>
+          import('./modules/about/about.module').then((m) => m.AboutModule),
+        canActivate: [AuthGuard],
       },
     ],
   },

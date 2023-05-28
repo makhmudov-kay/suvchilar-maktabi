@@ -201,6 +201,8 @@ export class ManagersComponent implements OnInit {
       this.modalTitle = 'edit';
       this.id = editingData.id;
       this.initForm(editingData);
+    } else {
+      this.modalTitle = 'add';
     }
     this.isVisible = true;
     this.cd.markForCheck();
@@ -212,6 +214,8 @@ export class ManagersComponent implements OnInit {
    */
   handleOk() {
     if (this.form.invalid) {
+      console.log(this.form.value);
+      
       this.markAllAsDirty(this.form);
       return;
     }
