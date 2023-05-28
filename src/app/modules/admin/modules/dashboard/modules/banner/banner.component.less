@@ -1,0 +1,51 @@
+.content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    &__right {
+        display: flex;
+        gap: 15px;
+    }
+}
+
+.table {
+    min-height: 445px;
+}
+
+.error {
+    color: tomato;
+}
+
+.modal-title {
+    font-size: 18px;
+    line-height: 22px;
+    font-family: Agrofont-Medium;
+}
+
+.upload {
+    &__view {
+        width: 250px;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &__layout {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

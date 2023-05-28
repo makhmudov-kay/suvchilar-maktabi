@@ -108,5 +108,10 @@
 
   "companyLocationRegion": "Fermer yoki dehqon xo'jaligi joylashgan viloyatni tanlang",
   "companyLocationDistrict": "Fermer yoki dehqon xo'jaligi joylashgan tumanni tanlang",
-  "errorCertificate": "ID raqam noto'g'ri yoki sertifikat tasdiqlanmagan. Murojaat uchun: 1319"
+  "errorCertificate": "ID raqam noto'g'ri yoki sertifikat tasdiqlanmagan. Murojaat uchun: 1319",
+  "banner": "Banner",
+  "sliders": "Slayderlar",
+  "title": "Sarlavha",
+  "description": "Tavsif",
+  "image": "Rasm"
 }

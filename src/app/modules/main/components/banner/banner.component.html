@@ -5,12 +5,15 @@
     [nzDots]="false"
     nzAutoPlay
   >
-    <div nz-carousel-content *ngFor="let index of array">
-      <!-- <div class="banner-content">
+    <!-- <div nz-carousel-content *ngFor="let carousel of carousels$ | async">
+      <div
+        class="banner-content background"
+        [ngStyle]="{ background:  'linear-gradient(to left,#ffffff1a, #000000a6),url(' + carousel.photo + ')'}"
+      >
         <div class="banner-content__block banner-content__left">
-          <h2>{{ "waterSchoolStart" | translate }}</h2>
+          <h2 class="banner-text">{{ carousel.title }}</h2>
           <p>
-            {{ "waterSchoolText" | translate }}
+            {{ carousel.description }}
           </p>
           <button nz-button nzType="primary" nzSize="large">
             <a href="#form" class="banner__btn">
@@ -21,16 +24,19 @@
             </a>
           </button>
         </div>
-        <div class="banner-content__block banner-content__right">
-          <div class="banner-content__right__img">
-            <img src="./assets/images/banner-img.png" alt="banner img" />
-          </div>
-        </div>
-      </div> -->
-      <div class="banner-content background">
+      </div>
+    </div> -->
+
+    <div nz-carousel-content *ngFor="let index of array">
+      <div
+        class="banner-content background"
+        [ngStyle]="{
+          background:
+            'linear-gradient(to left,#ffffff1a, #000000a6),url(../../../../../../../assets/images/banner-new.jpg)'
+        }"
+      >
         <div class="banner-content__block banner-content__left">
-          <h2 class="banner-text">{{'bannerTitle' | translate}}</h2>
-          <!-- <h2>{{ "waterSchoolStart" | translate }}</h2> -->
+          <h2 class="banner-text">{{ "bannerTitle" | translate }}</h2>
           <p>
             {{ "bannerText" | translate }}
           </p>
@@ -43,11 +49,6 @@
             </a>
           </button>
         </div>
-        <!-- <div class="banner-content__block banner-content__right">
-          <div class="banner-content__right__img">
-            <img src="./assets/images/banner-img.png" alt="banner img" />
-          </div>
-        </div> -->
       </div>
     </div>
   </nz-carousel>
