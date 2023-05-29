@@ -8,17 +8,17 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'about-us', pathMatch: 'full' },
       {
-        path: 'about-us',
+        path: 'image',
         loadChildren: () =>
           import('./components/about-us/about-us.module').then(
             (m) => m.AboutUsModule
           ),
       },
       {
-        path: 'our-target',
+        path: 'about-us',
         loadChildren: () =>
-          import('./components/our-target/our-target.module').then(
-            (m) => m.OurTargetModule
+          import('./components/about-us-content/about-us-content.module').then(
+            (m) => m.AboutUsContentModule
           ),
       },
       {

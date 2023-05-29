@@ -1,0 +1,198 @@
+<div class="content-header">
+  <h4>{{ "managers" | translate }} ({{ (data$ | async)?.length }})</h4>
+  <div class="content-header__right">
+    <button (click)="showModal()" nz-button nzType="primary">
+      {{ "add" | translate }}
+    </button>
+  </div>
+</div>
+
+<nz-table
+  class="table"
+  #basicTable
+  [nzData]="(data$ | async) ?? []"
+  [nzScroll]="{ y: '400px' }"
+  [nzLoading]="tableLoading"
+  nzBordered
+>
+  <thead>
+    <tr>
+      <th nzWidth="100px">ID</th>
+      <th>{{ "user" | translate }}</th>
+      <th>{{ "phone" | translate }}</th>
+      <th>{{ "login" | translate }}</th>
+      <!-- <th>{{ "region" | translate }}</th> -->
+      <th nzWidth="180px">{{ "actions" | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.id }}</td>
+      <td>{{ data.f_name + " " + data.l_name }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data.login }}</td>
+      <!-- <td>
+        <nz-tag *ngFor="let name of data.region_id">{{ name }}</nz-tag>
+      </td> -->
+      <td>
+        <button
+          nzSize="large"
+          (click)="deleteManager(data.id)"
+          nz-button
+          nzType="default"
+        >
+          <span
+            nz-icon
+            nzType="delete"
+            nzTheme="twotone"
+            [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
+        <button
+          nzSize="large"
+          (click)="showModal(data)"
+          nz-button
+          nzType="default"
+        >
+          <span
+            nz-icon
+            nzType="edit"
+            nzTheme="twotone"
+            [nzTwotoneColor]="'#52c41a'"
+          ></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
+
+<!-- MODAL -->
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle | translate"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <p class="error">{{ errorMessage }}</p>
+    <form
+      nz-form
+      nzLayout="vertical"
+      [formGroup]="form"
+      class="login-form"
+      (ngSubmit)="handleOk()"
+    >
+      <nz-form-item>
+        <nz-form-label nzFor="phone">{{ "phone" | translate }}</nz-form-label>
+        <nz-form-control [nzErrorTip]="errorPhone">
+          <nz-input-group>
+            <input
+              id="phone"
+              type="text"
+              nz-input
+              nzSize="large"
+              formControlName="phone"
+              prefix="+998"
+              mask="(00) 000 00 00"
+            />
+          </nz-input-group>
+        </nz-form-control>
+        <ng-template #errorPhone let-control>
+          <error [control]="control"></error>
+        </ng-template>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="f_name">{{ "name" | translate }}</nz-form-label>
+        <nz-form-control [nzErrorTip]="errorFirstName">
+          <nz-input-group>
+            <input
+              id="f_name"
+              type="text"
+              nz-input
+              nzSize="large"
+              formControlName="f_name"
+            />
+          </nz-input-group>
+        </nz-form-control>
+        <ng-template #errorFirstName let-control>
+          <error [control]="control"></error>
+        </ng-template>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="l_name">{{
+          "lastName" | translate
+        }}</nz-form-label>
+        <nz-form-control [nzErrorTip]="errorLastName">
+          <nz-input-group>
+            <input
+              id="l_name"
+              type="text"
+              nz-input
+              nzSize="large"
+              formControlName="l_name"
+            />
+          </nz-input-group>
+        </nz-form-control>
+        <ng-template #errorLastName let-control>
+          <error [control]="control"></error>
+        </ng-template>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="login">{{ "login" | translate }}</nz-form-label>
+        <nz-form-control [nzErrorTip]="errorLogin">
+          <nz-input-group>
+            <input
+              id="login"
+              type="text"
+              nz-input
+              nzSize="large"
+              formControlName="login"
+            />
+          </nz-input-group>
+        </nz-form-control>
+        <ng-template #errorLogin let-control>
+          <error [control]="control"></error>
+        </ng-template>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzFor="checkPassword">{{
+          "confirmPassword" | translate
+        }}</nz-form-label>
+        <nz-form-control [nzErrorTip]="errorTpl">
+          <input
+            nz-input
+            type="password"
+            formControlName="checkPassword"
+            id="checkPassword"
+          />
+          <ng-template #errorTpl let-control>
+            <ng-container *ngIf="control.hasError('required')">
+              <error [control]="control"></error
+            ></ng-container>
+            <ng-container *ngIf="control.hasError('confirm')">
+              {{ "confirmPasswordError" | translate }}
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+  <div *nzModalFooter>
+    <button
+      [nzLoading]="loadingBtn"
+      nz-button
+      nzType="default"
+      (click)="handleCancel()"
+    >
+      {{ "cancel" | translate }}
+    </button>
+    <button
+      [nzLoading]="loadingBtn"
+      nz-button
+      nzType="primary"
+      (click)="handleOk()"
+    >
+      {{ "save" | translate }}
+    </button>
+  </div>
+</nz-modal>

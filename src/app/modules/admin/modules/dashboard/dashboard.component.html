@@ -27,15 +27,17 @@
         <span nz-icon nzType="insert-row-above" nzTheme="outline"></span>
         <span>{{ "banner" | translate }}</span>
       </li>
-      <!-- <li nz-menu-item routerLink="aboutUs" nzMatchRouter *ngIf="admin">
-        <span nz-icon nzType="team" nzTheme="outline"></span>
-        <span>{{ "aboutUs" | translate }}</span>
-      </li> -->
       <li nz-submenu [nzTitle]="'aboutUs' | translate" nzIcon="team">
         <ul>
-          <li nz-menu-item routerLink="about/about-us" nzMatchRouter>{{'aboutUs' | translate}}</li>
-          <li nz-menu-item routerLink="about/our-target" nzMatchRouter>{{'ourTarget' | translate}}</li>
-          <li nz-menu-item routerLink="about/study-plan" nzMatchRouter>{{'studyPlan' | translate}}</li>
+          <li nz-menu-item routerLink="about/image" nzMatchRouter>
+            {{ "image" | translate }}
+          </li>
+          <li nz-menu-item routerLink="about/about-us" nzMatchRouter>
+            {{ "aboutUs" | translate }}
+          </li>
+          <li nz-menu-item routerLink="about/study-plan" nzMatchRouter>
+            {{ "studyPlan" | translate }}
+          </li>
         </ul>
       </li>
     </ul>
