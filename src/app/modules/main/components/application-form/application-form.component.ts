@@ -14,7 +14,7 @@ import { District, Region } from './models/region-and-districts.response';
 import { RegionsAndDistrictsService } from './services/regions-and-districts.service';
 import { CheckPhoneService } from './services/check-phone.service';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
-import { Constants } from 'src/app/shared/constants';
+import { Constants } from 'projects/ngx-ou-grid/src/lib/utilits/constants';
 
 export type MyValidationErrors = Record<string, NzSafeAny>;
 

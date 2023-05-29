@@ -6,16 +6,12 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import {
-  FormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { BannerService } from './services/banner.service';
 import { Observable, map } from 'rxjs';
 import { BannerRequest } from './models/banner.request';
 import { BannerResponse } from './models/banner.response';
-import { BaseResponse } from 'src/app/shared/base-response.interface';
+import { BaseResponse } from 'ngx-ou-grid';
 
 @Component({
   selector: 'app-banner',
@@ -184,7 +180,7 @@ export class BannerComponent implements OnInit {
    */
   handleCancel() {
     this.isVisible = false;
-    this.form.reset()
+    this.form.reset();
     this.cd.markForCheck();
   }
 
@@ -208,11 +204,11 @@ export class BannerComponent implements OnInit {
         uz_cyrl: form.description_uz_cyrl,
         uz_latn: form.description_uz_latn,
         ru: form.description_ru,
-      }
+      },
     };
 
     if (this.form.controls['photo'].value) {
-      request.photo = this.form.controls['photo'].value
+      request.photo = this.form.controls['photo'].value;
     }
 
     this.loadingBtn = true;

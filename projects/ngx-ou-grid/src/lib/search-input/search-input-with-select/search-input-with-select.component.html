@@ -1,0 +1,27 @@
+<nz-input-group nzCompact>
+  <nz-select
+    name="searchBy"
+    [ngModel]="searchBy"
+    (ngModelChange)="searchByChange.emit($event)"
+    [nzPlaceHolder]="'searchBy' | translate"
+    style="width: 140px"
+  >
+    <nz-option
+      *ngFor="let selectOption of selectList"
+      [nzValue]="selectOption.value"
+      [nzLabel]="selectOption.key | translate"
+    ></nz-option>
+  </nz-select>
+
+  <az-search-input
+    [width]="'230px'"
+    [showSearchIcon]="false"
+    [searchText]="searchText"
+    (searchTextChange)="searchTextChange.emit($event)"
+    (keyupEnter)="search.emit($event)"
+  ></az-search-input>
+
+  <button (click)="search.emit(searchText)" nz-button nzType="primary">
+    <i nz-icon nzType="search"></i> {{ "search" | translate }}
+  </button>
+</nz-input-group>

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Constants } from 'src/app/shared/constants';
+import { Constants } from 'projects/ngx-ou-grid/src/lib/utilits/constants';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +17,7 @@ import { Constants } from 'src/app/shared/constants';
 })
 export class HeaderComponent {
   /**
-   * 
+   *
    */
   @Output()
   languageChangeEvent = new EventEmitter();
@@ -67,7 +67,7 @@ export class HeaderComponent {
   }
 
   /**
-   * 
+   *
    */
   changesLanguage() {
     this.languageChangeEvent.emit();

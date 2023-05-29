@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Application } from '../models/application.response';
-import { BaseService } from 'src/app/shared/base.service';
+import { BaseService } from 'ngx-ou-grid';
 
 @Injectable({
   providedIn: 'root',
@@ -29,11 +29,11 @@ export class ApplicationsService extends BaseService {
   }
 
   /**
-   * 
-   * @param id 
-   * @returns 
+   *
+   * @param id
+   * @returns
    */
   deleteApplication(id: number) {
-    return this.delete(`${this.url}/${id}`)
+    return this.delete(`${this.url}/${id}`);
   }
 }

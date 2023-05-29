@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from 'src/app/shared/base.service';
+import { BaseService } from 'ngx-ou-grid';
 
 @Injectable({
   providedIn: 'root',

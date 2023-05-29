@@ -13,7 +13,7 @@ import { ApplicationsService } from './services/applications.service';
 import { Application } from './models/application.response';
 import { RegionsAndDistrictsService } from 'src/app/modules/main/components/application-form/services/regions-and-districts.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { STATUS } from 'src/app/shared/constants';
+import { STATUS } from 'projects/ngx-ou-grid/src/lib/utilits/constants';
 import { CertificateService } from 'src/app/modules/main/components/get-sertificate/services/certificate.service';
 import { map } from 'rxjs';
 import { downloadFile } from 'src/app/modules/main/components/get-sertificate/get-sertificate.component';

@@ -5,8 +5,8 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { Observable, map, of } from 'rxjs';
-import { BaseService } from 'src/app/shared/base.service';
-import { Constants } from 'src/app/shared/constants';
+import { Constants } from 'projects/ngx-ou-grid/src/lib/utilits/constants';
+import { BaseService } from 'ngx-ou-grid';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +32,7 @@ export class CheckPhoneService extends BaseService {
       const phone = Constants.PREFIX_PHONENUMBER + control.value;
 
       return this.checkPhone(phone).pipe(
-        map((result) => (result.success ? null : {phoneValidation: true}))
+        map((result) => (result.success ? null : { phoneValidation: true }))
       );
     };
   }

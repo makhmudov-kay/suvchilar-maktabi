@@ -1,0 +1,129 @@
+<nz-table
+  #table
+  [nzData]="data"
+  nzShowPagination
+  nzShowSizeChanger
+  nzSize="small"
+  nzBordered
+  [nzWidthConfig]="nzWidthConfig"
+>
+  <thead>
+    <tr *ngFor="let row of theadRows; let isFirst = first">
+      <ng-container *ngFor="let column of row">
+        <ng-container *ngIf="column.filter; else justHeader">
+          <th
+            [colspan]="column.colspan"
+            [rowspan]="column.rowspan"
+            [nzAlign]="column.nzAlignHeader"
+            [nzLeft]="column.nzLeft"
+            [nzRight]="column.nzRight"
+          >
+            <nz-select
+              [nzAllowClear]="true"
+              [nzPlaceHolder]="'select' | translate"
+              [(ngModel)]="column.filter.value"
+              (ngModelChange)="filterChanged.emit()"
+              class="w-100"
+            >
+              <nz-option
+                *ngFor="let option of column.filter.data$ | async"
+                [nzValue]="option.value"
+                [nzLabel]="option.key | translate"
+              ></nz-option>
+            </nz-select>
+          </th>
+        </ng-container>
+        <ng-template #justHeader>
+          <th
+            [colspan]="column.colspan"
+            [rowspan]="column.rowspan"
+            [nzAlign]="column.nzAlignHeader"
+            [nzLeft]="column.nzLeft"
+            [nzRight]="column.nzRight"
+            [nzShowSort]="column.sortable"
+            [nzSortFn]="column.field | azSort : column.sortByLocalCompare"
+          >
+            {{ column.header | translate }}
+          </th>
+        </ng-template>
+      </ng-container>
+      <!-- FOR ACTIONS -->
+      <th
+        nzRight
+        *ngIf="isFirst && showActions"
+        [rowspan]="theadRows.length"
+      ></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of table.data">
+      <ng-container *ngFor="let column of columns">
+        <td
+          *ngIf="!column.justHeader"
+          [nzAlign]="column.nzAlignBody"
+          [nzLeft]="column.nzLeft"
+          [nzRight]="column.nzRight"
+        >
+          <ng-container [ngSwitch]="column.template">
+            <ng-container *ngSwitchCase="'custom'">
+              <ng-container
+                [ngTemplateOutlet]="columnTemplate"
+                [ngTemplateOutletContext]="{
+                  $implicit: column,
+                  data: this.data
+                }"
+              >
+              </ng-container>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+              <ng-container
+                [ngTemplateOutlet]="valueTemplate"
+                [ngTemplateOutletContext]="{
+                  $implicit: column.field | getDeepValue : data,
+                  column
+                }"
+              ></ng-container>
+
+              <ng-template #valueTemplate let-value let-column="column">
+                <ng-container [ngSwitch]="column.template">
+                  <ng-container *ngSwitchCase="'ellipsis'">
+                    <p
+                      nz-typography
+                      nzEllipsis
+                      nzExpandable
+                      [nzEllipsisRows]="3"
+                    >
+                      {{ value }}
+                    </p></ng-container
+                  >
+                  <ng-container *ngSwitchCase="'image'">
+                    <img [src]="value | noImage" class="w-100" />
+                  </ng-container>
+                  <ng-container *ngSwitchDefault> {{ value }}</ng-container>
+                </ng-container>
+              </ng-template>
+            </ng-container>
+          </ng-container>
+        </td>
+      </ng-container>
+
+      <td nzRight nzAlign="center" *ngIf="showActions">
+        <nz-button-group>
+          <az-delete-btn-popconfirm
+            (onConfirm)="delete(data.id)"
+          ></az-delete-btn-popconfirm>
+          <button (click)="addEdit(data)" nz-button nzType="default">
+            <span>
+              <i
+                nz-icon
+                nzType="edit"
+                nzTheme="twotone"
+                [nzTwotoneColor]="'#52c41a'"
+              ></i>
+            </span>
+          </button>
+        </nz-button-group>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

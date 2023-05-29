@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Constants } from './shared/constants';
+import { Constants } from '../../projects/ngx-ou-grid/src/lib/utilits/constants';
 
 @Component({
   selector: 'app-root',
