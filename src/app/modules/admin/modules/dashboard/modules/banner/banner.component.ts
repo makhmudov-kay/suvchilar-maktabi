@@ -67,9 +67,6 @@ export class BannerComponent implements OnInit {
   /**
    */
   @ViewChild('input')
-
-  /**
-   */
   input!: ElementRef;
 
   /**

@@ -1,3 +1,87 @@
-<p>
-  about-us works!
-</p>
+<div class="about-card" *ngIf="data$ | async as data">
+  <div class="card" *ngFor="let card of data">
+    <nz-card
+      style="width: 300px"
+      [nzCover]="coverTemplate"
+      [nzActions]="[actionSetting, actionEdit]"
+    >
+      <nz-card-meta
+        [nzTitle]="'aboutUs' | translate"
+        [nzDescription]="'descriptionAboutUs' | translate"
+      ></nz-card-meta>
+    </nz-card>
+
+    <ng-template #coverTemplate>
+      <img alt="example" [src]="card.photo" />
+    </ng-template>
+    <ng-template #actionSetting>
+      <button
+        nz-button
+        nzBlock
+        nzType="default"
+        nzDanger
+        (click)="deleteImage(card.id)"
+      >
+        <span nz-icon nzType="delete"></span>
+      </button>
+    </ng-template>
+    <ng-template #actionEdit>
+      <button nz-button nzBlock nzType="default" (click)="showModal(data)">
+        <span nz-icon nzType="edit"></span>
+      </button>
+    </ng-template>
+    <ng-template #actionEllipsis>
+      <span nz-icon nzType="ellipsis"></span>
+    </ng-template>
+  </div>
+  <div class="add" *ngIf="data && data.length < 1">
+    <nz-card style="width: 300px; text-align: center">
+      <button nz-button nzType="primary" (click)="showModal()">
+        {{ "setImageToAbout" | translate }}
+      </button>
+    </nz-card>
+  </div>
+</div>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="The first Modal"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <ng-container *nzModalContent>
+    <div class="upload">
+      <h3 class="modal-title">{{ "image" | translate }}</h3>
+      <input
+        type="file"
+        [hidden]="true"
+        #input
+        accept="image/png, image/jpeg"
+        (change)="handleFileInput($event)"
+      />
+      <ng-container *ngIf="fileSrc || fileSrcFromBackend">
+        <div class="upload__view">
+          <img [src]="fileSrc || fileSrcFromBackend" alt="image" />
+          <div class="upload__view__layout">
+            <button
+              nz-button
+              nzType="primary"
+              (click)="deleteNotUploadedImage()"
+            >
+              <span nz-icon nzType="delete" nzTheme="outline"></span>
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <button
+        *ngIf="!(fileSrc || fileSrcFromBackend)"
+        (click)="input.click()"
+        nz-button
+        type="button"
+        class="upload__btn"
+      >
+        <span nz-icon nzType="plus" nzTheme="outline"></span>
+      </button>
+    </div>
+  </ng-container>
+</nz-modal>

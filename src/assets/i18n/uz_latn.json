@@ -117,5 +117,7 @@
   "sliders": "Slayderlar",
   "title": "Sarlavha",
   "description": "Tavsif",
-  "image": "Rasm"
+  "image": "Rasm",
+  "setImageToAbout": "Rasmni o'rnatish",
+  "descriptionAboutUs": "Ushbu rasm biz haqimizda blokdagi asosiy sahifada bo'ladi"
 }
