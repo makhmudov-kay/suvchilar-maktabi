@@ -41,6 +41,7 @@
       <th nzWidth="150px">{{ "company" | translate }}</th>
       <th nzWidth="150px">{{ "phone" | translate }}</th>
       <th nzWidth="150px">{{ "companySphere" | translate }}</th>
+      <th nzWidth="150px">{{ "position" | translate }}</th>
       <th nzWidth="150px">{{ "region" | translate }}</th>
       <th nzWidth="150px">{{ "district" | translate }}</th>
       <th nzWidth="150px">{{ "sertificate" | translate }}</th>
@@ -69,6 +70,24 @@
             {{ "TYPE_VEGETABLE_AND_WHEAT" | translate }}
           </div>
           <div *ngSwitchCase="5">{{ "TYPE_ANOTHER" | translate }}</div>
+          <div *ngSwitchCase="6">{{ "TYPE_ANOTHER" | translate }}</div>
+          <div *ngSwitchDefault></div>
+        </div>
+      </td>
+      <td>
+        <div [ngSwitch]="data.position">
+          <div *ngSwitchCase="1">{{ "manager" | translate }}</div>
+          <div *ngSwitchCase="2">
+            {{ "worker" | translate }}
+          </div>
+          <div *ngSwitchCase="3">
+            {{ "waterman" | translate }}
+          </div>
+          <div *ngSwitchCase="4">
+            {{ "irrigator" | translate }}
+          </div>
+          <div *ngSwitchCase="5">{{ "bank_employee" | translate }}</div>
+          <div *ngSwitchCase="6">{{ "TYPE_ANOTHER" | translate }}</div>
           <div *ngSwitchDefault></div>
         </div>
       </td>

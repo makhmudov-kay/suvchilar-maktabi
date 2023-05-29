@@ -12,4 +12,5 @@ export interface Application {
   district_name: string;
   created_at: Date;
   device_type: string;
+  position: number;
 }

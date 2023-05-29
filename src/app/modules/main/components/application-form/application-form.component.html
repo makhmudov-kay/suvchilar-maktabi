@@ -275,6 +275,24 @@
                 <span class="radio__checker"><span></span></span>
                 <span class="radio__text">{{ "counter" | translate }}</span>
               </label> -->
+
+              <!-- 
+                public static readonly POSITION_WATERMAN = 3;
+                public static readonly POSITION_IRRIGATOR = 4;
+                public static readonly POSITION_BANK_EMPLOYEE = 5;
+                public static readonly POSITION_OTHER = 6;
+               -->
+              <label class="radio radio_p">
+                <input
+                  type="radio"
+                  name="position"
+                  [(ngModel)]="position"
+                  [value]="2"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <span class="radio__checker"><span></span></span>
+                <span class="radio__text">{{ "worker" | translate }}</span>
+              </label>
               <label class="radio radio_p">
                 <input
                   type="radio"
@@ -284,7 +302,44 @@
                   [ngModelOptions]="{ standalone: true }"
                 />
                 <span class="radio__checker"><span></span></span>
-                <span class="radio__text">{{ "worker" | translate }}</span>
+                <span class="radio__text">{{ "waterman" | translate }}</span>
+              </label>
+              <label class="radio radio_p">
+                <input
+                  type="radio"
+                  name="position"
+                  [(ngModel)]="position"
+                  [value]="4"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <span class="radio__checker"><span></span></span>
+                <span class="radio__text">{{ "irrigator" | translate }}</span>
+              </label>
+              <label class="radio radio_p">
+                <input
+                  type="radio"
+                  name="position"
+                  [(ngModel)]="position"
+                  [value]="5"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <span class="radio__checker"><span></span></span>
+                <span class="radio__text">{{
+                  "bank_employee" | translate
+                }}</span>
+              </label>
+              <label class="radio radio_p">
+                <input
+                  type="radio"
+                  name="position"
+                  [(ngModel)]="position"
+                  [value]="6"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+                <span class="radio__checker"><span></span></span>
+                <span class="radio__text">{{
+                  "TYPE_ANOTHER" | translate
+                }}</span>
               </label>
             </div>
           </div>
@@ -342,7 +397,10 @@
           <div class="application__finish__block__img">
             <img src="./assets/images/user-id.svg" alt="user-id" />
           </div>
-          <h3 class="application__finish__block__title" [innerHTML]="'yourID' | translate: {id: certificate}">
+          <h3
+            class="application__finish__block__title"
+            [innerHTML]="'yourID' | translate : { id: certificate }"
+          >
             {{ "yourID" | translate }}
           </h3>
           <!-- <span

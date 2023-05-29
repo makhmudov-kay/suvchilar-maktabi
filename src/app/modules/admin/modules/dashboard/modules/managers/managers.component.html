@@ -34,7 +34,7 @@
       <th>{{ "user" | translate }}</th>
       <th>{{ "phone" | translate }}</th>
       <th>{{ "login" | translate }}</th>
-      <th>{{ "region" | translate }}</th>
+      <!-- <th>{{ "region" | translate }}</th> -->
       <th nzWidth="180px">{{ "actions" | translate }}</th>
     </tr>
   </thead>
@@ -44,10 +44,9 @@
       <td>{{ data.f_name + " " + data.l_name }}</td>
       <td>{{ data.phone }}</td>
       <td>{{ data.login }}</td>
-      <td>
-        <!-- CHANGE TO REGION NAME -->
+      <!-- <td>
         <nz-tag *ngFor="let name of data.region_id">{{ name }}</nz-tag>
-      </td>
+      </td> -->
       <td>
         <button
           nzSize="large"

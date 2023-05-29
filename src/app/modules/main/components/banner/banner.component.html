@@ -2,13 +2,18 @@
   <nz-carousel
     (nzBeforeChange)="changeSlide($event)"
     nzEffect="fade"
-    [nzDots]="false"
+    [nzDots]="true"
     nzAutoPlay
   >
-    <!-- <div nz-carousel-content *ngFor="let carousel of carousels$ | async">
+    <div nz-carousel-content *ngFor="let carousel of carousels$ | async">
       <div
         class="banner-content background"
-        [ngStyle]="{ background:  'linear-gradient(to left,#ffffff1a, #000000a6),url(' + carousel.photo + ')'}"
+        [ngStyle]="{
+          background:
+            'linear-gradient(to left,#ffffff1a, #000000a6),url(' +
+            carousel.photo +
+            ')'
+        }"
       >
         <div class="banner-content__block banner-content__left">
           <h2 class="banner-text">{{ carousel.title }}</h2>
@@ -25,9 +30,9 @@
           </button>
         </div>
       </div>
-    </div> -->
+    </div>
 
-    <div nz-carousel-content *ngFor="let index of array">
+    <!-- <div nz-carousel-content *ngFor="let index of array">
       <div
         class="banner-content background"
         [ngStyle]="{
@@ -50,7 +55,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> -->
   </nz-carousel>
 
   <ng-template #carouselDots let-active>

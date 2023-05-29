@@ -138,7 +138,7 @@ export class BannerComponent implements OnInit {
         [Validators.required],
       ],
       description_ru: [editingData?.description.ru, [Validators.required]],
-      photo: [editingData?.photo],
+      photo: [],
     });
   }
 
@@ -208,9 +208,12 @@ export class BannerComponent implements OnInit {
         uz_cyrl: form.description_uz_cyrl,
         uz_latn: form.description_uz_latn,
         ru: form.description_ru,
-      },
-      photo: form.photo,
+      }
     };
+
+    if (this.form.controls['photo'].value) {
+      request.photo = this.form.controls['photo'].value
+    }
 
     this.loadingBtn = true;
     if (this.id) {
