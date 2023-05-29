@@ -43,7 +43,7 @@ export class ApplicationFormComponent implements OnInit {
   /**
    *
    */
-  position = 1;
+  position = Constants.POSITION_DIRECTOR;
 
   /**
    *
@@ -53,7 +53,7 @@ export class ApplicationFormComponent implements OnInit {
   /**
    *
    */
-  gender = 1;
+  gender = Constants.GENDER_MALE;
 
   /**
    *
@@ -79,11 +79,6 @@ export class ApplicationFormComponent implements OnInit {
    *
    */
   invalidPhone = false;
-
-  /**
-   *
-   */
-  dateFormat = 'dd.MM.yyyy';
 
   /**
    *
@@ -154,7 +149,6 @@ export class ApplicationFormComponent implements OnInit {
    */
   regionChange(region: Region) {
     this.formStepFirst.controls['district_id'].reset();
-    // this.formStepSecond.controls['district_id'].reset();
     this.districts = region.districts;
     this.cd.markForCheck();
   }

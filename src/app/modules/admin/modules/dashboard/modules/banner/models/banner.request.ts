@@ -9,5 +9,5 @@ export interface BannerRequest {
     uz_latn: string;
     ru: string;
   };
-  photo: File;
+  photo?: File;
 }

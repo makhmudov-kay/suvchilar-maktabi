@@ -282,6 +282,31 @@ export class ApplicationsComponent implements OnInit {
 
   /**
    *
+   * @param status
+   * @returns
+   */
+  detectPosition = (status: number): string => {
+    switch (status) {
+      case 1:
+        return 'Хўжалик раҳбари';
+      case 2:
+        return 'Ишчи';
+      case 3:
+        return 'Сувчи';
+      case 4:
+        return 'Ирригатор';
+      case 5:
+        return 'Банк ходими';
+      case 6:
+        return 'Бошқа';
+
+      default:
+        return '';
+    }
+  };
+
+  /**
+   *
    */
   exportExcel() {
     const dataForExcel = this.data.map((el) => {
@@ -290,6 +315,7 @@ export class ApplicationsComponent implements OnInit {
         farm_name: el.farm_name,
         phone: el.phone,
         farm_type: this.detectFarmType(el.farm_type),
+        position: this.detectPosition(el.position),
         region_name: el.region_name,
         district_name: el.district_name,
         device_type: el.device_type,
@@ -307,6 +333,7 @@ export class ApplicationsComponent implements OnInit {
         'Организация',
         'Номер телефона',
         'Сфера деятельности',
+        'Должность',
         'Район',
         'Регион',
         'Платформа регистрации',
