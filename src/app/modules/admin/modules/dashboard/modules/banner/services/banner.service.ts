@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from 'src/app/shared/base.service';
 import { BannerRequest } from '../models/banner.request';
 import { obj2FormData } from 'src/app/shared/utils/obj2FormData';
 import { BannerResponse } from '../models/banner.response';
+import { BaseService } from 'ngx-ou-grid';
 
 @Injectable({
   providedIn: 'root',

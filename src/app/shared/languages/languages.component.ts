@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { Constants } from '../constants';
+import { Constants } from '../../../../projects/ngx-ou-grid/src/lib/utilits/constants';
 
 @Component({
   selector: 'app-languages',
@@ -19,10 +19,10 @@ export class LanguagesComponent {
   drawerClass!: boolean;
 
   /**
-   * 
+   *
    */
   @Output()
-  changesLanguage = new EventEmitter()
+  changesLanguage = new EventEmitter();
 
   /**
    *
@@ -48,6 +48,6 @@ export class LanguagesComponent {
     this.currentLanguage = selectedLanguage;
     localStorage.setItem(Constants.LANGUAGE, selectedLanguage);
     this.translate.use(selectedLanguage);
-    this.changesLanguage.emit()
+    this.changesLanguage.emit();
   }
 }

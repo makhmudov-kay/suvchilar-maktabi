@@ -1,0 +1,19 @@
+<button
+  nz-button
+  nzType="default"
+  nz-popconfirm
+  [nzPopconfirmTitle]="'wantToDelete' | translate"
+  [nzOkText]="'yes' | translate"
+  [nzCancelText]="'no' | translate"
+  (nzOnConfirm)="onConfirm.emit()"
+  nzPopconfirmPlacement="leftTop"
+>
+  <span>
+    <i
+      nz-icon
+      nzType="delete"
+      nzTheme="twotone"
+      [nzTwotoneColor]="'#52c41a'"
+    ></i>
+  </span>
+</button>

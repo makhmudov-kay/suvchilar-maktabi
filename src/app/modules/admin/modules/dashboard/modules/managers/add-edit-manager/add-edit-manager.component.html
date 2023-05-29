@@ -1,0 +1,129 @@
+<p class="error">{{ errorMessage }}</p>
+<form nz-form nzLayout="vertical" [formGroup]="form" class="login-form">
+  <nz-form-item>
+    <nz-form-label nzFor="phone">{{ "phone" | translate }}</nz-form-label>
+    <nz-form-control [nzErrorTip]="errorPhone">
+      <nz-input-group>
+        <input
+          id="phone"
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="phone"
+          prefix="+998"
+          mask="(00) 000 00 00"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <ng-template #errorPhone let-control>
+      <error [control]="control"></error>
+    </ng-template>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="f_name">{{ "name" | translate }}</nz-form-label>
+    <nz-form-control [nzErrorTip]="errorFirstName">
+      <nz-input-group>
+        <input
+          id="f_name"
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="f_name"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <ng-template #errorFirstName let-control>
+      <error [control]="control"></error>
+    </ng-template>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="l_name">{{ "lastName" | translate }}</nz-form-label>
+    <nz-form-control [nzErrorTip]="errorLastName">
+      <nz-input-group>
+        <input
+          id="l_name"
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="l_name"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <ng-template #errorLastName let-control>
+      <error [control]="control"></error>
+    </ng-template>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="login">{{ "login" | translate }}</nz-form-label>
+    <nz-form-control [nzErrorTip]="errorLogin">
+      <nz-input-group>
+        <input
+          id="login"
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="login"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <ng-template #errorLogin let-control>
+      <error [control]="control"></error>
+    </ng-template>
+  </nz-form-item>
+
+  <nz-form-item *ngIf="regions$ | async as regions">
+    <nz-form-label nzFor="login">{{ "region" | translate }}</nz-form-label>
+    <nz-form-control [nzErrorTip]="errorLogin">
+      <nz-select formControlName="region_id" nzMode="multiple">
+        <nz-option
+          *ngFor="let region of regions"
+          [nzValue]="region.id"
+          [nzLabel]="region.name"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+    <ng-template #errorLogin let-control>
+      <error [control]="control"></error>
+    </ng-template>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label nzFor="password">{{ "password" | translate }}</nz-form-label>
+    <nz-form-control [nzErrorTip]="errorPassword">
+      <nz-input-group>
+        <input
+          id="password"
+          type="text"
+          nz-input
+          nzSize="large"
+          formControlName="password"
+          (ngModelChange)="updateConfirmValidator()"
+        />
+      </nz-input-group>
+    </nz-form-control>
+    <ng-template #errorPassword let-control>
+      <error [control]="control"></error>
+    </ng-template>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="checkPassword">{{
+      "confirmPassword" | translate
+    }}</nz-form-label>
+    <nz-form-control [nzErrorTip]="errorTpl">
+      <input
+        nz-input
+        type="password"
+        formControlName="checkPassword"
+        id="checkPassword"
+      />
+      <ng-template #errorTpl let-control>
+        <ng-container *ngIf="control.hasError('required')">
+          <error [control]="control"></error
+        ></ng-container>
+        <ng-container *ngIf="control.hasError('confirm')">
+          {{ "confirmPasswordError" | translate }}
+        </ng-container>
+      </ng-template>
+    </nz-form-control>
+  </nz-form-item>
+</form>

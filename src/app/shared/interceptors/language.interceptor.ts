@@ -6,7 +6,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Constants } from '../constants';
+import { Constants } from '../../../../projects/ngx-ou-grid/src/lib/utilits/constants';
 
 @Injectable()
 export class LanguageInterceptor implements HttpInterceptor {

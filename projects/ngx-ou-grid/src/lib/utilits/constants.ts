@@ -1,4 +1,4 @@
-import { Language } from './models/language.interface';
+import { Language } from '../models/language.interface';
 
 export enum STATUS {
   STATUS_NEW = 1,

@@ -2,8 +2,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponse, UserLogin } from '../models/user-login';
 import { Observable, Subject, catchError, tap, throwError } from 'rxjs';
-import { BaseService } from 'src/app/shared/base.service';
-import { Constants } from 'src/app/shared/constants';
+import { Constants } from 'projects/ngx-ou-grid/src/lib/utilits/constants';
+import { BaseService } from 'ngx-ou-grid';
 
 @Injectable({
   providedIn: 'root',

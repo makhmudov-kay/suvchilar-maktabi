@@ -3,7 +3,7 @@ import { FirstStepRequest } from '../models/first-step.request';
 import { FirstStepResponse } from '../models/first-step.response';
 import { SecondStepRequest } from '../models/second-step.request';
 import { SecondStepResponse } from '../models/second-step.response';
-import { BaseService } from 'src/app/shared/base.service';
+import { BaseService } from 'ngx-ou-grid';
 
 @Injectable({
   providedIn: 'root',

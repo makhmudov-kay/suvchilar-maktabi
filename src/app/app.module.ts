@@ -22,7 +22,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { LanguageInterceptor } from './shared/interceptors/language.interceptor';
 import { NgxMaskModule } from 'ngx-mask';
 import { JwtModule } from '@auth0/angular-jwt';
-import { Constants } from './shared/constants';
+import { Constants } from '../../projects/ngx-ou-grid/src/lib/utilits/constants';
 
 /**
  *

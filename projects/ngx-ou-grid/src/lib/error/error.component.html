@@ -1,0 +1,103 @@
+<ng-container *ngIf="control; else messageTemplate">
+  <ng-container *ngIf="control.dirty">
+    <div>
+      <!-- REQUIRED -->
+      <ng-template [ngIf]="control.hasError('required')" [ngIfElse]="minLength">
+        {{ "fillTheInput" | translate }}
+      </ng-template>
+
+      <!-- MINLENGTH -->
+      <ng-template #minLength>
+        <ng-template
+          [ngIf]="control.hasError('minlength')"
+          [ngIfElse]="maxLength"
+        >
+          {{
+            "minlength"
+              | translate
+                : { value: control.getError("minlength").requiredLength }
+          }}
+          <!-- Минимум {{value}} символа -->
+        </ng-template>
+      </ng-template>
+
+      <!-- MAXLENGTH -->
+      <ng-template #maxLength>
+        <ng-template [ngIf]="control.hasError('maxlength')" [ngIfElse]="mask">
+          {{
+            "maxlength"
+              | translate
+                : { value: control.getError("maxlength").requiredLength }
+          }}
+          <!-- Maximum {{value}} символа -->
+        </ng-template>
+      </ng-template>
+
+      <!-- MASK -->
+      <ng-template #mask>
+        <ng-template [ngIf]="control.hasError('mask')" [ngIfElse]="login">
+          {{ "mask." + control.getError("mask").requiredMask | translate }}
+        </ng-template>
+      </ng-template>
+
+      <!-- LOGIN -->
+      <ng-template #login>
+        <ng-template [ngIf]="control.hasError('login')" [ngIfElse]="email">
+          {{ "login.pattern" | translate }}
+          {{ control.getError("login").pattern }}
+        </ng-template>
+      </ng-template>
+
+      <!-- EMAIL -->
+      <ng-template #email>
+        <ng-template [ngIf]="control.hasError('email')" [ngIfElse]="mustMatch">
+          {{ "invalidEmailMessage" | translate }}
+        </ng-template>
+      </ng-template>
+
+      <!-- CONFIRMATION PASSWORD -->
+      <ng-template #mustMatch>
+        <ng-template
+          [ngIf]="control.hasError('mustMatch')"
+          [ngIfElse]="notChanged"
+        >
+          {{ "musmatchPassword" | translate }}
+        </ng-template>
+      </ng-template>
+
+      <!-- NOT CHANGED -->
+      <ng-template #notChanged>
+        <ng-template
+          [ngIf]="control.hasError('notChanged')"
+          [ngIfElse]="otherErrors"
+        >
+          {{ "notChanged" | translate }}
+        </ng-template>
+      </ng-template>
+
+      <ng-template #otherErrors>
+        <!-- FIRST ERROR FROM BACKEND -->
+        <ng-container
+          *ngIf="control.getError(ERROR_MESSAGE_FROM_BACKEND) as error"
+        >
+          {{ error.field + "." + error.message[0].key | translate }}
+        </ng-container>
+      </ng-template>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #messageTemplate>
+  <ng-container [ngSwitch]="type">
+    <div *ngSwitchCase="'basic'">
+      {{ message }}
+    </div>
+    <nz-alert
+      *ngSwitchCase="'alert'"
+      [nzType]="'error'"
+      [nzMessage]="message"
+      nzShowIcon
+    >
+    </nz-alert>
+  </ng-container>
+</ng-template>
