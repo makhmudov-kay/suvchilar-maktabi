@@ -119,5 +119,9 @@
   "description": "Tavsif",
   "image": "Rasm",
   "setImageToAbout": "Rasmni o'rnatish",
-  "descriptionAboutUs": "Ushbu rasm biz haqimizda blokdagi asosiy sahifada bo'ladi"
+  "descriptionAboutUs": "Ushbu rasm biz haqimizda blokdagi asosiy sahifada bo'ladi",
+  "aboutContent": "Biz haqimizda",
+  "wantToDelete": "Siz haqiqatan ham o'chirishni xohlaysizmi?",
+  "yes": "Ha",
+  "no": "Yoq"
 }

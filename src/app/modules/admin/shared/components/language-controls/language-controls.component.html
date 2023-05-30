@@ -1,0 +1,50 @@
+<form [formGroup]="form">
+  <div
+    [formGroupName]="formGroupName"
+    [ngClass]="{ 'd-flex': inline }"
+    *ngIf="language$ | async as languages"
+  >
+    <nz-form-item
+      *ngFor="let language of languages"
+      [ngClass]="{ 'flex-grow-1 pr-1': inline }"
+    >
+      <nz-form-label [nzFor]="language.code"
+        >{{ language.short_name }}
+        <span
+          *ngIf="language.code === UZ_CYRL || language.code === UZ_LATN"
+          (click)="cyrillToLatin(language.code, form.controls[formGroupName])"
+          class="translate"
+        >
+          <span
+            nz-icon
+            [nzType]="language.code === UZ_CYRL ? 'arrow-down' : 'arrow-up'"
+            nzTheme="outline"
+          ></span> </span>
+    </nz-form-label>
+      <nz-form-control [nzErrorTip]="error">
+        <ng-container *ngIf="inputType == 'textarea'; else justInput">
+          <textarea
+            [rows]="rows"
+            nz-input
+            [id]="language.code"
+            [name]="language.code"
+            [formControlName]="language.code"
+            type="text"
+          ></textarea>
+        </ng-container>
+        <ng-template #justInput>
+          <input
+            nz-input
+            [id]="language.code"
+            [name]="language.code"
+            [formControlName]="language.code"
+            type="text"
+          />
+        </ng-template>
+      </nz-form-control>
+      <ng-template #error let-control>
+        <error [control]="control"></error>
+      </ng-template>
+    </nz-form-item>
+  </div>
+</form>

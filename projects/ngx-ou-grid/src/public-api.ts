@@ -30,6 +30,8 @@ export * from './lib/services/base.service';
 // INTERFACES
 export * from './lib/models/base-response.interface';
 export * from './lib/models/language.interface';
+export * from './lib/models/generic.types';
 
 //
 export * from './lib/utilits/utilits';
+export * from './lib/utilits/constants';
