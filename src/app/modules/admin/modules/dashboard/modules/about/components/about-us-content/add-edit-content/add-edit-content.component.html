@@ -1,0 +1,17 @@
+<p class="error">{{ errorMessage }}</p>
+<form nz-form nzLayout="vertical" [formGroup]="form" class="login-form">
+  <h4>{{ "title" | translate }}</h4>
+  <app-language-controls
+    [form]="form"
+    [translations]="editingData?.title"
+    formGroupName="title"
+    [inputType]="'input'"
+  ></app-language-controls>
+  <h4>{{ "description" | translate }}</h4>
+  <app-language-controls
+    [form]="form"
+    [translations]="editingData?.description"
+    formGroupName="description"
+    [inputType]="'textarea'"
+  ></app-language-controls>
+</form>

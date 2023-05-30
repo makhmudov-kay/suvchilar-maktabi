@@ -1,0 +1,23 @@
+<p class="error">{{ errorMessage }}</p>
+<form nz-form nzLayout="vertical" [formGroup]="form" class="login-form">
+  <h4>{{ "title" | translate }}</h4>
+  <app-language-controls
+    [form]="form"
+    [translations]="editingData?.plan_name"
+    formGroupName="plan_name"
+    [inputType]="'textarea'"
+  ></app-language-controls>
+  <h4>TimeTable</h4>
+  <nz-form-item>
+    <nz-form-label>Start</nz-form-label>
+    <nz-form-control>
+      <input formControlName="plan_start" nz-input type="text" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label>End</nz-form-label>
+    <nz-form-control>
+      <input formControlName="plan_end" nz-input type="text" />
+    </nz-form-control>
+  </nz-form-item>
+</form>

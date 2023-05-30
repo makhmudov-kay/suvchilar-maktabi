@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BaseService } from 'src/app/shared/base.service';
 import { AboutRequest } from '../model/about.request';
 import { obj2FormData } from 'src/app/shared/utils/obj2FormData';
 import { AboutResponse } from '../model/about.response';
+import { BaseService } from 'ngx-ou-grid';
 
 @Injectable({
   providedIn: 'root',

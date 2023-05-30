@@ -1,4 +1,4 @@
-<div class="about">
+<!-- <div class="about">
   <div class="about-img">
     <img src="./assets/images/aboutimg-new.jpg" alt="about img" />
   </div>
@@ -25,7 +25,6 @@
         <nz-tab [nzTitle]="'studyPlan' | translate">
           <div class="about-tabs__content">
             <h3>{{ "studyPlan" | translate }}</h3>
-            <!-- <p [innerHTML]="'studyPlanText' | translate"></p> -->
             <nz-table
               #basicTable
               [nzData]="listOfData"
@@ -50,6 +49,58 @@
             </nz-table>
           </div>
         </nz-tab>
+      </nz-tabset>
+    </div>
+  </div>
+</div> -->
+
+<div class="about">
+  <div class="about-img">
+    <img [src]="aboutImage" alt="about img" />
+  </div>
+  <div class="about-content">
+    <h3 class="about-content__title title">{{ "aboutUs" | translate }}</h3>
+    <div class="about-tabs">
+      <nz-tabset>
+        <ng-container *ngIf="tabs$ | async as tabs">
+          <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab.title">
+            <div class="about-tabs__content">
+              <h3>{{ tab.title }}</h3>
+              <p class="tab-text">
+                {{ tab.description }}
+              </p>
+            </div>
+          </nz-tab>
+        </ng-container>
+        <ng-container *ngIf="tables$ | async as tables">
+          <nz-tab [nzTitle]="'studyPlan' | translate">
+            <div class="about-tabs__content">
+              <h3>{{ "studyPlan" | translate }}</h3>
+              <nz-table
+                #basicTable
+                [nzData]="listOfData"
+                nzBordered
+                [nzFrontPagination]="false"
+                nzSize="small"
+              >
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th nzWidth="100px">{{ "start" | translate }}</th>
+                    <th nzWidth="100px">{{ "finish" | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tables">
+                    <td>{{ data.plan_name | translate }}</td>
+                    <td>{{ data.plan_start }}</td>
+                    <td>{{ data.plan_end }}</td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </div>
+          </nz-tab>
+        </ng-container>
       </nz-tabset>
     </div>
   </div>

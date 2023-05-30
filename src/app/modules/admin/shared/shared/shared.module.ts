@@ -1,3 +1,4 @@
+import { NgxKirilLotinPipe } from 'ngx-kiril-lotin';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -12,9 +13,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent, NgxOuGridModule } from 'ngx-ou-grid';
 import { SearchPipe } from '../pipe/search.pipe';
+import { LanguageControlsComponent } from '../components/language-controls/language-controls.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LanguageControlsComponent
+  ],
   imports: [
     CommonModule,
     TranslateModule,
@@ -22,6 +26,7 @@ import { SearchPipe } from '../pipe/search.pipe';
     ReactiveFormsModule,
     ErrorComponent,
     NgxOuGridModule,
+    NgxKirilLotinPipe,
 
     NzTableModule,
     NzDividerModule,
@@ -39,6 +44,7 @@ import { SearchPipe } from '../pipe/search.pipe';
     ReactiveFormsModule,
     ErrorComponent,
     NgxOuGridModule,
+    LanguageControlsComponent,
 
     NzTableModule,
     NzDividerModule,

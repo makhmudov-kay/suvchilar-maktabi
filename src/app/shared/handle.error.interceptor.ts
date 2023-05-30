@@ -10,9 +10,11 @@ import {
 import { catchError, Observable, throwError, retry } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { AuthService } from '../modules/admin/modules/auth/services/auth.service';
+import { Router } from '@angular/router';
 
 export interface ErrorModel {
-  errors: {[key: string]: string[]};
+  errors: { [key: string]: string[] };
   message: string;
 }
 
@@ -23,7 +25,9 @@ export class HandleErrorInterceptor implements HttpInterceptor {
    */
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private $auth: AuthService,
+    private router: Router
   ) {}
 
   /**
@@ -39,9 +43,14 @@ export class HandleErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       // retry(1),
       catchError((error: HttpErrorResponse) => {
+        if (error.status === HttpStatusCode.Unauthorized) {
+          this.$auth.logout();
+          this.router.navigate(['admin', 'auth']);
+          return throwError(() => error);
+        }
+
         const errorCustom = this.getServerErrors(error);
-        if (typeof errorCustom === 'string')
-        this.message.error(errorCustom);
+        if (typeof errorCustom === 'string') this.message.error(errorCustom);
         else {
           // const errorMessage = (errorCustom as ErrorModel).message;
           // if (errorMessage)
@@ -94,10 +103,10 @@ export class HandleErrorInterceptor implements HttpInterceptor {
       }
 
       // return ErrorHelper.createUnknownError(error.error.error);
-      return {unknownError: JSON.stringify(errors)}
+      return { unknownError: JSON.stringify(errors) };
     }
 
     // return ErrorHelper.createUnknownError(error);
-    return {unknownError: JSON.stringify(error)}
+    return { unknownError: JSON.stringify(error) };
   }
 }

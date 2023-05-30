@@ -120,5 +120,9 @@
   "description": "Описание",
   "image": "Изображение",
   "setImageToAbout": "Установить изображение",
-  "descriptionAboutUs": "Это изображение будет на главной странице в блоке О нас"
+  "descriptionAboutUs": "Это изображение будет на главной странице в блоке О нас",
+  "aboutContent": "aboutContent",
+  "wantToDelete": "Вы действительно хотите удалить?",
+  "yes": "Ha",
+  "no": "Ёқ"
 }
