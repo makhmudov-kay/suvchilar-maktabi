@@ -15,6 +15,7 @@ import { RegionsAndDistrictsService } from './services/regions-and-districts.ser
 import { CheckPhoneService } from './services/check-phone.service';
 import { NzSafeAny } from 'ng-zorro-antd/core/types';
 import { Constants } from 'projects/ngx-ou-grid/src/lib/utilits/constants';
+import { TranslateService } from '@ngx-translate/core';
 
 export type MyValidationErrors = Record<string, NzSafeAny>;
 
@@ -93,7 +94,8 @@ export class ApplicationFormComponent implements OnInit {
     private $application: ApplicationsService,
     private $regionsAndDistricts: RegionsAndDistrictsService,
     private $checkPhone: CheckPhoneService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private $translate: TranslateService
   ) {}
 
   /**
@@ -187,6 +189,9 @@ export class ApplicationFormComponent implements OnInit {
    *
    */
   submitFirstStep() {
+    alert(this.$translate.instant('warningMessage'));
+    return;
+
     if (this.formStepFirst.invalid) {
       this.markAllAsDirty(this.formStepFirst);
       return;
