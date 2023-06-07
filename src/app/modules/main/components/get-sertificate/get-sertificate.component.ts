@@ -1,13 +1,19 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
+  Inject,
+  Input,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { CertificateService } from './services/certificate.service';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { catchError, map, of } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-get-sertificate',
@@ -15,7 +21,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./get-sertificate.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GetSertificateComponent {
+export class GetSertificateComponent implements OnInit, AfterViewInit {
+  /**
+   *
+   */
+  @Input()
+  certificateId!: number;
+
+  /**
+   */
+  @ViewChild('searchBtn')
+  searchBtn!: ElementRef<NzButtonComponent>;
+
   /**
    *
    */
@@ -48,6 +65,22 @@ export class GetSertificateComponent {
     this.form = this.fb.group({
       certificate_id: [null],
     });
+  }
+
+  /**
+   * 
+   */
+  ngOnInit(): void {}
+
+  /**
+   * 
+   */
+  ngAfterViewInit(): void {
+    console.log(this.searchBtn);
+    if (this.certificateId) {
+      this.certificate_id = this.certificateId.toString();
+      this.cd.markForCheck();
+    }
   }
 
   /**
