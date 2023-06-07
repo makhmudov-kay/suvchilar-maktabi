@@ -19,6 +19,7 @@ import { map } from 'rxjs';
 import { downloadFile } from 'src/app/modules/main/components/get-sertificate/get-sertificate.component';
 import { ExportAsExcellService } from './services/exportAsExcell.service';
 import { NzTableComponent } from 'ng-zorro-antd/table';
+import { SendSmsService } from './services/send-sms.service';
 
 @Component({
   selector: 'app-applications',
@@ -93,7 +94,8 @@ export class ApplicationsComponent implements OnInit {
     private fb: FormBuilder,
     private cd: ChangeDetectorRef,
     private $certificate: CertificateService,
-    private $importAsExcel: ExportAsExcellService
+    private $importAsExcel: ExportAsExcellService,
+    private $sendSms: SendSmsService
   ) {}
 
   /**
@@ -312,6 +314,7 @@ export class ApplicationsComponent implements OnInit {
     const dataForExcel = this.data.map((el) => {
       const newData = {
         full_name: el.full_name,
+        // gender: el.gender,
         farm_name: el.farm_name,
         phone: el.phone,
         farm_type: this.detectFarmType(el.farm_type),
@@ -330,6 +333,7 @@ export class ApplicationsComponent implements OnInit {
     const headers = [
       [
         'ФИО',
+        // 'Пол',
         'Организация',
         'Номер телефона',
         'Сфера деятельности',
@@ -354,6 +358,16 @@ export class ApplicationsComponent implements OnInit {
     this.$applications.deleteApplication(id).subscribe(() => {
       this.getApplications();
       this.cd.markForCheck();
+    });
+  }
+
+  /**
+   * 
+   * @param id 
+   */
+  sendSms(id: number) {
+    this.$sendSms.sendSms({ request_id: id }).subscribe((e) => {
+      console.log(e);
     });
   }
 }

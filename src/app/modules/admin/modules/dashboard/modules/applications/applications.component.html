@@ -36,7 +36,7 @@
 >
   <thead>
     <tr>
-      <th nzLeft nzWidth="60px">ID</th>
+      <th nzLeft nzWidth="100px">ID</th>
       <th nzLeft nzWidth="180px">{{ "fullName" | translate }}</th>
       <th nzWidth="150px">{{ "company" | translate }}</th>
       <th nzWidth="150px">{{ "phone" | translate }}</th>
@@ -48,7 +48,7 @@
       <th nzWidth="150px">{{ "registerType" | translate }}</th>
       <th nzWidth="150px">{{ "created_at" | translate }}</th>
       <th nzWidth="150px">{{ "status" | translate }}</th>
-      <th nzRight nzWidth="200px">{{ "actions" | translate }}</th>
+      <th nzRight nzWidth="250px">{{ "actions" | translate }}</th>
     </tr>
   </thead>
   <tbody>
@@ -137,6 +137,21 @@
           <span
             nz-icon
             nzType="download"
+            nzTheme="outline"
+            style="color: #52c41a"
+          ></span>
+        </button>
+
+        <button
+          class="action"
+          *ngIf="STATUS.STATUS_CERTIFICATE_GIVEN === data.status"
+          nz-button
+          nzType="default"
+          [ngxAsyncClick]="sendSms.bind(this, data.id)"
+        >
+          <span
+            nz-icon
+            nzType="mail"
             nzTheme="outline"
             style="color: #52c41a"
           ></span>
