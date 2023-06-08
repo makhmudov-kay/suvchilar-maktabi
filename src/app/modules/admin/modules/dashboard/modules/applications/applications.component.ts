@@ -307,6 +307,17 @@ export class ApplicationsComponent implements OnInit {
     }
   };
 
+  detectGender = (gender: number): string => {
+    switch (gender) {
+      case 1:
+        return 'Еркак';
+      case 2:
+        return 'Аёл';
+      default:
+        return '';
+    }
+  };
+
   /**
    *
    */
@@ -314,7 +325,8 @@ export class ApplicationsComponent implements OnInit {
     const dataForExcel = this.data.map((el) => {
       const newData = {
         full_name: el.full_name,
-        // gender: el.gender,
+        gender: this.detectGender(el.gender),
+        birthday: new Date(el.birthday).toLocaleDateString(),
         farm_name: el.farm_name,
         phone: el.phone,
         farm_type: this.detectFarmType(el.farm_type),
@@ -333,7 +345,8 @@ export class ApplicationsComponent implements OnInit {
     const headers = [
       [
         'ФИО',
-        // 'Пол',
+        'Пол',
+        'Дата рождения',
         'Организация',
         'Номер телефона',
         'Сфера деятельности',

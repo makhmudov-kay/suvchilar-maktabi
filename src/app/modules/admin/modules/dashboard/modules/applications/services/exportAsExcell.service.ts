@@ -13,7 +13,8 @@ export class ExportAsExcellService {
     const ws = utils.json_to_sheet([]);
     ws['!cols'] = [
       { wch: 30 },
-      // { wch: 15 },
+      { wch: 15 },
+      { wch: 25 },
       { wch: 20 },
       { wch: 15 },
       { wch: 30 },
@@ -21,7 +22,7 @@ export class ExportAsExcellService {
       { wch: 25 },
       { wch: 20 },
       { wch: 10 },
-      { wch: 12 },
+      { wch: 22 },
       { wch: 25 },
       { wch: 20 },
     ];

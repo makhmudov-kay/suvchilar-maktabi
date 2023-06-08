@@ -4,6 +4,8 @@ export interface Application {
   full_name: string;
   farm_name: string;
   farm_type: number;
+  birthday: Date;
+  gender: number;
   id: number;
   phone: string;
   status: number;
