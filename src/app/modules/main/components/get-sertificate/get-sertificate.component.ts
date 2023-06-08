@@ -14,6 +14,7 @@ import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { catchError, map, of } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-sertificate',
@@ -31,7 +32,7 @@ export class GetSertificateComponent implements OnInit, AfterViewInit {
   /**
    */
   @ViewChild('searchBtn')
-  searchBtn!: ElementRef<NzButtonComponent>;
+  searchBtn!: NzButtonComponent;
 
   /**
    *
@@ -60,7 +61,8 @@ export class GetSertificateComponent implements OnInit, AfterViewInit {
   constructor(
     private $certificate: CertificateService,
     private cd: ChangeDetectorRef,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.form = this.fb.group({
       certificate_id: [null],
@@ -68,17 +70,18 @@ export class GetSertificateComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * 
+   *
    */
   ngOnInit(): void {}
 
   /**
-   * 
+   *
    */
   ngAfterViewInit(): void {
     console.log(this.searchBtn);
     if (this.certificateId) {
       this.certificate_id = this.certificateId.toString();
+      this.searchSertificate(this.searchBtn).subscribe();
       this.cd.markForCheck();
     }
   }
@@ -127,6 +130,7 @@ export class GetSertificateComponent implements OnInit, AfterViewInit {
    */
   downloadSertificate(data: Blob) {
     downloadFile(data, this.certificate_id);
+    this.router.navigate([]);
     this.cd.markForCheck();
   }
 }
