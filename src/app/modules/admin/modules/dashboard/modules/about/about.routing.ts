@@ -28,6 +28,13 @@ const routes: Routes = [
             (m) => m.StudyPlanModule
           ),
       },
+      {
+        path: 'learning-material',
+        loadChildren: () =>
+          import(
+            './components/learning-materials/learning-materials.module'
+          ).then((m) => m.LearningMaterialsModule),
+      },
     ],
   },
 ];
