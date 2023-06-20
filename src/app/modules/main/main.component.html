@@ -1,10 +1,30 @@
-<app-header id="header" (languageChangeEvent)="form.getRegionsAndDistricts()"></app-header>
+<app-header id="header"></app-header>
+<!-- Need to add Header component -->
+<!-- (languageChangeEvent)="form.getRegionsAndDistricts()" -->
 
 <div class="container">
   <app-banner></app-banner>
   <app-about id="about"></app-about>
-  <app-application-form #form id="form"></app-application-form>
-  <app-get-sertificate id="certificate" [certificateId]="certificateId"></app-get-sertificate>
+  <!-- <app-application-form #form id="form"></app-application-form> -->
+
+  <div class="temp">
+    <h2>Ro'yxatdan o'tish uchun rasmiy telegram botimizga o'ting</h2>
+    <div class="reg-button">
+      <button nz-button nzType="primary" nzSize="large">
+        <a href="https://t.me/suvchilar_maktabi_bot" class="banner__btn">
+          <span nz-icon>
+            <img src="./assets/images/tg-icon.svg" alt="edit icon" />
+          </span>
+          <span>Telegram Bot</span>
+        </a>
+      </button>
+    </div>
+  </div>
+
+  <app-get-sertificate
+    id="certificate"
+    [certificateId]="certificateId"
+  ></app-get-sertificate>
   <app-partners></app-partners>
 </div>
 <app-contacts></app-contacts>
