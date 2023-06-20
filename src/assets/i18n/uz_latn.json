@@ -123,5 +123,6 @@
   "aboutContent": "Biz haqimizda",
   "wantToDelete": "Siz haqiqatan ham o'chirishni xohlaysizmi?",
   "yes": "Ha",
-  "no": "Yoq"
+  "no": "Yoq",
+  "delete": "O'chirish"
 }
