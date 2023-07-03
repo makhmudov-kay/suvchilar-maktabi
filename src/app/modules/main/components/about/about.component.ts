@@ -4,6 +4,7 @@ import { AboutUsContentService } from './services/about-us-content.service';
 import { Observable, map } from 'rxjs';
 import { StudyPlanService } from './services/study-plan.service';
 import { MaterialsService } from './services/materials.service';
+import { currentLanguage$ } from 'src/app/shared/languages/languages.component';
 
 @Component({
   selector: 'app-about',
@@ -81,20 +82,22 @@ export class AboutComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.$aboutImg.getAboutImage().subscribe((result: any) => {
-      this.aboutImage = result.data[0].photo;
+    currentLanguage$.subscribe(() => {
+      this.$aboutImg.getAboutImage().subscribe((result: any) => {
+        this.aboutImage = result.data[0].photo;
+      });
+
+      this.tabs$ = this.$aboutUsContent
+        .getAboutUsContent()
+        .pipe(map((result) => result.data));
+
+      this.tables$ = this.$program
+        .getStudyPlan()
+        .pipe(map((result) => result.data));
+
+      this.materials$ = this.$materials
+        .getMaterials()
+        .pipe(map((result) => result.data));
     });
-
-    this.tabs$ = this.$aboutUsContent
-      .getAboutUsContent()
-      .pipe(map((result) => result.data));
-
-    this.tables$ = this.$program
-      .getStudyPlan()
-      .pipe(map((result) => result.data));
-
-    this.materials$ = this.$materials
-      .getMaterials()
-      .pipe(map((result) => result.data));
   }
 }

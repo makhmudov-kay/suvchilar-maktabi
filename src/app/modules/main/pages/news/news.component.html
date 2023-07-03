@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="news" *ngIf="news$ | async as news">
+  <div class="news">
     <h2 class="news__title">
       {{ "newsTitle" | translate }}
     </h2>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="news-cards">
-      <div class="card" *ngFor="let n of news">
+      <div class="card" *ngFor="let n of news$ | async">
         <div class="card-img">
           <img [src]="n.photo" alt="news img" />
         </div>

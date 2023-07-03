@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="news-detail" *ngIf="newsDetail$ | async as detail">
+  <div class="news-detail">
     <div class="back">
       <a [routerLink]="['../']">
         <span nz-icon nzType="arrow-left" nzTheme="outline"></span>
@@ -7,27 +7,27 @@
       </a>
     </div>
     <h2 class="news-detail__title">
-      {{ detail.title }}
+      {{ (newsDetail$ | async).title }}
     </h2>
 
     <div class="news-detail__img">
-      <img [src]="detail.photo" alt="" />
+      <img [src]="(newsDetail$ | async).photo" alt="" />
     </div>
 
     <div class="news-detail__text">
       <p>
-        {{ detail.content }}
+        {{ (newsDetail$ | async).content }}
       </p>
     </div>
 
     <div class="news-detail__status">
       <div class="news-detail__status__date">
-        {{ detail.created_at | date : "dd.MM.yy" }}
+        {{ (newsDetail$ | async).created_at | date : "dd.MM.yy" }}
       </div>
       <div class="news-detail__status__view">
         <span nz-icon nzType="eye" nzTheme="outline"></span>
         <span class="news-detail__status__view__count">{{
-          detail.views_count
+          (newsDetail$ | async).views_count
         }}</span>
       </div>
     </div>

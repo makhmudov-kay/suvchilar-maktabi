@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { Observable, map } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { currentLanguage$ } from 'src/app/shared/languages/languages.component';
 
 @Component({
   selector: 'app-news-detail',
@@ -10,19 +11,32 @@ import { ActivatedRoute } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsDetailComponent implements OnInit {
+  /**
+   *
+   */
   newsDetail$!: Observable<any>;
 
-  id!: number;
-
-  constructor(private $news: NewsService, private route: ActivatedRoute) {
-    this.id = route.snapshot.params['id'];
+  /**
+   *
+   */
+  get id() {
+    return Number(this.route.snapshot.params['id']);
   }
 
+  /**
+   *
+   * @param $news
+   * @param route
+   */
+  constructor(private $news: NewsService, private route: ActivatedRoute) {}
+
   ngOnInit() {
-    if (this.id) {
-      this.newsDetail$ = this.$news
-        .getDetailNews(this.id)
-        .pipe(map((result) => result.data));
+    if (isFinite(this.id)) {
+      currentLanguage$.subscribe(() => {
+        this.newsDetail$ = this.$news
+          .getDetailNews(this.id)
+          .pipe(map((result) => result.data));
+      });
     }
   }
 }

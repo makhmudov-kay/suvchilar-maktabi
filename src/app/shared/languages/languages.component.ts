@@ -3,6 +3,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { Constants } from '../../../../projects/ngx-ou-grid/src/lib/utilits/constants';
+import { BehaviorSubject } from 'rxjs';
+
+export const currentLanguage$ = new BehaviorSubject(
+  localStorage.getItem(Constants.LANGUAGE) ?? Constants.DEFAULT_LANGUAGE.code
+);
 
 @Component({
   selector: 'app-languages',
@@ -45,6 +50,7 @@ export class LanguagesComponent {
    * @param selectedLanguage
    */
   onChangeLanguage(selectedLanguage: string) {
+    currentLanguage$.next(selectedLanguage);
     this.currentLanguage = selectedLanguage;
     localStorage.setItem(Constants.LANGUAGE, selectedLanguage);
     this.translate.use(selectedLanguage);
