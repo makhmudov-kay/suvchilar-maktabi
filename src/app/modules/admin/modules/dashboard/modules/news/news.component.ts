@@ -24,7 +24,7 @@ export class NewsComponent extends CRUD<any, any> implements OnInit {
    */
   constructor(protected $news: NewsService) {
     super($news);
-    this.searchInputConfig.keys = ['name', 'description'];
+    this.searchInputConfig.keys = ['title', 'content'];
   }
 
   /**
@@ -73,6 +73,7 @@ export class NewsComponent extends CRUD<any, any> implements OnInit {
             header: language.short_name,
             sortable: true,
             nzAlignBody: 'left',
+            template: 'ellipsis',
             row: 2,
           })
         ),
@@ -99,9 +100,8 @@ export class NewsComponent extends CRUD<any, any> implements OnInit {
     this.nzWidthConfig = [
       '50px',
       ...languages.map(() => '200px'),
-      ...languages.map(() => '200px'),
+      ...languages.map(() => '300px'),
       '120px',
-      '150px',
     ];
   }
 }

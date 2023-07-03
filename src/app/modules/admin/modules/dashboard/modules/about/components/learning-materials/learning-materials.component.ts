@@ -29,7 +29,7 @@ export class LearningMaterialsComponent
    */
   constructor(protected $file: LearningMaterialsService) {
     super($file);
-    this.searchInputConfig.keys = ['name', 'description'];
+    this.searchInputConfig.keys = ['title'];
   }
 
   /**
@@ -67,8 +67,8 @@ export class LearningMaterialsComponent
         ),
         columnFactory({
           field: 'material',
-          rowspan: 1,
-          template: 'custom'
+          rowspan: 2,
+          template: 'custom',
         }),
       ];
 
@@ -80,6 +80,11 @@ export class LearningMaterialsComponent
    *
    */
   override makeWidthConfig(languages: Language[]) {
-    this.nzWidthConfig = ['50px', ...languages.map(() => '200px'), '120px', '150px'];
+    this.nzWidthConfig = [
+      '50px',
+      ...languages.map(() => '200px'),
+      '120px',
+      '150px',
+    ];
   }
 }
