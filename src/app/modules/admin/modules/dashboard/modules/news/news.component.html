@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <az-header-with-divider-advanced
   [config]="{
-    title: 'learningMaterial' | translate,
+    title: 'news' | translate,
     searchInputAdvancedConfig: searchInputConfig
   }"
   (clickedAddEditButton)="addEdit()"
@@ -19,11 +19,10 @@
 >
   <ng-template #template let-column let-data="data">
     <ng-container [ngSwitch]="column.field">
-      <ng-container *ngSwitchCase="'material'">
-        <a [href]="data.material" download
-          ><span nz-icon nzType="file-text" nzTheme="outline"></span>
-          {{ "download" | translate }}</a
-        >
+      <ng-container *ngSwitchCase="'photo'">
+        <div class="image">
+          <img [src]="data.photo" width="100%" />
+        </div>
       </ng-container>
     </ng-container>
   </ng-template>

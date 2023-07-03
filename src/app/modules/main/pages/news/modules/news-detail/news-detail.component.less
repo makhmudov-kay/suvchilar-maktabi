@@ -1,0 +1,121 @@
+.news-detail {
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    @media (max-width: 768px) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 575px) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .back {
+        margin-bottom: 30px;
+        font-size: 18px;
+        line-height: 23px;
+        font-family: Agrofont-Regular;
+    }
+
+    &__title {
+        color: #072793;
+        font-size: 38px;
+        line-height: 48px;
+        font-family: Agrofont-BExpanded;
+        margin-bottom: 50px;
+
+        @media (max-width: 768px) {
+            font-size: 30px;
+            line-height: 37px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 575px) {
+            font-size: 25px;
+            line-height: 31px;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__img {
+        height: 420px;
+        border-radius: 7px;
+        overflow: hidden;
+        margin-bottom: 50px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            height: 360px;
+        }
+
+        @media (max-width: 575px) {
+            height: 160px;
+            margin-bottom: 25px;
+        }
+    }
+
+    &__text {
+        margin-bottom: 20px;
+
+        p {
+            font-size: 32px;
+            line-height: 40px;
+            font-family: Agrofont-Regular;
+            color: #000;
+            text-align: justify;
+
+            @media (max-width: 768px) {
+                font-size: 30px;
+                line-height: 38px;
+                color: #000;
+            }
+
+            @media (max-width: 575px) {
+                font-size: 15px;
+                line-height: 19px;
+                color: #000;
+            }
+        }
+    }
+
+    &__status {
+        display: flex;
+        align-items: center;
+
+        &__date {
+            font-size: 24px;
+            line-height: 30px;
+            font-family: Agrofont-Medium;
+            color: #B5AFAF;
+            margin-right: 25px;
+
+            @media (max-width: 575px) {
+                font-size: 16px;
+                line-height: 20px;
+            }
+        }
+
+        &__view {
+            color: #B5AFAF;
+            font-size: 24px;
+            line-height: 30px;
+
+            @media (max-width: 575px) {
+                font-size: 16px;
+                line-height: 20px;
+            }
+
+            &__count {
+                font-family: Agrofont-Medium;
+                margin-left: 10px;
+            }
+        }
+    }
+}

@@ -47,32 +47,10 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 
     /* NG-ZORRO */
     NzDividerModule,
-    NzCarouselModule,
-    NzButtonModule,
-    NzTabsModule,
-    NzStepsModule,
-    NzFormModule,
-    NzInputModule,
     NzIconModule,
-    NzRadioModule,
-    NzDatePickerModule,
-    NzSelectModule,
     NzDrawerModule,
-    NzTypographyModule,
     NzToolTipModule,
-    NzCalendarModule,
-    NzTableModule,
   ],
-  declarations: [
-    MainComponent,
-    HeaderComponent,
-    BannerComponent,
-    AboutComponent,
-    ApplicationFormComponent,
-    GetSertificateComponent,
-    PartnersComponent,
-    ContactsComponent,
-    FooterComponent,
-  ],
+  declarations: [MainComponent, HeaderComponent, FooterComponent],
 })
 export class MainModule {}

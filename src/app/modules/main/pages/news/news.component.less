@@ -1,0 +1,330 @@
+.news {
+    &__title {
+        font-size: 36px;
+        line-height: 45px;
+        font-family: Agrofont-Medium;
+        color: #1B2C8B;
+        margin-bottom: 50px;
+        margin-top: 50px;
+
+        @media (max-width: 768px) {
+            font-size: 32px;
+            line-height: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 575px) {
+            font-size: 15px;
+            line-height: 19px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .news-banner {
+        border-radius: 7px;
+        height: 370px;
+        width: 100%;
+        background-image: url(../../../../../assets/images/news-banner.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 0 100px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-bottom: 70px;
+
+        @media (max-width: 768px) {
+            padding: 0 50px;
+            height: 234px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 575px) {
+            padding: 0 20px;
+            height: 155px;
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 36px;
+            line-height: 54px;
+            font-family: Agrofont-Regular;
+            color: #fff;
+            margin-bottom: 0;
+
+            @media (max-width: 768px) {
+                font-size: 24px;
+                line-height: 40px;
+            }
+
+            @media (max-width: 575px) {
+                font-size: 15px;
+                line-height: 19px;
+            }
+        }
+
+        &__logo {
+            position: absolute;
+            right: 2%;
+            width: 320px;
+            height: 280px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            @media (max-width: 768px) {
+                width: 211px;
+                height: 178px;
+            }
+
+            @media (max-width: 575px) {
+                width: 141px;
+                height: 120px;
+            }
+        }
+    }
+
+    .news-cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 90px 28px;
+        margin-bottom: 70px;
+
+        @media (max-width: 768px) {
+            justify-content: center;
+            gap: 50px 30px;
+        }
+
+        @media (max-width: 575px) {
+            gap: 30px;
+        }
+
+        .card {
+            max-width: 301px;
+            width: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+
+            &-img {
+                width: 100%;
+                height: 250px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            &-info {
+                padding: 20px;
+                border-bottom: 1px solid #4E76C4;
+                border-left: 1px solid #4E76C4;
+                border-right: 1px solid #4E76C4;
+                border-radius: 0 0 4px 4px;
+
+                &__title {
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #092B5E;
+                    font-family: Agrofont-Medium;
+                    margin-bottom: 16px;
+                }
+
+                &__more {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 16px;
+
+                    a {
+                        font-size: 14px;
+                        line-height: 22px;
+                        color: #115DD1;
+                        font-family: Agrofont-Medium;
+                    }
+                }
+
+                &__date {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .date {
+                        font-size: 12px;
+                        color: #A6A1A1;
+                        line-height: 15px;
+                        font-family: Agrofont-Regular;
+                    }
+
+                    &__right {
+                        font-size: 14px;
+                        color: #A6A1A1;
+                        line-height: 22px;
+                        font-family: Agrofont-Medium;
+                    }
+
+                    .view-count {
+                        margin-left: 8px;
+                    }
+                }
+            }
+        }
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 92px;
+
+        @media (max-width: 768px) {
+            margin-bottom: 70px;
+        }
+
+        @media (max-width: 575px) {
+            margin-bottom: 40px;
+        }
+    }
+
+    .article-banner {
+        display: flex;
+        align-items: center;
+        padding: 0 60px;
+        height: 300px;
+        background: linear-gradient(91.35deg, rgba(12, 47, 231, 0.63) 45.39%, rgba(7, 44, 237, 0) 117.42%);
+        border-radius: 6px;
+        margin-bottom: 80px;
+        position: relative;
+
+        @media (max-width: 768px) {
+            padding: 0 30px;
+            margin-bottom: 60px;
+            height: 170px;
+        }
+
+        @media (max-width: 575px) {
+            padding: 0 15px;
+            margin-bottom: 40px;
+            height: 150px;
+        }
+
+        &__info {
+            max-width: 865px;
+            width: 100%;
+
+            h3 {
+                font-size: 32px;
+                line-height: 40px;
+                color: #fff;
+                font-family: Agrofont-Bold;
+                margin-bottom: 30px;
+            }
+
+            p {
+                font-size: 24px;
+                line-height: 30px;
+                font-family: Agrofont-Medium;
+                color: #fff;
+                margin-bottom: 0;
+            }
+
+            @media (max-width: 768px) {
+                h3 {
+                    font-size: 24px;
+                    line-height: 30px;
+                    color: #fff;
+                    font-family: Agrofont-Bold;
+                    margin-bottom: 15px;
+                }
+
+                p {
+                    font-size: 16px;
+                    line-height: 20px;
+                    font-family: Agrofont-Medium;
+                    color: #fff;
+                    margin-bottom: 0;
+                }
+            }
+
+            @media (max-width: 575px) {
+                h3 {
+                    font-size: 15px;
+                    line-height: 19px;
+                    color: #fff;
+                    font-family: Agrofont-Bold;
+                    margin-bottom: 20px;
+                }
+
+                p {
+                    font-size: 13px;
+                    line-height: 17px;
+                    font-family: Agrofont-Medium;
+                    color: #fff;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        &__labels {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+            position: static;
+            z-index: 10;
+
+            &__tg {
+                width: 100px;
+                height: 100px;
+                overflow: hidden;
+
+                @media (max-width: 768px) {
+                    width: 58px;
+                    height: 58px;
+                }
+
+                @media (max-width: 575px) {
+                    width: 28px;
+                    height: 28px;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            &__fb {
+                width: 100px;
+                height: 100px;
+                overflow: hidden;
+
+                @media (max-width: 768px) {
+                    width: 58px;
+                    height: 58px;
+                }
+
+                @media (max-width: 575px) {
+                    width: 28px;
+                    height: 28px;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .news-banner__logo {
+            right: 10%;
+        }
+    }
+}

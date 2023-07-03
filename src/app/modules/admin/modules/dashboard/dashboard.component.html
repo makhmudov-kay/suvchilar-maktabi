@@ -38,10 +38,14 @@
           <li nz-menu-item routerLink="about/study-plan" nzMatchRouter>
             {{ "studyPlan" | translate }}
           </li>
-          <!-- <li nz-menu-item routerLink="about/learning-material" nzMatchRouter>
+          <li nz-menu-item routerLink="about/learning-material" nzMatchRouter>
             {{ "learningMaterial" | translate }}
-          </li> -->
+          </li>
         </ul>
+      </li>
+      <li nz-menu-item routerLink="news" nzMatchRouter *ngIf="admin">
+        <span nz-icon nzType="form" nzTheme="outline"></span>
+        <span>{{ "news" | translate }}</span>
       </li>
     </ul>
   </nz-sider>

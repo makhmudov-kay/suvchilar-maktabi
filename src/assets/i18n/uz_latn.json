@@ -124,5 +124,10 @@
   "wantToDelete": "Siz haqiqatan ham o'chirishni xohlaysizmi?",
   "yes": "Ha",
   "no": "Yoq",
-  "delete": "O'chirish"
+  "delete": "O'chirish",
+  "learningMaterial": "O'quv materiallari",
+  "download": "Yuklab olish",
+  "material": "Materiallar",
+  "searchText": "Qidiruv",
+  "views_count": "Ko'rishlar soni"
 }
