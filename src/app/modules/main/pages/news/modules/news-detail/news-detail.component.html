@@ -11,7 +11,7 @@
     </h2>
 
     <div class="news-detail__img">
-      <img src="./assets/images/preview.jpg" alt="" />
+      <img [src]="detail.photo" alt="" />
     </div>
 
     <div class="news-detail__text">
@@ -21,10 +21,14 @@
     </div>
 
     <div class="news-detail__status">
-      <div class="news-detail__status__date">{{ detail.created_at | date : "dd.MM.yy" }}</div>
+      <div class="news-detail__status__date">
+        {{ detail.created_at | date : "dd.MM.yy" }}
+      </div>
       <div class="news-detail__status__view">
         <span nz-icon nzType="eye" nzTheme="outline"></span>
-        <span class="news-detail__status__view__count">{{ detail.views_count }}</span>
+        <span class="news-detail__status__view__count">{{
+          detail.views_count
+        }}</span>
       </div>
     </div>
   </div>

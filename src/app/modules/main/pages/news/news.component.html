@@ -18,7 +18,7 @@
     <div class="news-cards">
       <div class="card" *ngFor="let n of news">
         <div class="card-img">
-          <img src="./assets/images/news-banner.jpg" alt="news img" />
+          <img [src]="n.photo" alt="news img" />
         </div>
         <div class="card-info">
           <div class="card-info__title">
@@ -44,9 +44,9 @@
       </div>
     </div>
 
-    <div class="pagination">
+    <!-- <div class="pagination">
       <nz-pagination [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
-    </div>
+    </div> -->
 
     <div class="article-banner">
       <div class="article-banner__info">

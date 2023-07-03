@@ -101,6 +101,21 @@
             </div>
           </nz-tab>
         </ng-container>
+        <ng-container *ngIf="materials$ | async as materials">
+          <nz-tab [nzTitle]="'material' | translate">
+            <div class="about-tabs__content">
+              <h3>{{ "material" | translate }}</h3>
+              <div class="material-wrapper">
+                <div class="materials" *ngFor="let mat of materials">
+                  <a [href]="mat.material" download target="_blank">
+                    <span nz-icon nzType="file-pdf" nzTheme="outline"></span>
+                    <span>{{ mat.title }}</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </nz-tab>
+        </ng-container>
       </nz-tabset>
     </div>
   </div>
