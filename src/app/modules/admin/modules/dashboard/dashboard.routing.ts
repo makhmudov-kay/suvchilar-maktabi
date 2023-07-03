@@ -45,6 +45,12 @@ const routes: Routes = [
           import('./modules/about/about.module').then((m) => m.AboutModule),
         canActivate: [AuthGuard],
       },
+      {
+        path: 'news',
+        loadChildren: () =>
+          import('./modules/news/news.module').then((m) => m.NewsModule),
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];

@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="news" *ngIf="news$ | async as news">
+    <h2 class="news__title">
+      Агросаноат комплекси мутахассисларининг ноёб тажрибаси
+    </h2>
+
+    <div class="news-banner">
+      <p>
+        Сув хўжалигидаги янги тадқиқотлар , унумдорликни ошириш бўйича
+        тажрибадаги сув хўжалигидаги янги технологиялар
+      </p>
+
+      <div class="news-banner__logo">
+        <img src="./assets/images/logo-news.svg" alt="" />
+      </div>
+    </div>
+
+    <div class="news-cards">
+      <div class="card" *ngFor="let n of news">
+        <div class="card-img">
+          <img src="./assets/images/news-banner.jpg" alt="news img" />
+        </div>
+        <div class="card-info">
+          <div class="card-info__title">
+            {{ n.title }}
+          </div>
+          <div class="card-info__more">
+            <a [routerLink]="[n.id]">Батафсил</a>
+            <span
+              nz-icon
+              [nzType]="'check-circle'"
+              [nzTheme]="'twotone'"
+              [nzTwotoneColor]="'#52c41a'"
+            ></span>
+          </div>
+          <div class="card-info__date">
+            <span class="date">{{ n.created_at | date : "dd.MM.yy" }}</span>
+            <span class="card-info__date__right"
+              ><span nz-icon nzType="eye" nzTheme="outline"></span
+              ><span class="view-count">{{ n.views_count }}</span></span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <nz-pagination [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
+    </div>
+
+    <div class="article-banner">
+      <div class="article-banner__info">
+        <h3>Ўзингизга қулай жойда ўқишингиз мункун!</h3>
+        <p>Бизнинг сайтдаги барча янгиликлар энди ижтимоий тармоқларда</p>
+      </div>
+      <div class="article-banner__labels">
+        <div class="article-banner__labels__tg">
+          <img src="./assets/images/telegram-label.svg" alt="label" />
+        </div>
+        <div class="article-banner__labels__fb">
+          <img src="./assets/images/fb-label.svg" alt="label" />
+        </div>
+      </div>
+      <div class="news-banner__logo">
+        <img src="./assets/images/logo-news.svg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
