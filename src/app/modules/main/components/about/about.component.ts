@@ -3,6 +3,7 @@ import { AboutImgService } from './services/about-img.service';
 import { AboutUsContentService } from './services/about-us-content.service';
 import { Observable, map } from 'rxjs';
 import { StudyPlanService } from './services/study-plan.service';
+import { MaterialsService } from './services/materials.service';
 
 @Component({
   selector: 'app-about',
@@ -70,10 +71,13 @@ export class AboutComponent implements OnInit {
 
   tables$!: Observable<any[]>;
 
+  materials$!: Observable<any[]>;
+
   constructor(
     private $aboutImg: AboutImgService,
     private $aboutUsContent: AboutUsContentService,
-    private $program: StudyPlanService
+    private $program: StudyPlanService,
+    private $materials: MaterialsService
   ) {}
 
   ngOnInit() {
@@ -87,6 +91,10 @@ export class AboutComponent implements OnInit {
 
     this.tables$ = this.$program
       .getStudyPlan()
+      .pipe(map((result) => result.data));
+
+    this.materials$ = this.$materials
+      .getMaterials()
       .pipe(map((result) => result.data));
   }
 }
