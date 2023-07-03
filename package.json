@@ -21,6 +21,7 @@
     "@auth0/angular-jwt": "^5.1.2",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "@ngxs/store": "^3.8.1",
     "file-saver": "^2.0.5",
     "ng-zorro-antd": "^15.1.0",
     "ngx-async-click": "^1.1.1",

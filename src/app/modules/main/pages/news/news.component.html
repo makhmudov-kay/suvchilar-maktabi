@@ -1,13 +1,12 @@
 <div class="container">
   <div class="news" *ngIf="news$ | async as news">
     <h2 class="news__title">
-      Агросаноат комплекси мутахассисларининг ноёб тажрибаси
+      {{ "newsTitle" | translate }}
     </h2>
 
     <div class="news-banner">
       <p>
-        Сув хўжалигидаги янги тадқиқотлар , унумдорликни ошириш бўйича
-        тажрибадаги сув хўжалигидаги янги технологиялар
+        {{ "newsBannerText" | translate }}
       </p>
 
       <div class="news-banner__logo">
@@ -25,7 +24,7 @@
             {{ n.title }}
           </div>
           <div class="card-info__more">
-            <a [routerLink]="[n.id]">Батафсил</a>
+            <a [routerLink]="[n.id]">{{ "moreInformation" | translate }}</a>
             <span
               nz-icon
               [nzType]="'check-circle'"
@@ -50,8 +49,8 @@
 
     <div class="article-banner">
       <div class="article-banner__info">
-        <h3>Ўзингизга қулай жойда ўқишингиз мункун!</h3>
-        <p>Бизнинг сайтдаги барча янгиликлар энди ижтимоий тармоқларда</p>
+        <h3>{{ "articleTitle" | translate }}</h3>
+        <p>{{ "articleText" | translate }}</p>
       </div>
       <div class="article-banner__labels">
         <div class="article-banner__labels__tg">
