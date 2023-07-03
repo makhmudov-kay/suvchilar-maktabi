@@ -69,9 +69,9 @@
       <li (click)="closeDrawerAndNavigate('about')">
         <a href="#about">{{ "studyPlan" | translate }}</a>
       </li>
-      <!-- <li>
-        <a>{{ "news" | translate }}</a>
-      </li> -->
+      <li (click)="closeDrawer()">
+        <a routerLink="news">{{ "news" | translate }}</a>
+      </li>
       <!-- <li>
         <a>{{ "gallery" | translate }}</a>
       </li> -->
