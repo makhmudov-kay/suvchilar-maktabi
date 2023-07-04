@@ -6,6 +6,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { TranslateModule } from '@ngx-translate/core';
 import { ErrorComponent } from 'ngx-ou-grid';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ErrorComponent } from 'ngx-ou-grid';
     NzPaginationModule,
     TranslateModule,
     ErrorComponent,
+    NzTypographyModule,
   ],
   declarations: [NewsComponent],
 })

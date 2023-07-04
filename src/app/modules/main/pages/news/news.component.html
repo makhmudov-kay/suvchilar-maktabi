@@ -21,7 +21,7 @@
         </div>
         <div class="card-info">
           <div class="card-info__title">
-            {{ n.title }}
+            <p nz-typography nzEllipsis [nzEllipsisRows]="2">{{ n.title }}</p>
           </div>
           <div class="card-info__more">
             <a [routerLink]="[n.id]">{{ "moreInformation" | translate }}</a>
