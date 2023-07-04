@@ -1,6 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { NewsService } from './services/news.service';
-import { Observable, map } from 'rxjs';
+import { Observable, filter, map } from 'rxjs';
 import { currentLanguage$ } from 'src/app/shared/languages/languages.component';
 
 @Component({
@@ -12,7 +17,17 @@ import { currentLanguage$ } from 'src/app/shared/languages/languages.component';
 export class NewsComponent implements OnInit {
   /**
    */
-  news$!: Observable<any>;
+  news$!: Observable<any[]>;
+
+  /**
+   *
+   */
+  paginatedNews$!: Observable<any[]>;
+
+  /**
+   *
+   */
+  page_size = 12;
 
   /**
    *
@@ -26,6 +41,22 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
     currentLanguage$.subscribe((w) => {
       this.news$ = this.$news.getNewsList().pipe(map((result) => result.data));
+      this.changeCurrentPage(1);
     });
+  }
+
+  /**
+   *
+   * @param currentPage
+   */
+  changeCurrentPage(currentPage: number) {
+    this.paginatedNews$ = this.news$.pipe(
+      map((w) => {
+        return w.slice(
+          (currentPage - 1) * this.page_size,
+          currentPage * this.page_size
+        );
+      })
+    );
   }
 }

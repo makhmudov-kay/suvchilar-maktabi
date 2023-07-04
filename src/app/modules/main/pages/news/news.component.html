@@ -15,7 +15,7 @@
     </div>
 
     <div class="news-cards">
-      <div class="card" *ngFor="let n of news$ | async">
+      <div class="card" *ngFor="let n of paginatedNews$ | async">
         <div class="card-img">
           <img [src]="n.photo" alt="news img" />
         </div>
@@ -43,9 +43,15 @@
       </div>
     </div>
 
-    <!-- <div class="pagination">
-      <nz-pagination [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
-    </div> -->
+    <div class="pagination">
+      <nz-pagination
+        [nzHideOnSinglePage]="true"
+        [nzPageSize]="page_size"
+        (nzPageIndexChange)="changeCurrentPage($event)"
+        [nzPageIndex]="1"
+        [nzTotal]="(news$ | async)?.length"
+      ></nz-pagination>
+    </div>
 
     <div class="article-banner">
       <div class="article-banner__info">
