@@ -57,7 +57,7 @@ export class AddEditManagerComponent extends BaseAddEdit<
       f_name: [model?.f_name, [Validators.required]],
       l_name: [model?.l_name, [Validators.required]],
       login: [model?.login, [Validators.required]],
-      phone: [model?.phone, [Validators.required]],
+      phone: [model?.phone ? (model?.phone % 1000000000).toString() : '', [Validators.required]],
       region_id: [model?.region_id, [Validators.required]],
       password: [null, [Validators.required, Validators.minLength(6)]],
       checkPassword: [null, [Validators.required, this.confirmationValidator]],
